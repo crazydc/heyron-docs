@@ -14,21 +14,21 @@ const modules = [
     title: "Module 02: Memory & Personality",
     description: "Configure your agent's memory and behavior",
     status: "Active",
-    href: "/getting-started#memory"
+    href: "/training/memory-personality"
   },
   {
     id: 'module-03',
     title: "Module 03: Discord Integration",
     description: "Connect your agent to Discord",
     status: "Active",
-    href: "/community"
+    href: "/training/discord-integration"
   },
   {
     id: 'module-04',
     title: "Module 04: File Storage",
     description: "Set up robust file storage with GitHub",
     status: "Active",
-    href: "/api-docs"
+    href: "/training/file-storage"
   },
   {
     id: 'module-05',
