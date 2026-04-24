@@ -4,8 +4,8 @@ import Link from 'next/link';
 const modules = [
   {
     id: 'module-01',
-    title: "Module 01: Getting Started",
-    description: "Set up your agent in about 15 minutes",
+    title: "Module 01: Start Here",
+    description: "What's in the box — understand your new agent",
     status: "Active",
     href: "/getting-started"
   },
@@ -26,23 +26,37 @@ const modules = [
   {
     id: 'module-04',
     title: "Module 04: File Storage",
-    description: "Set up robust file storage with GitHub",
+    description: "Set up GitHub for file storage",
     status: "Active",
     href: "/training/file-storage"
   },
   {
     id: 'module-05',
-    title: "Module 05: Advanced Features",
-    description: "Time-based actions, reminders, and automation",
-    status: "Coming Soon",
-    href: null
+    title: "Module 05: Vision",
+    description: "Teach your agent to see and analyze images",
+    status: "Active",
+    href: "/training/vision"
   },
   {
     id: 'module-06',
-    title: "Module 06: Deep Integration",
-    description: "Advanced integrations and custom workflows",
-    status: "Coming Soon",
-    href: null
+    title: "Module 06: Saved Work",
+    description: "Backup and preserve your agent's work",
+    status: "Active",
+    href: "/training/saved-work"
+  },
+  {
+    id: 'module-07',
+    title: "Module 07: Cron & Scheduling",
+    description: "Set up time-based actions and reminders",
+    status: "Active",
+    href: "/training/cron"
+  },
+  {
+    id: 'module-08',
+    title: "Module 08: AgentMail",
+    description: "Give your agent its own email inbox",
+    status: "Active",
+    href: "/training/agentmail"
   }
 ];
 
@@ -51,10 +65,17 @@ export default function Training() {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--void)' }}>
       <Navigation />
       <main className="max-w-4xl mx-auto px-6 py-24">
-        <h1 className="text-4xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-mono)' }}>Training & Tutorials</h1>
+        <h1 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-mono)' }}>Training & Tutorials</h1>
         <p className="text-xl mb-8" style={{ color: 'var(--muted)' }}>
-          Step-by-step modules built by the heyron community. Work through them at your own pace.
+          Step-by-step modules to build your AI partner. Skip nothing — this is your unboxing sequence.
         </p>
+
+        <div className="glass-panel p-4 mb-8">
+          <p className="text-sm text-slate-400">
+            🚧 <strong>Beta Software:</strong> Heyron is actively being built. Things change fast. 
+            Stuck? Ask in the <a href="https://discord.gg/clawd" target="_blank" className="text-cyan hover:underline">Heyron Discord</a>.
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {modules.map((module) => (
@@ -85,6 +106,17 @@ export default function Training() {
               </div>
             )
           ))}
+        </div>
+
+        <div className="glass-panel p-6 mt-12">
+          <h2 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-mono)' }}>💡 The Cricut Analogy</h2>
+          <p className="text-slate-300 mb-4">
+            When you unboxed your Cricut, you couldn't immediately make a project. You had to download software, 
+            pair the machine, and attach tools. Heyron is the same.
+          </p>
+          <p className="text-slate-300">
+            <strong>Skip these modules, and Day 1 work disappears. Complete them, and you have a partner that remembers, saves, and improves over time.</strong>
+          </p>
         </div>
 
         <h2 className="text-2xl font-bold text-white mt-12 mb-4" style={{ fontFamily: 'var(--font-mono)' }}>Community Resources</h2>
