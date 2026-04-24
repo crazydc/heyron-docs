@@ -226,10 +226,10 @@ If your agent forgets you when a session ends, you need to configure persistent 
 ];
 
 export const navigationItems = [
-  { name: 'Getting Started', href: '#getting-started' },
-  { name: 'Tutorials', href: '#tutorials' },
-  { name: 'API Docs', href: '#api-docs' },
-  { name: 'Community', href: '#community' },
-  { name: 'Models', href: '#model-selection' },
-  { name: 'Troubleshooting', href: '#troubleshooting' },
+  { name: 'Getting Started', href: '/getting-started' },
+  { name: 'Tutorials', href: '/tutorials' },
+  { name: 'API Docs', href: '/api-docs' },
+  { name: 'Community', href: '/community' },
+  { name: 'Models', href: '/models' },
+  { name: 'Troubleshooting', href: '/troubleshooting' },
 ];

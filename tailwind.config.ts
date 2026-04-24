@@ -9,13 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary backgrounds
         void: "#07090C",
         panel: "#0F141C",
         surface: "#161B23",
         border: "#1C222B",
-        
-        // Accent colors
         cyan: {
           DEFAULT: "#22D3EE",
           glow: "#22D3EE",
@@ -24,8 +21,6 @@ const config: Config = {
         amber: "#F59E0B",
         violet: "#A78BFA",
         crimson: "#DC2626",
-        
-        // Text
         text: "#E8EDF1",
         muted: "#94A3B8",
       },
