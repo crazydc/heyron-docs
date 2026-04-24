@@ -8,6 +8,7 @@ const navItems = [
   { name: 'What Is Heyron', href: '/what-is-heyron' },
   { name: 'Getting Started', href: '/getting-started' },
   { name: 'Training', href: '/training' },
+  { name: 'Tutorials', href: '/tutorials' },
   { name: 'Prompts', href: '/prompts' },
   { name: 'The Den', href: '/the-den' },
 ];
