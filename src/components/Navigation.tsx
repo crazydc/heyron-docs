@@ -4,11 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navItems = [
-  { name: 'Home', href: '#' },
-  { name: 'Getting Started', href: '#getting-started' },
-  { name: 'Tutorials', href: '#tutorials' },
-  { name: 'API Docs', href: '#api-docs' },
-  { name: 'Community', href: '#community' },
+  { name: 'Home', href: '/' },
+  { name: 'Getting Started', href: '/getting-started' },
+  { name: 'Tutorials', href: '/tutorials' },
+  { name: 'API Docs', href: '/api-docs' },
+  { name: 'Community', href: '/community' },
+  { name: 'Models', href: '/models' },
+  { name: 'Troubleshooting', href: '/troubleshooting' },
 ];
 
 export default function Navigation() {
