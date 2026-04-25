@@ -1,35 +1,76 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'What Is Heyron', href: '/what-is-heyron' },
-  { name: 'Getting Started', href: '/getting-started' },
-  { name: 'Tutorials', href: '/tutorials' },
-  { name: 'Personas', href: '/personas' },
-  { name: 'Skills', href: '/skills' },
-  { name: 'Templates', href: '/templates' },
-];
-
-const moreItems = [
-  { name: 'FAQ', href: '/faq' },
-  { name: 'Support', href: '/support' },
-  { name: 'Meet Robby', href: '/meet-robby' },
-  { name: 'The Den', href: '/the-den' },
-];
+// Pages that don't require auth
+const publicPages = ['/', '/login', '/signup', '/what-is-heyron', '/getting-started', '/tutorials', '/personas', '/skills', '/templates', '/faq', '/support', '/the-den', '/meet-robby'];
 
 export default function Navigation() {
+  const { user, isLoading } = useAuth();
+  const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(true);
+
+  useEffect(() => {
+    if (isLoading) return;
+    
+    // Check if page requires auth
+    const requiresAuth = !publicPages.some(page => pathname === page || pathname.startsWith(page + '/'));
+    
+    if (requiresAuth && !user) {
+      // Redirect to login
+      router.push('/login');
+      setIsAuthorized(false);
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [pathname, user, isLoading, router]);
+
+  if (!isAuthorized) {
+    return null;
+  }
+
+  // Different nav items for logged in vs logged out
+  const navItems = user 
+    ? [
+        { name: 'Dashboard', href: '/dashboard' },
+        { name: 'Tutorials', href: '/tutorials' },
+        { name: 'Personas', href: '/personas' },
+        { name: 'Skills', href: '/skills' },
+      ]
+    : [
+        { name: 'Home', href: '/' },
+        { name: 'What Is Heyron', href: '/what-is-heyron' },
+        { name: 'Getting Started', href: '/getting-started' },
+        { name: 'Tutorials', href: '/tutorials' },
+        { name: 'Personas', href: '/personas' },
+        { name: 'Skills', href: '/skills' },
+      ];
+
+  const moreItems = user
+    ? [
+        { name: 'Templates', href: '/templates' },
+        { name: 'Account', href: '/dashboard/account' },
+        { name: 'Help', href: '/dashboard/help' },
+      ]
+    : [
+        { name: 'Templates', href: '/templates' },
+        { name: 'FAQ', href: '/faq' },
+        { name: 'Support', href: '/support' },
+        { name: 'The Den', href: '/the-den' },
+      ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#07090C]/80 backdrop-blur-md border-b border-[#1C222B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-white font-mono tracking-tight">
+            <Link href={user ? '/dashboard' : '/'} className="text-xl font-bold text-white font-mono tracking-tight">
               HEYRON<span className="text-cyan">.AI</span>
             </Link>
           </div>
@@ -78,29 +119,49 @@ export default function Navigation() {
 
             {/* Auth buttons */}
             <div className="flex items-center gap-2">
-              <Link
-                href="/login"
-                className="text-slate-400 hover:text-cyan px-3 py-2 text-sm font-medium"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/signup"
-                className="bg-cyan text-[#07090C] px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan/90 transition-colors"
-              >
-                Get Started
-              </Link>
+              {user ? (
+                <Link
+                  href="/dashboard"
+                  className="bg-cyan text-[#07090C] px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan/90 transition-colors"
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="text-slate-400 hover:text-cyan px-3 py-2 text-sm font-medium"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="bg-cyan text-[#07090C] px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan/90 transition-colors"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
-            <Link
-              href="/login"
-              className="text-slate-400 text-sm"
-            >
-              Sign In
-            </Link>
+            {user ? (
+              <Link
+                href="/dashboard"
+                className="bg-cyan text-[#07090C] px-3 py-1 rounded text-sm font-bold"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="text-slate-400 text-sm"
+              >
+                Sign In
+              </Link>
+            )}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-400 hover:text-cyan p-2"
@@ -144,20 +205,22 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
-            <div className="border-t border-[#1C222B] pt-2 mt-2 flex gap-2">
-              <Link
-                href="/login"
-                className="flex-1 text-center text-slate-400 hover:text-cyan border border-[#1C222B] rounded-lg px-3 py-2"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/signup"
-                className="flex-1 text-center bg-cyan text-[#07090C] rounded-lg px-3 py-2 font-bold"
-              >
-                Get Started
-              </Link>
-            </div>
+            {!user && (
+              <div className="border-t border-[#1C222B] pt-2 mt-2 flex gap-2">
+                <Link
+                  href="/login"
+                  className="flex-1 text-center text-slate-400 hover:text-cyan border border-[#1C222B] rounded-lg px-3 py-2"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="flex-1 text-center bg-cyan text-[#07090C] rounded-lg px-3 py-2 font-bold"
+                >
+                  Get Started
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}
