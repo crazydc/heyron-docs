@@ -6,40 +6,58 @@ import Link from 'next/link';
 
 const tutorials = [
   // 🚀 Start Here
-  { category: 'Start Here', title: 'What Your Agent Can (and Can\'t) Do', duration: '4 min', level: 'Beginner', tags: ['basics', 'expectations'], url: 'https://heyron-ai.github.io/agent-library/tutorials/what-your-agent-can-do.html', description: 'Set your expectations right. Everything your agent can do out of the box.' },
-  { category: 'Start Here', title: 'Overwhelmed in Week 1? A No-Tech First Win Plan', duration: '5 min', level: 'Beginner', tags: ['beginners', 'quickstart'], url: 'https://heyron-ai.github.io/agent-library/tutorials/first-week-with-agent-no-tech-background.html', description: 'A practical 90-minute workflow for non-technical users to get one real result fast.' },
-  { category: 'Start Here', title: 'Your First SOUL.md — Give Your Agent a Personality', duration: '5 min', level: 'Beginner', tags: ['personality', 'memory'], url: 'https://heyron-ai.github.io/agent-library/tutorials/your-first-soul-md.html', description: 'Give your agent a name, a voice, and a personality with ready-to-use templates.' },
-  { category: 'Start Here', title: 'API Keys & Models — Choosing Your Agent\'s Brain', duration: '5 min', level: 'Beginner', tags: ['models', 'api'], url: 'https://heyron-ai.github.io/agent-library/tutorials/api-keys-and-models.html', description: 'What models are, what they cost, how to get API keys, and which model is right for you.' },
+  { category: 'Start Here', title: 'What Your Agent Can (and Can\'t) Do', duration: '4 min', level: 'Beginner', tags: ['basics', 'expectations'], slug: 'what-your-agent-can-do', description: 'Set your expectations right. Everything your agent can do out of the box.' },
+  { category: 'Start Here', title: 'Overwhelmed in Week 1? A No-Tech First Win Plan', duration: '5 min', level: 'Beginner', tags: ['beginners', 'quickstart'], slug: 'first-week-no-tech', description: 'A practical 90-minute workflow for non-technical users to get one real result fast.' },
+  { category: 'Start Here', title: 'Your First SOUL.md — Give Your Agent a Personality', duration: '5 min', level: 'Beginner', tags: ['personality', 'memory'], slug: 'first-soul-md', description: 'Give your agent a name, a voice, and a personality with ready-to-use templates.' },
+  { category: 'Start Here', title: 'API Keys & Models — Choosing Your Agent\'s Brain', duration: '5 min', level: 'Beginner', tags: ['models', 'api'], slug: 'api-keys-models', description: 'What models are, what they cost, how to get API keys, and which model is right for you.' },
+  { category: 'Start Here', title: 'Agent Burning Too Many Tokens?', duration: '4 min', level: 'Beginner', tags: ['tokens', 'optimization'], slug: 'burning-tokens', description: 'A practical workflow to reduce token burn fast.' },
   
   // 🔌 Connect Your Agent
-  { category: 'Connect Your Agent', title: 'Connect Your Agent to Discord', duration: '10 min', level: 'Intermediate', tags: ['discord', 'chat'], url: 'https://heyron-ai.github.io/agent-library/tutorials/connect-discord.html', description: 'Talk to your AI agent from any Discord server.' },
-  { category: 'Connect Your Agent', title: 'Connect Your Agent to Telegram', duration: '5 min', level: 'Beginner', tags: ['telegram', 'chat'], url: 'https://heyron-ai.github.io/agent-library/tutorials/connect-telegram.html', description: 'Set up your agent on Telegram in under 5 minutes.' },
-  { category: 'Connect Your Agent', title: 'Connect Your Agent to Google Chat', duration: '4 min', level: 'Beginner', tags: ['google', 'chat'], url: 'https://heyron-ai.github.io/agent-library/tutorials/google-chat-agent-setup.html', description: 'Add your heyron agent to Google Chat spaces.' },
-  { category: 'Connect Your Agent', title: 'Run OpenClaw Locally', duration: '5 min', level: 'Intermediate', tags: ['local', 'setup'], url: 'https://heyron-ai.github.io/agent-library/tutorials/run-openclaw-locally.html', description: 'A practical first-run guide for local OpenClaw setup.' },
-  { category: 'Connect Your Agent', title: 'Set Up ElevenLabs Voice', duration: '4 min', level: 'Beginner', tags: ['voice', 'elevenlabs'], url: 'https://heyron-ai.github.io/agent-library/tutorials/elevenlabs-voice-setup.html', description: 'Configure voice for your agent.' },
-  { category: 'Connect Your Agent', title: 'Send Voice Messages in Telegram', duration: '4 min', level: 'Beginner', tags: ['voice', 'telegram'], url: 'https://heyron-ai.github.io/agent-library/tutorials/telegram-voice-messages-with-elevenlabs.html', description: 'Fix text-only Telegram replies with voice.' },
+  { category: 'Connect Your Agent', title: 'Connect Your Agent to Discord', duration: '10 min', level: 'Intermediate', tags: ['discord', 'chat'], slug: 'connect-discord', description: 'Talk to your AI agent from any Discord server.' },
+  { category: 'Connect Your Agent', title: 'Connect Your Agent to Telegram', duration: '5 min', level: 'Beginner', tags: ['telegram', 'chat'], slug: 'connect-telegram', description: 'Set up your agent on Telegram in under 5 minutes.' },
+  { category: 'Connect Your Agent', title: 'Connect Your Agent to Google Chat', duration: '4 min', level: 'Beginner', tags: ['google', 'chat'], slug: 'google-chat', description: 'Add your heyron agent to Google Chat spaces.' },
+  { category: 'Connect Your Agent', title: 'Run OpenClaw Locally', duration: '5 min', level: 'Intermediate', tags: ['local', 'setup'], slug: 'run-locally', description: 'A practical first-run guide for local OpenClaw setup.' },
+  { category: 'Connect Your Agent', title: 'Set Up ElevenLabs Voice', duration: '4 min', level: 'Beginner', tags: ['voice', 'elevenlabs'], slug: 'elevenlabs-voice', description: 'Configure voice for your agent.' },
+  { category: 'Connect Your Agent', title: 'Send Voice Messages in Telegram', duration: '4 min', level: 'Beginner', tags: ['voice', 'telegram'], slug: 'telegram-voice', description: 'Fix text-only Telegram replies with voice.' },
+  { category: 'Connect Your Agent', title: 'Chrome Extension Remote Gateway', duration: '4 min', level: 'Intermediate', tags: ['chrome', 'remote'], slug: 'chrome-remote', description: 'Setup for remote browser control.' },
   
   // 🧠 Understand Your Agent
-  { category: 'Understand Your Agent', title: 'How Agent Memory Works', duration: '5 min', level: 'Beginner', tags: ['memory', 'concepts'], url: 'https://heyron-ai.github.io/agent-library/tutorials/how-memory-works.html', description: 'Why your agent "forgets" things and how to make important things stick.' },
-  { category: 'Understand Your Agent', title: 'What Does My Agent Know About Me?', duration: '4 min', level: 'Beginner', tags: ['privacy', 'security'], url: 'https://heyron-ai.github.io/agent-library/tutorials/what-does-my-agent-know-about-me.html', description: 'A simple privacy audit flow to verify what your agent can access.' },
-  { category: 'Understand Your Agent', title: 'Is It Safe to Paste Client Data?', duration: '4 min', level: 'Beginner', tags: ['privacy', 'security'], url: 'https://heyron-ai.github.io/agent-library/tutorials/is-it-safe-to-paste-client-data.html', description: 'A redaction-first workflow to protect client information.' },
+  { category: 'Understand Your Agent', title: 'How Agent Memory Works', duration: '5 min', level: 'Beginner', tags: ['memory', 'concepts'], slug: 'memory-works', description: 'Why your agent "forgets" things and how to make important things stick.' },
+  { category: 'Understand Your Agent', title: 'What Does My Agent Know About Me?', duration: '4 min', level: 'Beginner', tags: ['privacy', 'security'], slug: 'privacy-audit', description: 'A simple privacy audit flow to verify what your agent can access.' },
+  { category: 'Understand Your Agent', title: 'Is It Safe to Paste Client Data?', duration: '4 min', level: 'Beginner', tags: ['privacy', 'security'], slug: 'client-data', description: 'A redaction-first workflow to protect client information.' },
+  { category: 'Understand Your Agent', title: 'Agent Shared Private Info in Group Chat?', duration: '4 min', level: 'Beginner', tags: ['privacy', 'discord'], slug: 'private-info-group', description: 'Containment and prevention for accidental data leakage.' },
   
   // 🛠️ How-To & Reference
-  { category: 'How-To & Reference', title: 'Working with Files', duration: '3 min', level: 'Beginner', tags: ['files', 'media'], url: 'https://heyron-ai.github.io/agent-library/tutorials/working-with-files.html', description: 'Where file attachments work and workarounds for images and documents.' },
-  { category: 'How-To & Reference', title: 'Prompting Your Agent Like a Pro', duration: '4 min', level: 'Beginner', tags: ['prompts', 'tips'], url: 'https://heyron-ai.github.io/agent-library/tutorials/prompting-your-agent-like-a-pro.html', description: 'A practical guide to getting better outputs with a 4-part prompt formula.' },
-  { category: 'How-To & Reference', title: 'How to Use Sub-Agents', duration: '4 min', level: 'Beginner', tags: ['subagents', 'advanced'], url: 'https://heyron-ai.github.io/agent-library/tutorials/how-to-use-sub-agents.html', description: 'Delegate work safely with a manager+workers pattern.' },
-  { category: 'How-To & Reference', title: 'Your Dashboard — Every Button Explained', duration: '10 min', level: 'All', tags: ['dashboard', 'reference'], url: 'https://heyron-ai.github.io/agent-library/tutorials/dashboard-guide.html', description: 'Complete guide to the OpenClaw Control UI.' },
+  { category: 'How-To & Reference', title: 'Working with Files', duration: '3 min', level: 'Beginner', tags: ['files', 'media'], slug: 'working-with-files', description: 'Where file attachments work and workarounds for images and documents.' },
+  { category: 'How-To & Reference', title: 'Prompting Your Agent Like a Pro', duration: '4 min', level: 'Beginner', tags: ['prompts', 'tips'], slug: 'prompting-pro', description: 'A practical guide to getting better outputs with a 4-part prompt formula.' },
+  { category: 'How-To & Reference', title: 'How to Use Sub-Agents', duration: '4 min', level: 'Beginner', tags: ['subagents', 'advanced'], slug: 'sub-agents', description: 'Delegate work safely with a manager+workers pattern.' },
+  { category: 'How-To & Reference', title: 'Your Dashboard — Every Button Explained', duration: '10 min', level: 'All', tags: ['dashboard', 'reference'], slug: 'dashboard-guide', description: 'Complete guide to the OpenClaw Control UI.' },
+  { category: 'How-To & Reference', title: 'Stop File Chaos with BEST_PRACTICES.md', duration: '4 min', level: 'Beginner', tags: ['files', 'organization'], slug: 'file-best-practices', description: 'Use a single source-of-truth file workflow.' },
   
   // 🩹 Troubleshooting
-  { category: 'Troubleshooting', title: 'Agent Burning Too Many Tokens?', duration: '4 min', level: 'Beginner', tags: ['tokens', 'optimization'], url: 'https://heyron-ai.github.io/agent-library/tutorials/agent-burning-too-many-tokens.html', description: 'A practical workflow to reduce token burn fast.' },
-  { category: 'Troubleshooting', title: 'Updated File But Agent Uses Old Version?', duration: '4 min', level: 'Beginner', tags: ['files', 'memory'], url: 'https://heyron-ai.github.io/agent-library/tutorials/updated-file-but-agent-uses-old-version.html', description: 'Fix stale-file confusion with versioning workflow.' },
-  { category: 'Troubleshooting', title: 'Why Your Agent Gets Worse in Long Chats', duration: '6 min', level: 'Beginner', tags: ['memory', 'context'], url: 'https://heyron-ai.github.io/agent-library/tutorials/long-chats-and-lost-work.html', description: 'Session length, bloated chats, and how to keep progress safe.' },
-  { category: 'Troubleshooting', title: 'Context Limit Exceeded?', duration: '4 min', level: 'Beginner', tags: ['context', 'errors'], url: 'https://heyron-ai.github.io/agent-library/tutorials/context-limit-exceeded.html', description: 'Recover fast from oversized prompt failures.' },
-  { category: 'Troubleshooting', title: 'Agent Feels Slow or Stuck?', duration: '4 min', level: 'Beginner', tags: ['performance', 'debugging'], url: 'https://heyron-ai.github.io/agent-library/tutorials/agent-feels-slow-or-stuck.html', description: 'A fast diagnostic checklist for laggy replies.' },
-  { category: 'Troubleshooting', title: 'Seeing a 502 Error?', duration: '4 min', level: 'Beginner', tags: ['errors', 'server'], url: 'https://heyron-ai.github.io/agent-library/tutorials/fix-502-agent-not-loading.html', description: 'A practical recovery checklist for 502 failures.' },
-  { category: 'Troubleshooting', title: 'My Agent Replies to Everything', duration: '4 min', level: 'Beginner', tags: ['discord', 'behavior'], url: 'https://heyron-ai.github.io/agent-library/tutorials/my-agent-replies-to-everything.html', description: 'Stop over-chatty behavior in Discord.' },
-  { category: 'Troubleshooting', title: 'Dashboard Blank Screen?', duration: '4 min', level: 'Beginner', tags: ['dashboard', 'debugging'], url: 'https://heyron-ai.github.io/agent-library/tutorials/dashboard-blank-screen.html', description: 'Quick isolation flow for blank dashboard pages.' },
-  { category: 'Troubleshooting', title: 'Approval Required?', duration: '4 min', level: 'Beginner', tags: ['approval', 'security'], url: 'https://heyron-ai.github.io/agent-library/tutorials/approval-required-explained.html', description: 'What approval prompts mean and when to approve.' },
+  { category: 'Troubleshooting', title: 'Updated File But Agent Uses Old Version?', duration: '4 min', level: 'Beginner', tags: ['files', 'memory'], slug: 'old-version', description: 'Fix stale-file confusion with versioning workflow.' },
+  { category: 'Troubleshooting', title: 'Why Your Agent Gets Worse in Long Chats', duration: '6 min', level: 'Beginner', tags: ['memory', 'context'], slug: 'long-chats', description: 'Session length, bloated chats, and how to keep progress safe.' },
+  { category: 'Troubleshooting', title: 'Context Limit Exceeded?', duration: '4 min', level: 'Beginner', tags: ['context', 'errors'], slug: 'context-limit', description: 'Recover fast from oversized prompt failures.' },
+  { category: 'Troubleshooting', title: 'Agent Feels Slow or Stuck?', duration: '4 min', level: 'Beginner', tags: ['performance', 'debugging'], slug: 'slow-stuck', description: 'A fast diagnostic checklist for laggy replies.' },
+  { category: 'Troubleshooting', title: 'Seeing a 502 Error?', duration: '4 min', level: 'Beginner', tags: ['errors', 'server'], slug: '502-error', description: 'A practical recovery checklist for 502 failures.' },
+  { category: 'Troubleshooting', title: 'My Agent Replies to Everything', duration: '4 min', level: 'Beginner', tags: ['discord', 'behavior'], slug: 'replies-everything', description: 'Stop over-chatty behavior in Discord.' },
+  { category: 'Troubleshooting', title: 'Dashboard Blank Screen?', duration: '4 min', level: 'Beginner', tags: ['dashboard', 'debugging'], slug: 'blank-screen', description: 'Quick isolation flow for blank dashboard pages.' },
+  { category: 'Troubleshooting', title: 'Approval Required?', duration: '4 min', level: 'Beginner', tags: ['approval', 'security'], slug: 'approval-required', description: 'What approval prompts mean and when to approve.' },
+  { category: 'Troubleshooting', title: 'Approval Keeps Coming Back?', duration: '4 min', level: 'Beginner', tags: ['approval', 'debugging'], slug: 'approval-loop', description: 'Fix repeated approval loops.' },
+  { category: 'Troubleshooting', title: 'Chat Works, But Tools Don\'t Run?', duration: '4 min', level: 'Beginner', tags: ['tools', 'debugging'], slug: 'tools-not-running', description: 'Fix execution-layer freeze loops.' },
+  { category: 'Troubleshooting', title: 'Used /new and Now Your Bot Won\'t Respond?', duration: '4 min', level: 'Beginner', tags: ['discord', 'reset'], slug: 'new-not-responding', description: 'Fast recovery flow for post-reset silence.' },
+  { category: 'Troubleshooting', title: 'Discord Slash Commands Missing?', duration: '4 min', level: 'Beginner', tags: ['discord', 'permissions'], slug: 'slash-missing', description: 'Recovery checklist for when "/" commands don\'t appear.' },
+  { category: 'Troubleshooting', title: 'Agent Can\'t Read Discord Channels?', duration: '4 min', level: 'Beginner', tags: ['discord', 'permissions'], slug: 'discord-channels', description: 'Fix guild/channel ID mixups.' },
+  { category: 'Troubleshooting', title: 'Bot Can Read But Can\'t Reply in Discord?', duration: '4 min', level: 'Beginner', tags: ['discord', 'permissions'], slug: 'discord-cant-reply', description: 'Isolate send-permission issues.' },
+  { category: 'Troubleshooting', title: 'Discord Bot Typing... Then Nothing?', duration: '4 min', level: 'Beginner', tags: ['discord', 'debugging'], slug: 'typing-nothing', description: 'Fix typing-then-silent loop.' },
+  { category: 'Troubleshooting', title: 'Where Did My Files Go?', duration: '4 min', level: 'Beginner', tags: ['files', 'debugging'], slug: 'files-missing', description: 'Find missing outputs and verify write location.' },
+  { category: 'Troubleshooting', title: 'Agent Says "Permission Denied" Saving Files?', duration: '4 min', level: 'Beginner', tags: ['files', 'permissions'], slug: 'permission-denied', description: 'Fix write-failure loops.' },
+  { category: 'Troubleshooting', title: 'Agent Deleted Files by Mistake?', duration: '4 min', level: 'Beginner', tags: ['files', 'recovery'], slug: 'deleted-files', description: 'Contain damage and recover safely.' },
+  { category: 'Troubleshooting', title: 'Agent Keeps Asking the Same Question?', duration: '4 min', level: 'Beginner', tags: ['behavior', 'debugging'], slug: 'same-question', description: 'Break repeated clarifying-question loops.' },
+  { category: 'Troubleshooting', title: 'Heartbeat Keeps Repeating Old Tasks?', duration: '4 min', level: 'Beginner', tags: ['heartbeat', 'automation'], slug: 'heartbeat-repeat', description: 'Fix repetitive heartbeat behavior.' },
+  { category: 'Troubleshooting', title: 'Is This a Different Bot? (DM vs Channel)', duration: '4 min', level: 'Beginner', tags: ['discord', 'context'], slug: 'different-bot', description: 'Fix confusion where DM works but server feels different.' },
+  { category: 'Troubleshooting', title: 'Dashboard vs Discord: Why Context Doesn\'t Carry', duration: '4 min', level: 'Beginner', tags: ['discord', 'memory'], slug: 'context-no-carry', description: 'Fix "it forgot everything" confusion.' },
+  { category: 'Troubleshooting', title: 'Did I Create a Second Agent by Accident?', duration: '4 min', level: 'Beginner', tags: ['identity', 'debugging'], slug: 'second-agent', description: 'Verify when bot name or settings look wrong.' },
 ];
 
 const categories = [...new Set(tutorials.map(t => t.category))];
@@ -158,14 +176,12 @@ export default function Tutorials() {
           </div>
         )}
 
-        {/* Tutorial Grid */}
+        {/* Tutorial Grid - INTERNAL LINKS */}
         <div className="grid md:grid-cols-2 gap-4 mb-8">
           {filtered.map((tutorial, i) => (
-            <a
+            <Link
               key={i}
-              href={tutorial.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/tutorials/${tutorial.slug}`}
               className="glass-panel p-4 hover:border-cyan/30 transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-2">
@@ -186,7 +202,7 @@ export default function Tutorials() {
                   </span>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -197,19 +213,11 @@ export default function Tutorials() {
           </div>
         )}
 
-        {/* Original Library Link */}
+        {/* Coming Soon Note */}
         <div className="glass-panel p-6 text-center">
-          <p className="text-slate-300 mb-4">
-            This is just a preview. The full library has 123+ tutorials with personas and skills.
+          <p className="text-slate-300">
+            📚 More tutorials being added regularly. {tutorials.length} tutorials currently available.
           </p>
-          <a 
-            href="https://heyron-ai.github.io/agent-library/tutorials/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block"
-          >
-            View Full Library →
-          </a>
         </div>
       </main>
     </div>
