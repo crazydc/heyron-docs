@@ -70,7 +70,7 @@ export default function ChannelSlow() {
             <li>• <strong>Simple queries:</strong> 2-5 seconds</li>
             <li>• <strong>Standard prompts:</strong> 5-15 seconds</li>
             <li>• <strong>Complex tasks:</strong> 15-60 seconds</li>
-            <li>• <strong>If >60 seconds:</strong> likely a system issue</li>
+            <li>• <strong>If &gt;60 seconds:</strong> likely a system issue</li>
           </ul>
         </div>
 

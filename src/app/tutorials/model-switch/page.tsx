@@ -44,7 +44,7 @@ export default function ModelSwitch() {
 
             <div className="bg-panel border border-border rounded-lg p-4">
               <h3 className="font-bold text-white mb-2">Method 2: Specify Per Task</h3>
-              <p name="text-slate-400 text-sm">
+              <p className="text-slate-400 text-sm">
                 Add model preference to your request:
               </p>
               <pre className="p-3 bg-void border border-border rounded text-xs text-slate-400 mt-2" style={{ fontFamily: 'var(--font-mono)' }}>
