@@ -25,16 +25,16 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-4 mt-10">
             <Link
-              href="/getting-started"
+              href="/login"
               className="btn-primary"
             >
-              Initialize System
+              Sign In
             </Link>
             <Link
-              href="/the-den"
+              href="/signup"
               className="btn-secondary"
             >
-              Join The Den
+              Get Started
             </Link>
           </div>
         </div>
