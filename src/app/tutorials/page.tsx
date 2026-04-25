@@ -34,6 +34,37 @@ const tutorials = [
   { category: 'How-To & Reference', title: 'Your Dashboard — Every Button Explained', duration: '10 min', level: 'All', tags: ['dashboard', 'reference'], slug: 'dashboard-guide', description: 'Complete guide to the OpenClaw Control UI.' },
   { category: 'How-To & Reference', title: 'Stop File Chaos with BEST_PRACTICES.md', duration: '4 min', level: 'Beginner', tags: ['files', 'organization'], slug: 'file-best-practices', description: 'Use a single source-of-truth file workflow.' },
   
+  // ⚙️ Configuration
+  { category: 'Configuration', title: 'Defining Agent Personality', duration: '5 min', level: 'Beginner', tags: ['personality', 'config'], slug: 'agent-personality', description: 'Give your AI agent a unique personality that matches your needs.' },
+  { category: 'Configuration', title: 'Setting Communication Tone', duration: '4 min', level: 'Beginner', tags: ['tone', 'config'], slug: 'agent-tone', description: 'Configure how your agent communicates — casual to formal.' },
+  { category: 'Configuration', title: 'Setting Agent Boundaries', duration: '5 min', level: 'Beginner', tags: ['limits', 'security', 'config'], slug: 'agent-limits', description: 'Define what your agent can and cannot do for safe operation.' },
+  { category: 'Configuration', title: 'Adding Custom Skills', duration: '6 min', level: 'Intermediate', tags: ['skills', 'custom', 'advanced'], slug: 'agent-skills', description: 'Extend your agent with custom skills tailored to your needs.' },
+  { category: 'Configuration', title: 'Installing Plugins', duration: '5 min', level: 'Intermediate', tags: ['plugins', 'integrations'], slug: 'plugin-install', description: 'Expand capabilities by installing plugins and integrations.' },
+  { category: 'Configuration', title: 'Configuring Plugins', duration: '5 min', level: 'Intermediate', tags: ['plugins', 'config'], slug: 'plugin-config', description: 'Configure and customize installed plugins.' },
+  { category: 'Configuration', title: 'Dark Mode Theme', duration: '3 min', level: 'Beginner', tags: ['theme', 'dark-mode', 'ui'], slug: 'theme-dark', description: 'Enable dark mode for comfortable viewing.' },
+  { category: 'Configuration', title: 'Customizing Theme Colors', duration: '5 min', level: 'Beginner', tags: ['theme', 'colors', 'customize'], slug: 'theme-custom', description: 'Personalize your dashboard with custom colors.' },
+
+  // 📊 Data Management
+  { category: 'Data Management', title: 'Exporting Chat History', duration: '4 min', level: 'Beginner', tags: ['export', 'backup', 'data'], slug: 'export-chat', description: 'Save conversations for backup or analysis.' },
+  { category: 'Data Management', title: 'Importing Data', duration: '5 min', level: 'Beginner', tags: ['import', 'data', 'migration'], slug: 'import-data', description: 'Import data, conversations, or configurations.' },
+
+  // 🤖 AI Capabilities
+  { category: 'AI Capabilities', title: 'Vision API Setup and Configuration', duration: '6 min', level: 'Beginner', tags: ['vision', 'ai', 'api'], slug: 'vision-api', description: 'Enable your agent to see and understand images using the Vision API.' },
+  { category: 'AI Capabilities', title: 'Analyzing Images with Vision', duration: '5 min', level: 'Beginner', tags: ['vision', 'ai', 'images'], slug: 'vision-images', description: 'Learn how to get the most out of image analysis in your AI conversations.' },
+  { category: 'AI Capabilities', title: 'Voice Input Setup Guide', duration: '5 min', level: 'Beginner', tags: ['voice', 'input', 'audio'], slug: 'voice-input-setup', description: 'Enable voice input so you can talk to your agent instead of typing.' },
+  { category: 'AI Capabilities', title: 'Voice Output Configuration', duration: '6 min', level: 'Beginner', tags: ['voice', 'output', 'audio'], slug: 'voice-output-setup', description: 'Configure your agent to respond with voice messages instead of text.' },
+  { category: 'AI Capabilities', title: 'Multi-Language Conversations', duration: '5 min', level: 'Beginner', tags: ['language', 'multilingual', 'translation'], slug: 'multilingual', description: 'Your agent can communicate in multiple languages.' },
+  { category: 'AI Capabilities', title: 'Real-Time Translation', duration: '5 min', level: 'Beginner', tags: ['translation', 'language', 'realtime'], slug: 'translation-service', description: 'Use your agent as a real-time translator.' },
+  { category: 'AI Capabilities', title: 'Generate Python Code', duration: '6 min', level: 'Beginner', tags: ['code', 'python', 'generation'], slug: 'code-gen-python', description: 'Your agent can write Python code for you.' },
+  { category: 'AI Capabilities', title: 'Generate JavaScript Code', duration: '6 min', level: 'Beginner', tags: ['code', 'javascript', 'generation'], slug: 'code-gen-javascript', description: 'Your agent can write JavaScript code for Node.js, browsers, and frameworks.' },
+  { category: 'AI Capabilities', title: 'Debug Code with Agent', duration: '6 min', level: 'Beginner', tags: ['code', 'debug', 'troubleshooting'], slug: 'code-debug', description: 'Paste your code and error messages to get help debugging.' },
+  { category: 'AI Capabilities', title: 'Refactor Code Efficiently', duration: '5 min', level: 'Intermediate', tags: ['code', 'refactor', 'clean'], slug: 'code-refactor', description: 'Improve your code quality with cleaner, faster, more maintainable code.' },
+  { category: 'AI Capabilities', title: 'Generate Python Tests', duration: '5 min', level: 'Beginner', tags: ['testing', 'python', 'pytest'], slug: 'test-py', description: 'Generate unit tests and integration tests for your Python code.' },
+  { category: 'AI Capabilities', title: 'Generate JavaScript Tests', duration: '5 min', level: 'Beginner', tags: ['testing', 'javascript', 'jest'], slug: 'test-js', description: 'Generate tests for your JavaScript, TypeScript, React, and Node.js code.' },
+  { category: 'AI Capabilities', title: 'Generate Markdown Docs', duration: '4 min', level: 'Beginner', tags: ['documentation', 'markdown', 'readme'], slug: 'doc-markdown', description: 'Your agent can create professional documentation in Markdown format.' },
+  { category: 'AI Capabilities', title: 'Managing API Keys Securely', duration: '6 min', level: 'Beginner', tags: ['security', 'api', 'keys'], slug: 'api-keys', description: 'Learn how to store and manage API keys securely for your AI agent.' },
+  { category: 'AI Capabilities', title: 'Debug Webhook Issues', duration: '5 min', level: 'Intermediate', tags: ['webhooks', 'debugging', 'api'], slug: 'webhook-debug', description: 'Diagnose and fix webhook-related problems with your agent.' },
+  
   // 🩹 Troubleshooting
   { category: 'Troubleshooting', title: 'Updated File But Agent Uses Old Version?', duration: '4 min', level: 'Beginner', tags: ['files', 'memory'], slug: 'old-version', description: 'Fix stale-file confusion with versioning workflow.' },
   { category: 'Troubleshooting', title: 'Why Your Agent Gets Worse in Long Chats', duration: '6 min', level: 'Beginner', tags: ['memory', 'context'], slug: 'long-chats', description: 'Session length, bloated chats, and how to keep progress safe.' },
@@ -91,6 +122,15 @@ const tutorials = [
   { category: 'Troubleshooting', title: 'Model Not Available?', duration: '3 min', level: 'Beginner', tags: ['models', 'api'], slug: 'model-unavailable', description: 'The AI model you want to use isn\'t available. Let\'s find a solution.' },
   { category: 'Troubleshooting', title: 'Session Lost After Refresh?', duration: '3 min', level: 'Beginner', tags: ['sessions', 'browser'], slug: 'session-lost', description: 'You refreshed the page and lost your conversation. Here\'s how to recover.' },
   { category: 'Troubleshooting', title: 'Config Reset After Restart?', duration: '4 min', level: 'Beginner', tags: ['config', 'persistence'], slug: 'config-reset', description: 'Your agent configuration keeps resetting after restart. Let\'s fix the persistence issue.' },
+
+  // 📱 Mobile & Security
+  { category: 'Mobile & Security', title: 'Mobile Access Guide', duration: '4 min', level: 'Beginner', tags: ['mobile', 'ios', 'android', 'telegram'], slug: 'mobile-access', description: 'Access your agent on the go with mobile devices.' },
+  { category: 'Mobile & Security', title: 'Two-Factor Authentication', duration: '5 min', level: 'Beginner', tags: ['security', '2fa', 'authentication'], slug: 'two-factor', description: 'Add extra security with two-factor authentication.' },
+  { category: 'Mobile & Security', title: 'Sharing with Team', duration: '5 min', level: 'Beginner', tags: ['team', 'sharing', 'collaboration'], slug: 'team-sharing', description: 'Collaborate with your team by sharing access.' },
+
+  // 💰 Account & Billing
+  { category: 'Account & Billing', title: 'Viewing Usage Statistics', duration: '4 min', level: 'Beginner', tags: ['usage', 'stats', 'analytics'], slug: 'usage-stats', description: 'Track conversations, tokens, and performance metrics.' },
+  { category: 'Account & Billing', title: 'Managing Billing', duration: '5 min', level: 'Beginner', tags: ['billing', 'subscription', 'payment'], slug: 'billing-manage', description: 'Manage your subscription and payment methods.' },
 ];
 
 const categories = [...new Set(tutorials.map(t => t.category))];
