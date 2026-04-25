@@ -7,38 +7,55 @@ export default function Home() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <div className="text-center px-4 py-20 md:py-32">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-sm font-mono mb-6">
-            <span className="w-2 h-2 rounded-full bg-cyan animate-pulse"></span>
-            OVER 1,000 EARLY ADOPTERS
-          </div>
+        <div className="relative overflow-hidden">
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-cyan/5 to-transparent"></div>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            An AI that actually does things.
-          </h1>
-          
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
-            Not suggestions. Not chat. <span className="text-white font-bold">Real work.</span> You ask, it does it. And it remembers everything.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a
-              href="/signup"
-              className="px-6 py-3 bg-cyan text-void font-bold rounded-lg hover:bg-cyan/90 transition-colors"
-            >
-              Get Started · $29
-            </a>
-            <a
-              href="#demo"
-              className="px-6 py-3 border border-slate-600 text-white font-bold rounded-lg hover:bg-surface transition-colors"
-            >
-              See the Community
-            </a>
-          </div>
+          <div className="max-w-6xl mx-auto px-4 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-sm font-mono mb-6">
+                <span className="w-2 h-2 rounded-full bg-cyan animate-pulse"></span>
+                OVER 1,000 EARLY ADOPTERS
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                An AI that actually does things.
+              </h1>
+              
+              <p className="text-xl text-slate-400 max-w-xl mx-auto md:mx-0 leading-relaxed mb-8">
+                Not suggestions. Not chat. <span className="text-white font-bold">Real work.</span> You ask, it does it. And it remembers everything.
+              </p>
+              
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+                <a
+                  href="/signup"
+                  className="px-6 py-3 bg-cyan text-void font-bold rounded-lg hover:bg-cyan/90 transition-colors"
+                >
+                  Get Started · $29
+                </a>
+                <a
+                  href="#demo"
+                  className="px-6 py-3 border border-slate-600 text-white font-bold rounded-lg hover:bg-surface transition-colors"
+                >
+                  See the Community
+                </a>
+              </div>
 
-          <p className="text-slate-500 text-sm">
-            No setup. No code. Ready in 2 minutes.
-          </p>
+              <p className="text-slate-500 text-sm">
+                No setup. No code. Ready in 2 minutes.
+              </p>
+            </div>
+            
+            {/* Hero Image */}
+            <div className="relative hidden md:block">
+              <div className="absolute inset-0 bg-cyan/20 blur-3xl rounded-full"></div>
+              <img 
+                src="/hero.svg" 
+                alt="Heyron AI" 
+                className="relative w-full max-w-md mx-auto"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Stats */}
@@ -91,35 +108,60 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-white text-center mb-12">Not just chat. Real work.</h2>
             
-            <div className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="glass-panel p-6 flex gap-4">
-                <div className="text-3xl">🧠</div>
+                <div className="text-3xl shrink-0">🧠</div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">"Remember my business idea from last week"</h3>
                   <p className="text-slate-400">It does. Every conversation builds on the last. No copy-pasting context.</p>
                 </div>
               </div>
               <div className="glass-panel p-6 flex gap-4">
-                <div className="text-3xl">📁</div>
+                <div className="text-3xl shrink-0">📁</div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">"Research this and save it to my workspace"</h3>
                   <p className="text-slate-400">Searches the web, writes a full report, saves the file. You download it.</p>
                 </div>
               </div>
               <div className="glass-panel p-6 flex gap-4">
-                <div className="text-3xl">🔒</div>
+                <div className="text-3xl shrink-0">🔒</div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">"Here's my financial info — help me budget"</h3>
                   <p className="text-slate-400">Your own private instance. Your data doesn't train any models. Share freely.</p>
                 </div>
               </div>
               <div className="glass-panel p-6 flex gap-4">
-                <div className="text-3xl">🎯</div>
+                <div className="text-3xl shrink-0">🎯</div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">"Build me a 30-day launch plan for my store"</h3>
                   <p className="text-slate-400">Not bullet points. A real plan with timelines, tasks, and research behind it.</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Highlights */}
+        <div className="max-w-4xl mx-auto px-4 py-20">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <img src="/feature-memory.svg" alt="Memory" className="w-32 h-24 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">It's yours</h3>
+              <p className="text-slate-400 text-sm">You name it. Your data stays yours. It learns your preferences, your style, how you work.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-32 h-24 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-6xl">💬</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">It remembers</h3>
+              <p className="text-slate-400 text-sm">Every conversation builds on the last. No repeating yourself. No starting over.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-32 h-24 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-6xl">⚡</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">It does work</h3>
+              <p className="text-slate-400 text-sm">Not suggestions. Actual output. You ask, it does it, and saves the results to your workspace.</p>
             </div>
           </div>
         </div>

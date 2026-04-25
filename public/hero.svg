@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#07090C"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1C222B" strokeWidth="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  
+  <!-- Glowing orb -->
+  <circle cx="400" cy="250" r="120" fill="#00D9FF" opacity="0.15"/>
+  <circle cx="400" cy="250" r="80" fill="#00D9FF" opacity="0.25"/>
+  <circle cx="400" cy="250" r="40" fill="#00D9FF" opacity="0.4"/>
+  
+  <!-- AI Brain icon representation -->
+  <rect x="350" y="180" width="100" height="140" rx="20" fill="#0F141C" stroke="#00D9FF" strokeWidth="2"/>
+  <circle cx="400" cy="230" r="15" fill="#00D9FF"/>
+  <circle cx="375" cy="270" r="8" fill="#00D9FF" opacity="0.6"/>
+  <circle cx="425" cy="270" r="8" fill="#00D9FF" opacity="0.6"/>
+  <circle cx="400" cy="295" r="8" fill="#00D9FF" opacity="0.6"/>
+  
+  <!-- Connection lines -->
+  <path d="M400 245 L400 295" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
+  <path d="M375 270 L400 295" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
+  <path d="M425 270 L400 295" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="3" fill="#00D9FF"/>
+  <circle cx="650" cy="180" r="3" fill="#00D9FF"/>
+  <circle cx="200" cy="400" r="2" fill="#00D9FF" opacity="0.5"/>
+  <circle cx="600" cy="450" r="2" fill="#00D9FF" opacity="0.5"/>
+  
+  <!-- Floating badges -->
+  <rect x="120" y="480" width="120" height="30" rx="15" fill="#0F141C" stroke="#1C222B"/>
+  <text x="180" y="500" font-family="monospace" fontSize="12" fill="#00D9FF" textAnchor="middle">MEMORY</text>
+  
+  <rect x="560" y="490" width="120" height="30" rx="15" fill="#0F141C" stroke="#1C222B"/>
+  <text x="620" y="510" font-family="monospace" fontSize="12" fill="#00D9FF" textAnchor="middle">TOOLS</text>
+</svg>
