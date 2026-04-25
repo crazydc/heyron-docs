@@ -65,7 +65,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </nav>
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-16 bottom-0 w-64 bg-panel border-r border-border z-40 transform transition-transform lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed left-0 top-16 bottom-0 w-64 bg-[#0F141C] border-r border-[#1C222B] z-40 transform transition-transform lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <nav className="p-4 space-y-2">
           {dashboardNav.map((item) => (
             <Link

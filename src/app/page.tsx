@@ -1,6 +1,4 @@
 import Navigation from '@/components/Navigation';
-import Link from 'next/link';
-import { navigationItems } from '@/data/content';
 
 export default function Home() {
   return (
@@ -16,98 +14,58 @@ export default function Home() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-mono tracking-tighter">
-            HEYRON<span className="text-cyan">.DOCS</span>
+            Meet Your<span className="text-cyan"> AI Agent</span>
           </h1>
           
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Your personal AI agent — mission control for configuration, training, and deployment.
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+            Your personal AI assistant — configure, train, and deploy agents that work the way you do.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <Link
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="/signup"
+              className="px-8 py-3 bg-cyan text-void font-bold rounded-lg hover:bg-cyan/90 transition-colors"
+            >
+              Get Started — Free
+            </a>
+            <a
               href="/login"
-              className="btn-primary"
+              className="px-8 py-3 bg-panel border border-border text-white font-bold rounded-lg hover:bg-surface transition-colors"
             >
               Sign In
-            </Link>
-            <Link
-              href="/signup"
-              className="btn-secondary"
-            >
-              Get Started
-            </Link>
+            </a>
           </div>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {[
-            { label: 'UPTIME', value: '99.9%', color: 'text-mint' },
-            { label: 'ACTIVE AGENTS', value: '2.4K', color: 'text-cyan' },
-            { label: 'MODEL SWITCHES', value: '15.2K', color: 'text-violet' },
-            { label: 'COMMUNITY', value: '8.7K', color: 'text-amber' },
-          ].map((stat, i) => (
-            <div key={i} className="glass-panel p-4 text-center">
-              <div className={`text-2xl font-bold font-mono ${stat.color}`}>{stat.value}</div>
-              <div className="text-xs font-mono text-slate-500 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Section Cards */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group glass-panel p-6 hover:border-cyan/30 transition-all duration-300"
-            >
-              <h2 className="text-lg font-bold text-white group-hover:text-cyan transition-colors font-mono">
-                {item.name}
-              </h2>
-              <p className="text-slate-500 text-sm mt-2">
-                Access documentation and resources →
-              </p>
-              <div className="mt-4 flex items-center text-cyan text-sm font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="mr-2">→</span>
-                ENTER
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* System Status */}
-        <div className="mt-16 glass-panel p-6">
-          <h3 className="text-sm font-mono text-slate-500 mb-4 uppercase tracking-wider">System Status</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-mint"></span>
-              <span className="text-slate-400">API Gateway</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-mint"></span>
-              <span className="text-slate-400">Auth Service</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-mint animate-pulse"></span>
-              <span className="text-slate-400">Database</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-mint"></span>
-              <span className="text-slate-400">ML Models</span>
-            </div>
+        {/* Features */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="glass-panel p-6 text-center">
+            <div className="text-4xl mb-4">🚀</div>
+            <h3 className="text-xl font-bold text-white mb-2">Powerful Agents</h3>
+            <p className="text-slate-400">Create AI agents with custom personalities and skills</p>
+          </div>
+          <div className="glass-panel p-6 text-center">
+            <div className="text-4xl mb-4">🔗</div>
+            <h3 className="text-xl font-bold text-white mb-2">Connect Anywhere</h3>
+            <p className="text-slate-400">Discord, Telegram, and more — your agent everywhere</p>
+          </div>
+          <div className="glass-panel p-6 text-center">
+            <div className="text-4xl mb-4">🧠</div>
+            <h3 className="text-xl font-bold text-white mb-2">Memory That Works</h3>
+            <p className="text-slate-400">Your agent remembers what matters</p>
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 pt-8 border-t border-border text-center">
-          <p className="text-slate-500 text-sm font-mono">
-            © 2026 HEYRON // MISSION CONTROL
-          </p>
-          <p className="text-slate-600 text-xs mt-2">
-            All systems nominal
-          </p>
-        </footer>
+        {/* CTA */}
+        <div className="text-center">
+          <p className="text-slate-400 mb-4">Ready to meet your AI agent?</p>
+          <a
+            href="/signup"
+            className="text-cyan hover:underline"
+          >
+            Create your free account →
+          </a>
+        </div>
       </main>
     </div>
   );

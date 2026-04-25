@@ -7,24 +7,17 @@ const navItems = [
   { name: 'Home', href: '/' },
   { name: 'What Is Heyron', href: '/what-is-heyron' },
   { name: 'Getting Started', href: '/getting-started' },
-  { name: 'Training', href: '/training' },
   { name: 'Tutorials', href: '/tutorials' },
   { name: 'Personas', href: '/personas' },
   { name: 'Skills', href: '/skills' },
   { name: 'Templates', href: '/templates' },
-  { name: 'Prompts', href: '/prompts' },
-  { name: 'The Den', href: '/the-den' },
 ];
 
 const moreItems = [
   { name: 'FAQ', href: '/faq' },
   { name: 'Support', href: '/support' },
-  { name: 'AI Terms', href: '/ai-terms' },
   { name: 'Meet Robby', href: '/meet-robby' },
-  { name: 'Security', href: '/security' },
-  { name: 'Business', href: '/business' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Love', href: '/love' },
+  { name: 'The Den', href: '/the-den' },
 ];
 
 export default function Navigation() {
@@ -32,18 +25,18 @@ export default function Navigation() {
   const [moreOpen, setMoreOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-panel/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#07090C]/80 backdrop-blur-md border-b border-[#1C222B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-white font-mono tracking-tight">
-              HEYRON<span className="text-cyan">.DOCS</span>
+              HEYRON<span className="text-cyan">.AI</span>
             </Link>
           </div>
           
           {/* Desktop nav */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1">
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-baseline space-x-1 mr-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -67,7 +60,7 @@ export default function Navigation() {
                 </button>
                 
                 {moreOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-panel/95 backdrop-blur-md border border-border rounded-xl shadow-2xl py-2">
+                  <div className="absolute right-0 mt-2 w-56 bg-[#0F141C]/95 backdrop-blur-md border border-[#1C222B] rounded-xl shadow-2xl py-2">
                     {moreItems.map((item) => (
                       <Link
                         key={item.name}
@@ -82,10 +75,32 @@ export default function Navigation() {
                 )}
               </div>
             </div>
+
+            {/* Auth buttons */}
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                className="text-slate-400 hover:text-cyan px-3 py-2 text-sm font-medium"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/signup"
+                className="bg-cyan text-[#07090C] px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan/90 transition-colors"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <Link
+              href="/login"
+              className="text-slate-400 text-sm"
+            >
+              Sign In
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-400 hover:text-cyan p-2"
@@ -104,7 +119,7 @@ export default function Navigation() {
       
       {/* Mobile nav */}
       {isOpen && (
-        <div className="md:hidden bg-panel/95 backdrop-blur-md border-b border-border">
+        <div className="md:hidden bg-[#0F141C]/95 backdrop-blur-md border-b border-[#1C222B]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <Link
@@ -116,7 +131,7 @@ export default function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <div className="border-t border-border pt-2 mt-2">
+            <div className="border-t border-[#1C222B] pt-2 mt-2">
               <span className="block px-3 py-2 text-xs text-slate-500 font-mono">+++ MORE</span>
               {moreItems.map((item) => (
                 <Link
@@ -128,6 +143,20 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
+            </div>
+            <div className="border-t border-[#1C222B] pt-2 mt-2 flex gap-2">
+              <Link
+                href="/login"
+                className="flex-1 text-center text-slate-400 hover:text-cyan border border-[#1C222B] rounded-lg px-3 py-2"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/signup"
+                className="flex-1 text-center bg-cyan text-[#07090C] rounded-lg px-3 py-2 font-bold"
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         </div>
