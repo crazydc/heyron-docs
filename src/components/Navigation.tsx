@@ -9,6 +9,9 @@ const navItems = [
   { name: 'Getting Started', href: '/getting-started' },
   { name: 'Training', href: '/training' },
   { name: 'Tutorials', href: '/tutorials' },
+  { name: 'Personas', href: '/personas' },
+  { name: 'Skills', href: '/skills' },
+  { name: 'Templates', href: '/templates' },
   { name: 'Prompts', href: '/prompts' },
   { name: 'The Den', href: '/the-den' },
 ];
