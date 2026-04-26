@@ -47,7 +47,7 @@ export default function Home() {
             </div>
             
             {/* Hero Image */}
-            <div className="relative hidden md:block">
+            <div className="relative block mb-8 md:mb-0">
               <div className="absolute inset-0 bg-cyan/20 blur-3xl rounded-full"></div>
               <img 
                 src="/hero.svg" 
@@ -145,7 +145,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-20">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <img src="/feature-memory.svg" alt="Memory" className="w-32 h-24 mx-auto mb-4" />
+              <img src="/feature-memory.svg" alt="Memory" className="w-48 h-36 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">It's yours</h3>
               <p className="text-slate-400 text-sm">You name it. Your data stays yours. It learns your preferences, your style, how you work.</p>
             </div>
