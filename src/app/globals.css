@@ -54,6 +54,26 @@ body {
     linear-gradient(rgba(12, 16, 24, 0.97), rgba(12, 16, 24, 0.97));
 }
 
+/* Heyron.ai specific layout */
+.lp-container {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-section {
+  padding: 64px 0;
+}
+
+/* Specific card backgrounds */
+.bg-accent\/5 {
+  background-color: rgba(94, 196, 212, 0.04);
+}
+
+.border-accent\/20 {
+  border-color: rgba(94, 196, 212, 0.15);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -417,4 +437,43 @@ body {
   align-items: center;
   gap: 4px;
   margin: 6px 0 4px;
+}
+
+/* FAQ Accordion */
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary ~ * {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animations */
+@keyframes lp-pulse {
+  0%, to { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse {
+  animation: lp-pulse 2s ease-in-out infinite;
+}
+
+/* Avatar styles */
+.bg-raccoon-mid {
+  background: linear-gradient(135deg, #4a6278, #2d3a4a);
 }
