@@ -46,12 +46,6 @@ body {
   overflow-x: hidden;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  
-  /* Subtle background texture */
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(94, 196, 212, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.03) 0%, transparent 50%),
-    linear-gradient(rgba(12, 16, 24, 0.97), rgba(12, 16, 24, 0.97));
 }
 
 /* Heyron.ai specific layout */

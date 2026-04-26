@@ -10,7 +10,7 @@ export default function Home() {
         <section className="text-center px-6 py-12 md:py-16">
           <div className="max-w-xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-bg-card border border-border text-text-secondary text-sm mb-7">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-bg-card border border-border text-text-secondary text-sm mb-7" style={{backgroundColor: '#182230'}}>
               <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span>
               Over 1,000 early adopters
             </div>
