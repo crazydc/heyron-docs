@@ -27,6 +27,12 @@ const config: Config = {
         },
         success: "#4ade80",
         urgent: "#f87171",
+        raccoon: {
+          dark: "#2d3a4a",
+          mid: "#4a6278",
+          light: "#8a9bb0",
+          ice: "#c8d4e0",
+        },
         // Legacy aliases for compatibility
         void: "#0c1018",
         panel: "#182230",
