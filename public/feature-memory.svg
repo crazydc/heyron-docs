@@ -1,18 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
-  <rect width="400" height="300" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#1a1a2e"/>
   
-  <!-- Brain/AI icon - brighter -->
-  <circle cx="200" cy="130" r="60" fill="#00D9FF" opacity="0.15"/>
-  <circle cx="200" cy="130" r="40" fill="#00D9FF" opacity="0.25"/>
+  <!-- Brain -->
+  <circle cx="200" cy="130" r="60" fill="#00D9FF" opacity="0.2"/>
+  <circle cx="200" cy="130" r="40" fill="#00D9FF" opacity="0.3"/>
   <circle cx="200" cy="130" r="20" fill="#00D9FF"/>
   
-  <!-- Neural connections - brighter -->
-  <circle cx="160" cy="90" r="8" fill="#00D9FF" opacity="0.8"/>
-  <circle cx="240" cy="90" r="8" fill="#00D9FF" opacity="0.8"/>
-  <circle cx="140" cy="150" r="8" fill="#00D9FF" opacity="0.8"/>
-  <circle cx="260" cy="150" r="8" fill="#00D9FF" opacity="0.8"/>
-  <circle cx="200" cy="180" r="8" fill="#00D9FF" opacity="0.8"/>
+  <!-- Nodes -->
+  <circle cx="160" cy="90" r="8" fill="#00D9FF"/>
+  <circle cx="240" cy="90" r="8" fill="#00D9FF"/>
+  <circle cx="140" cy="150" r="8" fill="#00D9FF"/>
+  <circle cx="260" cy="150" r="8" fill="#00D9FF"/>
+  <circle cx="200" cy="180" r="8" fill="#00D9FF"/>
   
+  <!-- Lines -->
   <path d="M200 130 L160 90" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
   <path d="M200 130 L240 90" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
   <path d="M200 130 L140 150" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
@@ -20,5 +22,5 @@
   <path d="M200 130 L200 180" stroke="#00D9FF" strokeWidth="2" opacity="0.5"/>
   
   <!-- Text -->
-  <text x="200" y="240" font-family="monospace" fontSize="18" fill="#00D9FF" textAnchor="middle" fontWeight="bold">IT REMEMBERS</text>
+  <text x="200" y="250" font-family="monospace" font-size="18" fill="#00D9FF" text-anchor="middle" font-weight="bold">IT REMEMBERS</text>
 </svg>
