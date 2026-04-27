@@ -1,7 +1,9 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm install && npm run build",
   "outputDirectory": "client/dist",
   "framework": "vite",
-  "rewrites": [{"source": "/api/(.*)", "destination": "/server/src/index.js"}],
-  "installCommand": "npm install && cd client && npm install && cd ../server && npm install"
+  "installCommand": "npm install --legacy-peer-deps",
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/server/src/index.js" }
+  ]
 }
