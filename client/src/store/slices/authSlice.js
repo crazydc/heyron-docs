@@ -4,7 +4,7 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   onboardingComplete: true, // default true, set to false for new users
-  loading: false,
+  loading: true, // start true, wait for auth check
   error: null,
 }
 
@@ -37,8 +37,11 @@ const authSlice = createSlice({
     setOnboardingComplete: (state, action) => {
       state.onboardingComplete = action.payload
     },
+    setAuthLoaded: (state) => {
+      state.loading = false
+    },
   },
 })
 
-export const { loginStart, loginSuccess, loginFailure, logout, updateUser, setOnboardingComplete } = authSlice.actions
+export const { loginStart, loginSuccess, loginFailure, logout, updateUser, setOnboardingComplete, setAuthLoaded } = authSlice.actions
 export default authSlice.reducer

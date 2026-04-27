@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { useEffect, useState } from 'react'
 import store from './store'
-import { loginSuccess, logout, setOnboardingComplete } from './store/slices/authSlice'
+import { loginSuccess, logout, setOnboardingComplete, setAuthLoaded } from './store/slices/authSlice'
 import { supabase } from './utils/supabase'
 import './styles/global.css'
 import Landing from './pages/Landing'
@@ -41,7 +41,10 @@ function App() {
           console.error('Auth error:', err)
         }
       }
-    }).catch(() => {})
+      store.dispatch(setAuthLoaded())
+    }).catch(() => {
+      store.dispatch(setAuthLoaded())
+    })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
