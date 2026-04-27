@@ -18,30 +18,19 @@ export default function SignIn() {
     password: ''
   })
   const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
   const [submitError, setSubmitError] = useState('')
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }))
-    }
-  }
+  const [loading, setLoading] = useState(false)
 
   const validate = () => {
     const newErrors = {}
-    
-    if (!formData.email.trim()) {
+    if (!formData.email) {
       newErrors.email = 'Email is required'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email format'
     }
-    
     if (!formData.password) {
       newErrors.password = 'Password is required'
     }
-    
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -54,14 +43,24 @@ export default function SignIn() {
     
     setLoading(true)
     
+    // Fallback timeout
+    const timeout = setTimeout(() => {
+      setLoading(false)
+      setSubmitError('Request timed out. Please try again.')
+    }, 10000)
+    
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password
       })
 
+      clearTimeout(timeout)
+
       if (error) {
-        throw error
+        setSubmitError(error.message || 'Invalid email or password')
+        setLoading(false)
+        return
       }
 
       if (data.user) {
@@ -74,10 +73,13 @@ export default function SignIn() {
           onboardingComplete: true
         }))
         navigate('/dashboard')
+      } else {
+        setSubmitError('Something went wrong')
+        setLoading(false)
       }
     } catch (error) {
+      clearTimeout(timeout)
       setSubmitError(error.message || 'Invalid email or password')
-    } finally {
       setLoading(false)
     }
   }
@@ -91,40 +93,32 @@ export default function SignIn() {
             <p>Sign in to continue</p>
           </div>
 
-          {submitError && (
-            <Alert type="error" dismissible onDismiss={() => setSubmitError('')}>
-              {submitError}
-            </Alert>
-          )}
-
           <form onSubmit={handleSubmit} className="signin-form">
-            <Input
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="john@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              error={errors.email}
-            />
+            {submitError && <Alert type="error" message={submitError} />}
 
-            <Input
-              label="Password"
-              name="password"
-              type="password"
-              placeholder="••••••••"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              error={errors.password}
-            />
+            <div className="field">
+              <label>Email</label>
+              <Input
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="you@example.com"
+                error={errors.email}
+              />
+            </div>
 
-            <Button 
-              type="submit" 
-              fullWidth 
-              loading={loading}
-            >
+            <div className="field">
+              <label>Password</label>
+              <Input
+                type="password"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                placeholder="••••••••"
+                error={errors.password}
+              />
+            </div>
+
+            <Button type="submit" fullWidth loading={loading}>
               Sign In
             </Button>
           </form>
