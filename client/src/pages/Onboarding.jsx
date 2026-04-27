@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { nextStep, prevStep, setAgentConfig, completeOnboarding } from '../store/slices/onboardingSlice'
+import { completeOnboarding } from '../store/slices/onboardingSlice'
 import { setOnboardingComplete } from '../store/slices/authSlice'
 import { completeOnboarding as apiCompleteOnboarding } from '../utils/api'
 import Layout from '../components/layout/Layout'
