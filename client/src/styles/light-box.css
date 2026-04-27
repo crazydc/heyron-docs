@@ -5,7 +5,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Panels (every screen's main container) */
 .panel {
-  background: linear-gradient(180deg, #EAF4FB 0%, #D8E8F3 100%) !important;
+  background: var(--bg-secondary) !important;
   border: 2px solid #1E3A5F !important;
   box-shadow: 0 0 0 3px rgba(143,211,244,0.25), 0 18px 48px rgba(30,58,95,0.35) !important;
   color: #0A1220 !important;
@@ -52,7 +52,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Inner cards (Beginner, Expert, Remix in welcome; integration cards; setup rows) */
 .panel .card {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   color: #0A1220 !important;
   box-shadow: 0 2px 8px rgba(30,58,95,0.10) !important;
@@ -109,14 +109,14 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Recommended card gets an extra accent halo */
 .panel .card.recommended {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 2px solid #1E3A5F !important;
   box-shadow: 0 0 0 3px rgba(143,211,244,0.45), 0 12px 32px rgba(30,58,95,0.20) !important;
 }
 
 /* Remix card, titles now match the other cards (dark like them) */
 .remix-card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #EAF4FB 100%) !important;
+  background: var(--bg-secondary) !important;
   border: 2px solid #1E3A5F !important;
   box-shadow: 0 0 0 3px rgba(143,211,244,0.45), 0 14px 40px rgba(30,58,95,0.25) !important;
   color: #0A1220 !important;
@@ -147,7 +147,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Integration tiles in the picker */
 .panel .integration {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   color: #0A1220 !important;
 }
@@ -158,7 +158,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .integration.connected {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   border-color: #1E3A5F !important;
   box-shadow: 0 0 0 2px rgba(30,58,95,0.35) !important;
 }
@@ -176,7 +176,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .integration-need {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   border-left: 2px solid #1E3A5F !important;
   color: #0A1220 !important;
 }
@@ -196,7 +196,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .usecase-check {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -207,13 +207,13 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Usecase buttons, option buttons, voice buttons */
 .panel .usecase, .panel .option, .panel .voice, .panel .day, .panel .chip {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   color: #0A1220 !important;
 }
 
 .panel .usecase.selected, .panel .option.selected, .panel .voice.selected, .panel .day.selected, .panel .chip.selected {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   color: #1E3A5F !important;
   border-color: #1E3A5F !important;
   box-shadow: inset 0 0 0 1px #1E3A5F !important;
@@ -221,7 +221,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .option-mark {
   border-color: #1E3A5F !important;
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
 }
 
 .panel .option.selected .option-mark {
@@ -250,14 +250,14 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .persona-sample, .panel .comm-sample {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   color: #0A1220 !important;
   border-left: 2px solid #1E3A5F !important;
 }
 
 /* Inputs */
 .panel .input, .panel textarea.input, .panel select.input, .panel input[type="time"], .panel input[type="number"] {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   color: #0A1220 !important;
   border: 1.5px solid #1E3A5F !important;
 }
@@ -273,7 +273,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Setup rows */
 .panel .setup {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -282,7 +282,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .setup-num {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   color: #1E3A5F !important;
   border: 1px solid #1E3A5F !important;
 }
@@ -297,23 +297,23 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .setup-cta {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   color: #1E3A5F !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
 .panel .setup-cta:hover:not(:disabled) {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
 }
 
 .panel .setup-status {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   color: #1E3A5F !important;
   border: 1px solid #1E3A5F !important;
 }
 
 .panel code {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   color: #1E3A5F !important;
 }
 
@@ -327,7 +327,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .toggle::after {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
 }
 
 /* Permissions rows */
@@ -345,7 +345,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Soul / about / disclaimer notes */
 .panel .soul-note, .panel .about-prompt {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   border: 1px solid #1E3A5F !important;
   border-left: 3px solid #1E3A5F !important;
   color: #0A1220 !important;
@@ -356,7 +356,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .disclaimer-item {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   border-left: 4px solid #1E3A5F !important;
   color: #0A1220 !important;
@@ -377,7 +377,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .checkbox-mark {
   border-color: #1E3A5F !important;
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
 }
 
 .panel .checkbox.checked .checkbox-mark {
@@ -387,7 +387,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Summary block */
 .panel .summary {
-  background: #FFFFFF !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -427,7 +427,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 /* Ron companion on light theme */
 .panel .ron-companion {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   color: #1E3A5F !important;
 }
@@ -461,7 +461,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .finish-note {
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   border: 1.5px solid #1E3A5F !important;
   color: #0A1220 !important;
 }
@@ -473,7 +473,7 @@ Page background stays subtly dark, only the content boxes are light. */
   line-height: 1.65;
   margin: 0 0 18px;
   padding: 12px 14px;
-  background: #D8E8F3 !important;
+  background: var(--bg-primary) !important;
   border-left: 3px solid #1E3A5F !important;
   border-radius: var(--r-sm);
 }
@@ -509,7 +509,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .persona-example {
-  background: #EAF4FB !important;
+  background: var(--bg-secondary) !important;
   border: 1px solid #C9DCEF;
   border-radius: var(--r-md);
   padding: 12px 14px;
