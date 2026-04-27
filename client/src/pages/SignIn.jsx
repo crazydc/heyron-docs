@@ -94,7 +94,7 @@ export default function SignIn() {
           </div>
 
           <form onSubmit={handleSubmit} className="signin-form">
-            {submitError && <Alert type="error" message={submitError} />}
+            {submitError && <Alert type="error">{submitError}</Alert>}
 
             <div className="field">
               <label>Email</label>
