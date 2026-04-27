@@ -1,0 +1,101 @@
+.signup-page {
+  min-height: calc(100vh - var(--header-height) - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) 0;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 0 var(--space-lg);
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.signup-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.signup-header p {
+  color: var(--text-secondary);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-with-help {
+  display: flex;
+  gap: 8px;
+}
+
+.input-with-help input {
+  flex: 1;
+}
+
+.help-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.help-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.optional {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.form-error {
+  color: var(--error);
+  font-size: 13px;
+  margin-top: -12px;
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.discord-help ol {
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+.discord-help li {
+  margin-bottom: 8px;
+}
+
+.discord-help strong {
+  color: var(--text-primary);
+}
+
+.discord-help-note {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+}
