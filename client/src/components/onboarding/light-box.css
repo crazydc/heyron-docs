@@ -1,0 +1,571 @@
+/* ── GLOBAL LIGHT-BOX STYLE ──
+Every content card/panel/box gets: dark blue frame, lighter-blue interior, near-black text.
+Applied late so it overrides the earlier dark theme for content areas.
+Page background stays subtly dark, only the content boxes are light. */
+
+/* Panels (every screen's main container) */
+.panel {
+  background: linear-gradient(180deg, #EAF4FB 0%, #D8E8F3 100%) !important;
+  border: 2px solid #1E3A5F !important;
+  box-shadow: 0 0 0 3px rgba(143,211,244,0.25), 0 18px 48px rgba(30,58,95,0.35) !important;
+  color: #0A1220 !important;
+}
+
+/* All headings/body text inside panels goes dark */
+.panel h1, .panel h2, .panel h3, .panel h4, .panel p, .panel span, .panel label, .panel li, .panel .summary-label, .panel .summary-value, .panel .field-hint, .panel .foot, .panel .skip-hint, .panel .about-note {
+  color: #0A1220 !important;
+}
+
+.panel h1.headline {
+  color: #0A1220 !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+.panel .sub {
+  color: #2C4A6E !important;
+}
+
+/* Brand wordmark dark */
+.panel .brand-name {
+  color: #0A1220 !important;
+}
+
+.panel .brand-dot {
+  background: #1E3A5F !important;
+}
+
+/* Step progress, dark blue trail */
+.panel .steps .step {
+  background: rgba(30,58,95,0.18) !important;
+}
+
+.panel .steps .step.active {
+  background: #1E3A5F !important;
+  box-shadow: 0 0 10px rgba(30,58,95,0.45) !important;
+}
+
+.panel .steps .step.done {
+  background: #1E3A5F !important;
+  opacity: 0.55;
+}
+
+/* Inner cards (Beginner, Expert, Remix in welcome; integration cards; setup rows) */
+.panel .card {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+  color: #0A1220 !important;
+  box-shadow: 0 2px 8px rgba(30,58,95,0.10) !important;
+}
+
+.panel .card-title {
+  color: #0A1220 !important;
+  font-weight: 600 !important;
+}
+
+.panel .card-desc {
+  color: #2C4A6E !important;
+  opacity: 1 !important;
+}
+
+/* Primary CTA inside panels: dark navy */
+.panel .btn-primary {
+  background: #1E3A5F !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.panel .btn-primary:hover:not(:disabled) {
+  background: #274D7E !important;
+  box-shadow: 0 6px 16px rgba(30,58,95,0.35) !important;
+}
+
+/* Ghost buttons inside panels: light fill, dark frame */
+.panel .btn-ghost {
+  background: transparent !important;
+  color: #1E3A5F !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .btn-ghost:hover:not(:disabled) {
+  background: rgba(30,58,95,0.08) !important;
+}
+
+.panel .btn-text {
+  color: #1E3A5F !important;
+}
+
+.panel .btn-link {
+  color: #1E3A5F !important;
+  border-color: #1E3A5F !important;
+}
+
+/* Recommended pill */
+.panel .pill {
+  background: #1E3A5F !important;
+  color: #EAF4FB !important;
+  border: none !important;
+}
+
+/* Recommended card gets an extra accent halo */
+.panel .card.recommended {
+  background: #FFFFFF !important;
+  border: 2px solid #1E3A5F !important;
+  box-shadow: 0 0 0 3px rgba(143,211,244,0.45), 0 12px 32px rgba(30,58,95,0.20) !important;
+}
+
+/* Remix card, titles now match the other cards (dark like them) */
+.remix-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EAF4FB 100%) !important;
+  border: 2px solid #1E3A5F !important;
+  box-shadow: 0 0 0 3px rgba(143,211,244,0.45), 0 14px 40px rgba(30,58,95,0.25) !important;
+  color: #0A1220 !important;
+}
+
+.remix-card .card-title {
+  color: #0A1220 !important;
+  font-weight: 600 !important;
+}
+
+.remix-card .card-desc {
+  color: #2C4A6E !important;
+  opacity: 1 !important;
+}
+
+.remix-btn {
+  background: #1E3A5F !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  font-weight: 500 !important;
+}
+
+.remix-btn:hover:not(:disabled) {
+  background: #274D7E !important;
+  box-shadow: 0 6px 16px rgba(30,58,95,0.35) !important;
+  transform: translateY(-1px);
+}
+
+/* Integration tiles in the picker */
+.panel .integration {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+.panel .integration:hover {
+  border-color: #274D7E !important;
+  box-shadow: 0 4px 12px rgba(30,58,95,0.12) !important;
+}
+
+.panel .integration.connected {
+  background: #EAF4FB !important;
+  border-color: #1E3A5F !important;
+  box-shadow: 0 0 0 2px rgba(30,58,95,0.35) !important;
+}
+
+.panel .integration-name {
+  color: #0A1220 !important;
+}
+
+.panel .integration-desc {
+  color: #0A1220 !important;
+}
+
+.panel .integration-why {
+  color: #2C4A6E !important;
+}
+
+.panel .integration-need {
+  background: #D8E8F3 !important;
+  border-left: 2px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+.panel .integration-need strong {
+  color: #1E3A5F !important;
+}
+
+.panel .integration-icon {
+  background: #1E3A5F !important;
+  color: #EAF4FB !important;
+  border: none !important;
+}
+
+.panel .integration.connected .integration-icon {
+  background: #274D7E !important;
+}
+
+.panel .usecase-check {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .integration.connected .usecase-check, .panel .usecase.selected .usecase-check {
+  background: #1E3A5F !important;
+  border-color: #1E3A5F !important;
+}
+
+/* Usecase buttons, option buttons, voice buttons */
+.panel .usecase, .panel .option, .panel .voice, .panel .day, .panel .chip {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+.panel .usecase.selected, .panel .option.selected, .panel .voice.selected, .panel .day.selected, .panel .chip.selected {
+  background: #EAF4FB !important;
+  color: #1E3A5F !important;
+  border-color: #1E3A5F !important;
+  box-shadow: inset 0 0 0 1px #1E3A5F !important;
+}
+
+.panel .option-mark {
+  border-color: #1E3A5F !important;
+  background: #FFFFFF !important;
+}
+
+.panel .option.selected .option-mark {
+  border-color: #1E3A5F !important;
+}
+
+.panel .option.selected .option-mark::after {
+  background: #1E3A5F !important;
+}
+
+.panel .option-title, .panel .option-desc {
+  color: #0A1220 !important;
+}
+
+.panel .option-tag {
+  background: #1E3A5F !important;
+  color: #EAF4FB !important;
+}
+
+.panel .usecase-label {
+  color: #0A1220 !important;
+}
+
+.panel .persona-name, .panel .persona-tag, .panel .persona-sample, .panel .persona-best {
+  color: #0A1220 !important;
+}
+
+.panel .persona-sample, .panel .comm-sample {
+  background: #D8E8F3 !important;
+  color: #0A1220 !important;
+  border-left: 2px solid #1E3A5F !important;
+}
+
+/* Inputs */
+.panel .input, .panel textarea.input, .panel select.input, .panel input[type="time"], .panel input[type="number"] {
+  background: #FFFFFF !important;
+  color: #0A1220 !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .input:focus, .panel textarea.input:focus, .panel select.input:focus {
+  border-color: #274D7E !important;
+  box-shadow: 0 0 0 2px rgba(30,58,95,0.25) !important;
+}
+
+.panel .input::placeholder, .panel textarea.input::placeholder {
+  color: #6E7E94 !important;
+}
+
+/* Setup rows */
+.panel .setup {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .setup-step {
+  border-bottom-color: rgba(30,58,95,0.15) !important;
+}
+
+.panel .setup-num {
+  background: #D8E8F3 !important;
+  color: #1E3A5F !important;
+  border: 1px solid #1E3A5F !important;
+}
+
+.panel .setup-step.done .setup-num {
+  background: #1E3A5F !important;
+  color: #FFFFFF !important;
+}
+
+.panel .setup-step-title, .panel .setup-step-desc {
+  color: #0A1220 !important;
+}
+
+.panel .setup-cta {
+  background: #EAF4FB !important;
+  color: #1E3A5F !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .setup-cta:hover:not(:disabled) {
+  background: #D8E8F3 !important;
+}
+
+.panel .setup-status {
+  background: #EAF4FB !important;
+  color: #1E3A5F !important;
+  border: 1px solid #1E3A5F !important;
+}
+
+.panel code {
+  background: #D8E8F3 !important;
+  color: #1E3A5F !important;
+}
+
+/* Toggles */
+.panel .toggle {
+  background: rgba(30,58,95,0.25) !important;
+}
+
+.panel .toggle.on {
+  background: #1E3A5F !important;
+}
+
+.panel .toggle::after {
+  background: #FFFFFF !important;
+}
+
+/* Permissions rows */
+.panel .toggle-row {
+  border-bottom-color: rgba(30,58,95,0.12) !important;
+}
+
+.panel .toggle-title, .panel .toggle-desc {
+  color: #0A1220 !important;
+}
+
+.panel .permissions .toggle-row {
+  padding: 12px 0;
+}
+
+/* Soul / about / disclaimer notes */
+.panel .soul-note, .panel .about-prompt {
+  background: #D8E8F3 !important;
+  border: 1px solid #1E3A5F !important;
+  border-left: 3px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+.panel .soul-note strong, .panel .about-prompt strong {
+  color: #1E3A5F !important;
+}
+
+.panel .disclaimer-item {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+  border-left: 4px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+.panel .disclaimer-title {
+  color: #1E3A5F !important;
+}
+
+.panel .disclaimer-body {
+  color: #0A1220 !important;
+  opacity: 1 !important;
+}
+
+.panel .checkbox {
+  color: #0A1220 !important;
+}
+
+.panel .checkbox-mark {
+  border-color: #1E3A5F !important;
+  background: #FFFFFF !important;
+}
+
+.panel .checkbox.checked .checkbox-mark {
+  background: #1E3A5F !important;
+  border-color: #1E3A5F !important;
+}
+
+/* Summary block */
+.panel .summary {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1E3A5F !important;
+}
+
+.panel .summary-row {
+  border-bottom-color: rgba(30,58,95,0.15) !important;
+}
+
+.panel .summary-section-title {
+  color: #1E3A5F !important;
+}
+
+/* Danger / safety callouts stay red but adjusted for light background */
+.panel .danger-note {
+  background: rgba(220,38,38,0.08) !important;
+  border-color: rgba(220,38,38,0.45) !important;
+  color: #7A1818 !important;
+}
+
+.panel .danger-note strong {
+  color: #7A1818 !important;
+}
+
+.panel .danger-note code {
+  background: rgba(220,38,38,0.15) !important;
+  color: #7A1818 !important;
+}
+
+.panel .field-hint[style*="status-error"] {
+  color: #7A1818 !important;
+}
+
+.panel .validation-error {
+  background: rgba(220,38,38,0.10) !important;
+  color: #7A1818 !important;
+  border-color: rgba(220,38,38,0.45) !important;
+}
+
+/* Ron companion on light theme */
+.panel .ron-companion {
+  background: #EAF4FB !important;
+  border: 1.5px solid #1E3A5F !important;
+  color: #1E3A5F !important;
+}
+
+.panel .ron-companion span {
+  color: #0A1220 !important;
+}
+
+/* Hello screen body paragraph, roomy, friendly, dark on light */
+.panel .hello-body {
+  font-size: 14px;
+  color: #0A1220 !important;
+  line-height: 1.65;
+  margin: 14px 0 22px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.panel .hello-body strong {
+  color: #1E3A5F !important;
+  font-weight: 600;
+}
+
+/* Finish screen gradient headline needs a dark base */
+.panel .finish-hero h1 {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  color: #1E3A5F !important;
+}
+
+.panel .finish-note {
+  background: #D8E8F3 !important;
+  border: 1.5px solid #1E3A5F !important;
+  color: #0A1220 !important;
+}
+
+/* Personality intro paragraph */
+.panel .persona-intro {
+  font-size: 13px;
+  color: #0A1220 !important;
+  line-height: 1.65;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  background: #D8E8F3 !important;
+  border-left: 3px solid #1E3A5F !important;
+  border-radius: var(--r-sm);
+}
+
+.panel .persona-intro strong {
+  color: #1E3A5F !important;
+  font-weight: 600;
+}
+
+/* Section labels between persona groups */
+.panel .persona-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1E3A5F !important;
+  margin: 4px 0 10px;
+}
+
+.panel .persona-section-sub {
+  font-size: 12px;
+  color: #2C4A6E !important;
+  margin: -4px 0 12px;
+  line-height: 1.55;
+}
+
+/* Heyron agent showcase */
+.panel .persona-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.panel .persona-example {
+  background: #EAF4FB !important;
+  border: 1px solid #C9DCEF;
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+
+.panel .persona-example .persona-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A1220 !important;
+  margin: 0 0 4px;
+}
+
+.panel .persona-example .persona-tag {
+  font-size: 12px;
+  color: #2C4A6E !important;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.panel .persona-example .persona-sample {
+  font-size: 12px;
+  color: #1E3A5F !important;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* About text area */
+.panel .about-textarea {
+  min-height: 200px;
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.panel .about-note {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+.panel .about-note strong {
+  color: #1E3A5F !important;
+}
+
+/* Skip hint */
+.panel .skip-hint {
+  font-size: 12px;
+  color: #2C4A6E !important;
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* Foot */
+.panel .foot {
+  color: #2C4A6E !important;
+  text-align: center;
+  margin-top: 18px;
+}
