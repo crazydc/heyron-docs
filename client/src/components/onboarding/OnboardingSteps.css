@@ -1,0 +1,297 @@
+.step-content {
+  text-align: center;
+}
+
+.step-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.step-content h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.step-content h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.step-content > p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.what-to-expect {
+  text-align: left;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 32px;
+}
+
+.what-to-expect h3 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.what-to-expect ul {
+  list-style: none;
+}
+
+.what-to-expect li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.what-to-expect li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Server Grid */
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.server-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.server-card:hover {
+  border-color: var(--text-muted);
+}
+
+.server-card.selected {
+  border-color: var(--accent);
+  background: rgba(94, 196, 212, 0.05);
+}
+
+.server-flag {
+  font-size: 24px;
+}
+
+.server-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.server-location {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.show-more-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Connection Cards */
+.connection-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.connection-card {
+  text-align: left;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.connection-card:hover {
+  border-color: var(--text-muted);
+}
+
+.connection-card.selected {
+  border-color: var(--accent);
+  background: rgba(94, 196, 212, 0.05);
+}
+
+.connection-icon {
+  font-size: 24px;
+}
+
+.connection-card h3 {
+  font-size: 16px;
+  margin: 8px 0 4px;
+}
+
+.connection-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.pros ul {
+  list-style: none;
+  font-size: 12px;
+  color: var(--success);
+}
+
+.pros li {
+  margin-bottom: 2px;
+}
+
+/* SSH Step */
+.ssh-options {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle-label input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+
+.import-key {
+  margin-top: 16px;
+}
+
+.import-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.key-textarea {
+  width: 100%;
+  height: 80px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  color: var(--text-primary);
+  font-family: monospace;
+  font-size: 12px;
+  resize: none;
+}
+
+.key-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.generated-key {
+  margin-top: 16px;
+}
+
+.key-preview {
+  background: var(--bg-secondary);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 12px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ssh-help {
+  text-align: left;
+  background: rgba(94, 196, 212, 0.05);
+  border: 1px solid rgba(94, 196, 212, 0.15);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.ssh-help h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.ssh-help p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Complete Step */
+.complete-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: left;
+  margin: 24px 0;
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.summary-card dl {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px;
+}
+
+.summary-card dt {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.summary-card dd {
+  font-size: 13px;
+}
+
+.next-steps {
+  text-align: left;
+}
+
+.next-steps h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.next-steps ol {
+  padding-left: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.next-steps li {
+  margin-bottom: 8px;
+}

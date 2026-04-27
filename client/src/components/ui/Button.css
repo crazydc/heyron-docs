@@ -30,6 +30,16 @@
   background: var(--border);
 }
 
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
