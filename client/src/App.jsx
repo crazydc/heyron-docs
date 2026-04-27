@@ -18,26 +18,32 @@ function App() {
   useEffect(() => {
     // Check for existing session on load
     supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session) {
-        // Fetch user profile to get onboarding status
-        const { data: profile } = await supabase
-          .from('users')
-          .select('full_name, onboarding_complete')
-          .eq('id', session.user.id)
-          .single()
-        
-        const onboardingComplete = profile?.onboarding_complete ?? false
-        
-        store.dispatch(loginSuccess({
-          user: {
-            id: session.user.id,
-            email: session.user.email,
-            fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
-          },
-          onboardingComplete
-        }))
-        store.dispatch(setOnboardingComplete(onboardingComplete))
+      try {
+        if (session) {
+          // Fetch user profile to get onboarding status
+          const { data: profile } = await supabase
+            .from('users')
+            .select('full_name, onboarding_complete')
+            .eq('id', session.user.id)
+            .single()
+          
+          const onboardingComplete = profile?.onboarding_complete ?? false
+          
+          store.dispatch(loginSuccess({
+            user: {
+              id: session.user.id,
+              email: session.user.email,
+              fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
+            },
+            onboardingComplete
+          }))
+          store.dispatch(setOnboardingComplete(onboardingComplete))
+        }
+      } catch (err) {
+        console.error('Auth error:', err)
       }
+      setReady(true)
+    }).catch(() => {
       setReady(true)
     })
 
@@ -69,19 +75,21 @@ function App() {
     return () => subscription.unsubscribe()
   }, [])
 
-  if (!ready) return null
-
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/account" element={<Account />} />
-        </Routes>
+        {ready ? (
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/account" element={<Account />} />
+          </Routes>
+        ) : (
+          <div style={{ padding: 20, color: '#fff' }}>Loading...</div>
+        )}
       </BrowserRouter>
     </Provider>
   )
