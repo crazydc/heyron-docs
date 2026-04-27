@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd client && npx vite build --outDir dist",
+  "buildCommand": "cd client && npx vite build",
   "outputDirectory": "client/dist",
-  "framework": null,
+  "framework": "vite",
   "installCommand": "cd client && npm install",
   "routes": [
     { "src": "/api/(.*)", "dest": "/server/src/index.js" }
