@@ -26,7 +26,7 @@ export default function Hero() {
         </p>
         
         <div className="hero-buttons">
-          <Link to="/signup" className="btn btn-primary">
+          <Link to="/signin" className="btn btn-primary">
             Get Started
           </Link>
           <Link to="#how-it-works" className="btn btn-secondary">

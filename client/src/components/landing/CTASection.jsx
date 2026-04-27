@@ -7,7 +7,7 @@ export default function CTASection() {
       <div className="container">
         <h2>Ready to meet your AI Agent?</h2>
         <p>Get started in minutes. No setup required.</p>
-        <Link to="/signup" className="btn btn-primary btn-lg">
+        <Link to="/signin" className="btn btn-primary btn-lg">
           Get Started Free
         </Link>
       </div>

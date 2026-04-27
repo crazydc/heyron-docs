@@ -36,6 +36,9 @@
 .signin-footer {
   text-align: center;
   margin-top: 24px;
+}
+
+.signin-footer p {
   color: var(--text-secondary);
   font-size: 14px;
 }

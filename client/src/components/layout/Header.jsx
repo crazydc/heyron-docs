@@ -28,7 +28,7 @@ export default function Header() {
               <button onClick={handleLogout} className="header-btn-logout">Sign Out</button>
             </>
           ) : (
-            <Link to="/signup" className="header-cta">Sign Up</Link>
+            <Link to="/signin" className="header-cta">Sign In</Link>
           )}
         </nav>
       </div>
