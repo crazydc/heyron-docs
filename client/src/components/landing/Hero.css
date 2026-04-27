@@ -77,3 +77,12 @@
     font-size: 16px;
   }
 }
+
+.lp-hero-mascot {
+  object-fit: cover;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+}

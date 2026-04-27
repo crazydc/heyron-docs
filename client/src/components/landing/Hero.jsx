@@ -10,6 +10,12 @@ export default function Hero() {
           Now live
         </div>
         
+        <img 
+          src="/logo.png" 
+          alt="Heyron Mascot" 
+          className="lp-hero-mascot" 
+        />
+        
         <h1>
           Meet your <span className="highlight">AI Agent</span>
         </h1>
