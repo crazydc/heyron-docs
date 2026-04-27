@@ -2,18 +2,5 @@
   "buildCommand": "npm install && npx prisma generate && cd client && npm install --include=dev && npm run build",
   "outputDirectory": "client/dist",
   "framework": null,
-  "installCommand": "npm install && npx prisma generate && cd client && npm install --include=dev",
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/api/(.*)",
-      "continue"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "installCommand": "npm install && npx prisma generate && cd client && npm install --include=dev"
 }
