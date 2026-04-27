@@ -9,11 +9,17 @@ import StepIndicator from '../components/ui/StepIndicator'
 import { Mascot, HeadMascot } from '../components/ui/Mascot'
 import './Onboarding.css'
 
-const STEPS = [
-  { id: 0, title: 'Welcome' },
-  { id: 1, title: 'Names' },
-  { id: 2, title: 'Use Cases' },
-  { id: 3, title: 'Complete' }
+const USE_CASES = [
+  { id: 'email', label: 'Email triage & replies' },
+  { id: 'calendar', label: 'Calendar & scheduling' },
+  { id: 'research', label: 'Research & summaries' },
+  { id: 'writing', label: 'Writing & editing' },
+  { id: 'code', label: 'Code & technical work' },
+  { id: 'support', label: 'Customer support' },
+  { id: 'sales', label: 'Sales & outreach' },
+  { id: 'data', label: 'Data analysis' },
+  { id: 'pm', label: 'Project management' },
+  { id: 'personal', label: 'Personal tasks & errands' },
 ]
 
 const RON_LINES = [
@@ -23,61 +29,100 @@ const RON_LINES = [
   "Almost there, this is the good part.",
 ];
 
-const USECASES = [
-  { id: 'helpdesk', label: 'Customer Support' },
-  { id: 'knowledge', label: 'Knowledge Base' },
-  { id: 'assistant', label: 'Personal Assistant' },
-  { id: 'internal', label: 'Internal Tools' },
-  { id: 'sales', label: 'Sales Bot' },
-  { id: 'other', label: 'Something else' },
-];
-
 export default function Onboarding() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { currentStep, agentConfig } = useAppSelector(state => state.onboarding)
   const { user } = useAppSelector(state => state.auth)
 
+  const [buildMode, setBuildMode] = useState(null) // 'beginner', 'expert', or 'remix'
+
   const [formData, setFormData] = useState({
     agentName: '',
     yourName: user?.fullName || '',
-    usecases: []
+    useCases: []
   })
+
+  const [step, setStep] = useState(0) // 0=names, 1=usecases, 2=complete
+  const totalSteps = 2
 
   const toggleUsecase = (id) => {
     setFormData(prev => ({
       ...prev,
-      usecases: prev.usecases.includes(id)
-        ? prev.usecases.filter(u => u !== id)
-        : [...prev.usecases, id]
+      useCases: prev.useCases.includes(id)
+        ? prev.useCases.filter(u => u !== id)
+        : [...prev.useCases, id]
     }))
   }
 
   const handleNext = () => {
-    if (currentStep === STEPS.length - 1) {
+    if (step === totalSteps) {
       dispatch(completeOnboarding())
       navigate('/dashboard')
     } else {
-      dispatch(nextStep())
+      setStep(step + 1)
     }
   }
 
   const handleBack = () => {
-    if (currentStep === 0) {
-      navigate('/signin')
+    if (step === 0) {
+      setBuildMode(null)
     } else {
-      dispatch(prevStep())
+      setStep(step - 1)
     }
   }
 
   const canProceed = () => {
-    switch (currentStep) {
-      case 0: return true
-      case 1: return !!formData.agentName.trim() && !!formData.yourName.trim()
-      case 2: return formData.usecases.length > 0
-      case 3: return true
-      default: return false
-    }
+    if (!buildMode) return true
+    if (step === 0) return !!formData.agentName.trim() && !!formData.yourName.trim()
+    if (step === 1) return formData.useCases.length > 0
+    return true
+  }
+
+  // Welcome screen - choose build mode
+  if (!buildMode) {
+    return (
+      <Layout fullWidth>
+        <div className="onboarding-page">
+          <div className="onboarding-container">
+            <div className="ron-companion" style={{ marginBottom: 22 }}>
+              <HeadMascot size={22} />
+              <span>Hey, I'm Ron. I'll walk through this with you.</span>
+            </div>
+
+            <div className="panel">
+              <div className="hero" style={{ flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                <Mascot pose="greeting" size={118} />
+                <div className="hero-text">
+                  <h1 className="headline">Hey{user?.email ? `, ${user.email.split('@')[0]}` : ''}, let's make your agent yours.</h1>
+                  <p className="sub">Pick how you want to build it. Everything is tailored, everything's editable, everything stays yours.</p>
+                </div>
+              </div>
+
+              <div className="card-grid">
+                <button className="card recommended" onClick={() => setBuildMode('beginner')}>
+                  <div className="pill">Recommended</div>
+                  <p className="card-title">Beginner</p>
+                  <p className="card-desc">We walk you through who your agent is, what it cares about, and how it talks to you.</p>
+                  <Button>Start as Beginner</Button>
+                </button>
+                <button className="card" onClick={() => setBuildMode('expert')}>
+                  <div className="pill-spacer" />
+                  <p className="card-title">Expert</p>
+                  <p className="card-desc">Same tailoring, more knobs, model, memory depth, working hours, notifications.</p>
+                  <Button variant="ghost">Configure manually</Button>
+                </button>
+              </div>
+
+              <button className="card remix-card" onClick={() => setBuildMode('remix')}>
+                <p className="card-title">Remix</p>
+                <p className="card-desc">Already set up? Change what you want, keep the rest.</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
   }
 
   return (
@@ -85,99 +130,106 @@ export default function Onboarding() {
       <div className="onboarding-page">
         <div className="onboarding-container">
           <StepIndicator 
-            steps={STEPS.map(s => s.title)} 
-            current={currentStep} 
+            steps={['Names', 'Use Cases', 'Complete']} 
+            current={step} 
           />
           
           <div className="ron-companion">
             <HeadMascot size={22} />
-            <span>{RON_LINES[currentStep]}</span>
+            <span>{RON_LINES[step]}</span>
           </div>
           
-          <div className="onboarding-content">
-            {currentStep === 0 && (
-              <div className="step-content">
-                <Mascot pose="greeting" size={140} />
-                <h1>Welcome to Heyron.</h1>
-                <p className="sub">Thank you for joining us. We're glad you're here.</p>
-                
-                <p className="hello-body">
-                  Heyron isn't another chatbot. You're about to meet <strong>your own agent</strong>. 
-                  Custom built for you. Living in its own space. Learning your voice and rhythm as it goes.
-                </p>
+          <div className="panel">
+            <div className="hero">
+              {step === 0 && <Mascot pose="greeting" size={100} />}
+              {step === 1 && <Mascot pose="thinking" size={80} />}
+              <div className="hero-text">
+                {step === 0 && (
+                  <>
+                    <h1 className="headline">What should we call each other?</h1>
+                    <p className="sub">Your name and your agent's name. This is how it'll greet you.</p>
+                  </>
+                )}
+                {step === 1 && (
+                  <>
+                    <h1 className="headline">What's {formData.agentName || 'your agent'} here for?</h1>
+                    <p className="sub">Pick anything that fits. This shapes what your agent learns first.</p>
+                  </>
+                )}
+                {step === 2 && (
+                  <>
+                    <h1 className="headline">You're all set!</h1>
+                    <p className="sub">Your agent is being provisioned.</p>
+                  </>
+                )}
               </div>
-            )}
-            
-            {currentStep === 1 && (
-              <div className="step-content">
-                <h2>Let's give your agent a name.</h2>
-                <p>What should it call you? And what will you call it?</p>
-                
-                <div className="form-stack">
-                  <Input
-                    label="Your name"
-                    name="yourName"
-                    placeholder="Your name"
-                    value={formData.yourName}
-                    onChange={(e) => setFormData(prev => ({ ...prev, yourName: e.target.value }))}
-                  />
-                  <Input
-                    label="Agent name"
-                    name="agentName"
-                    placeholder="e.g., Ron, Assistant, Eloise"
-                    value={formData.agentName}
-                    onChange={(e) => setFormData(prev => ({ ...prev, agentName: e.target.value }))}
-                  />
-                </div>
-              </div>
-            )}
-            
-            {currentStep === 2 && (
-              <div className="step-content">
-                <h2>What will your agent do?</h2>
-                <p>Select all that apply.</p>
-                
-                <div className="usecases-grid">
-                  {USECASES.map(usecase => (
-                    <button
-                      key={usecase.id}
-                      className={`usecase-chip ${formData.usecases.includes(usecase.id) ? 'selected' : ''}`}
-                      onClick={() => toggleUsecase(usecase.id)}
-                    >
-                      {usecase.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            {currentStep === 3 && (
-              <div className="step-content complete-step">
-                <div className="complete-icon">🎉</div>
-                <h2>You're all set!</h2>
-                <p>Your agent is being provisioned.</p>
-                
-                <div className="summary-card">
-                  <dl>
-                    <dt>You</dt>
-                    <dd>{formData.yourName || 'Not set'}</dd>
-                    <dt>Agent</dt>
-                    <dd>{formData.agentName || 'Not set'}</dd>
-                    <dt>For</dt>
-                    <dd>{formData.usecases.map(u => USECASES.find(x => x.id === u)?.label).join(', ') || 'Not set'}</dd>
-                  </dl>
-                </div>
-              </div>
-            )}
-          </div>
+            </div>
 
-          <div className="onboarding-nav">
-            <Button variant="ghost" onClick={handleBack}>
-              {currentStep === 0 ? 'Back' : 'Back'}
-            </Button>
-            <Button onClick={handleNext} disabled={!canProceed()}>
-              {currentStep === 0 ? 'Start Launchpad →' : currentStep === STEPS.length - 1 ? 'Go to Dashboard' : 'Continue'}
-            </Button>
+            {step === 0 && (
+              <div className="fields">
+                <div className="field">
+                  <label>Your name</label>
+                  <input 
+                    className="input" 
+                    value={formData.yourName} 
+                    onChange={(e) => setFormData(prev => ({ ...prev, yourName: e.target.value }))} 
+                    placeholder="Your name"
+                    autoFocus 
+                  />
+                </div>
+                <div className="field">
+                  <label>Your agent's name</label>
+                  <input 
+                    className="input" 
+                    value={formData.agentName} 
+                    onChange={(e) => setFormData(prev => ({ ...prev, agentName: e.target.value }))} 
+                    placeholder="e.g. Ron, Eloise, Navi, Ari, Mack"
+                  />
+                  <p className="field-hint">Pick something you'll enjoy seeing every morning.</p>
+                </div>
+                <div className="soul-note">
+                  <strong>Where these go:</strong> both names become part of your agent's <strong>identity</strong>. Editable anytime in Settings.
+                </div>
+              </div>
+            )}
+
+            {step === 1 && (
+              <div className="usecase-grid">
+                {USE_CASES.map((u) => {
+                  const on = formData.useCases.includes(u.id)
+                  return (
+                    <button 
+                      key={u.id} 
+                      className={`usecase ${on ? 'selected' : ''}`}
+                      onClick={() => toggleUsecase(u.id)}
+                    >
+                      <div className="usecase-check" />
+                      <div className="usecase-label">{u.label}</div>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+
+            {step === 2 && (
+              <div className="summary">
+                <dl>
+                  <dt>You</dt>
+                  <dd>{formData.yourName || 'Not set'}</dd>
+                  <dt>Agent</dt>
+                  <dd>{formData.agentName || 'Not set'}</dd>
+                  <dt>For</dt>
+                  <dd>{formData.useCases.map(u => USE_CASES.find(x => x.id === u)?.label).join(', ') || 'Not set'}</dd>
+                </dl>
+              </div>
+            )}
+
+            <div className="actions">
+              <Button variant="ghost" onClick={handleBack}>← Back</Button>
+              <Button onClick={handleNext} disabled={!canProceed()}>
+                {step === totalSteps ? 'Go to Dashboard' : 'Continue'}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
