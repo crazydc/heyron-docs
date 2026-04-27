@@ -44,14 +44,9 @@
   text-align: center;
 }
 
-.step-icon {
-  font-size: 80px;
-  margin-bottom: 24px;
-}
-
 .step-content h1 {
   font-size: 32px;
-  margin-bottom: 12px;
+  margin: 24px 0 12px;
 }
 
 .step-content h2 {

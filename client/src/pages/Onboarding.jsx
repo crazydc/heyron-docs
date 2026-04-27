@@ -6,6 +6,7 @@ import Layout from '../components/layout/Layout'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
 import StepIndicator from '../components/ui/StepIndicator'
+import { Mascot, HeadMascot } from '../components/ui/Mascot'
 import './Onboarding.css'
 
 const STEPS = [
@@ -89,13 +90,14 @@ export default function Onboarding() {
           />
           
           <div className="ron-companion">
+            <HeadMascot size={22} />
             <span>{RON_LINES[currentStep]}</span>
           </div>
           
           <div className="onboarding-content">
             {currentStep === 0 && (
               <div className="step-content">
-                <div className="step-icon">👋</div>
+                <Mascot pose="greeting" size={140} />
                 <h1>Welcome to Heyron.</h1>
                 <p className="sub">Thank you for joining us. We're glad you're here.</p>
                 
