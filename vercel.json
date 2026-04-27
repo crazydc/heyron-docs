@@ -1,9 +1,6 @@
 {
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd client && npm install --include=dev && npm run build",
+  "outputDirectory": "client/dist",
   "framework": null,
-  "installCommand": "cd client && npm install",
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/server/src/index.js" }
-  ]
+  "installCommand": "cd client && npm install --include=dev"
 }
