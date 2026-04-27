@@ -1,8 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import pkg from 'pg'
+const { Pool } = pkg
 
-const globalForPrisma = globalThis
-const prisma = globalForPrisma.prisma || new PrismaClient()
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
 
 export default async function handler(req, res) {
   if (req.method !== 'PATCH') {
@@ -10,37 +11,50 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { userId } = req.query
+    const userId = req.query.id
     const { fullName, discordId, avatarUrl } = req.body
-
-    console.log('Updating user:', userId)
 
     if (!userId) {
       return res.status(400).json({ error: 'User ID required' })
     }
 
-    const updateData = {}
-    if (fullName !== undefined) updateData.fullName = fullName
-    if (discordId !== undefined) updateData.discordId = discordId
-    if (avatarUrl !== undefined) updateData.avatarUrl = avatarUrl
+    const updates = []
+    const values = []
+    let paramIndex = 1
 
-    const user = await prisma.user.update({
-      where: { id: userId },
-      data: updateData,
-      select: {
-        id: true,
-        email: true,
-        fullName: true,
-        discordId: true,
-        avatarUrl: true,
-        onboardingComplete: true,
-        createdAt: true
-      }
-    })
+    if (fullName !== undefined) {
+      updates.push(`"fullName" = $${paramIndex++}`)
+      values.push(fullName)
+    }
+    if (discordId !== undefined) {
+      updates.push(`"discordId" = $${paramIndex++}`)
+      values.push(discordId)
+    }
+    if (avatarUrl !== undefined) {
+      updates.push(`"avatarUrl" = $${paramIndex++}`)
+      values.push(avatarUrl)
+    }
 
-    console.log('User updated:', user.id)
+    if (updates.length === 0) {
+      return res.status(400).json({ error: 'No fields to update' })
+    }
 
-    return res.json(user)
+    values.push(userId)
+
+    const query = `
+      UPDATE "User"
+      SET ${updates.join(', ')}
+      WHERE id = $${paramIndex}
+      RETURNING id, email, "fullName", "discordId", "avatarUrl", "onboardingComplete", "createdAt"
+    `
+    
+    const result = await pool.query(query, values)
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+
+    return res.json(result.rows[0])
   } catch (error) {
     console.error('Error updating user:', error)
     return res.status(500).json({ error: 'Failed to update user', details: error.message })

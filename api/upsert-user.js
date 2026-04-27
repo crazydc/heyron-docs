@@ -1,8 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import pkg from 'pg'
+const { Pool } = pkg
 
-const globalForPrisma = globalThis
-const prisma = globalForPrisma.prisma || new PrismaClient()
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -16,30 +17,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
-    // Upsert user - create or update
-    const user = await prisma.user.upsert({
-      where: { id: userId },
-      update: {
-        email,
-        fullName: fullName || 'User'
-      },
-      create: {
-        id: userId,
-        email,
-        fullName: fullName || 'User',
-        passwordHash: 'supabase-managed'
-      },
-      select: {
-        id: true,
-        email: true,
-        fullName: true,
-        discordId: true,
-        onboardingComplete: true,
-        createdAt: true
-      }
-    })
+    // Upsert user
+    const query = `
+      INSERT INTO "User" (id, email, full_name, "passwordHash")
+      VALUES ($1, $2, $3, 'supabase-managed')
+      ON CONFLICT (id) DO UPDATE SET
+        email = EXCLUDED.email,
+        full_name = EXCLUDED.full_name
+      RETURNING id, email, "fullName", "discordId", "onboardingComplete", "createdAt"
+    `
+    
+    const result = await pool.query(query, [userId, email, fullName || 'User'])
 
-    return res.json({ success: true, user })
+    return res.json({ success: true, user: result.rows[0] })
   } catch (error) {
     console.error('Error upserting user:', error)
     return res.status(500).json({ error: 'Failed to upsert user', details: error.message })

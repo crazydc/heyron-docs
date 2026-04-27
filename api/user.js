@@ -1,8 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import pkg from 'pg'
+const { Pool } = pkg
 
-const globalForPrisma = globalThis
-const prisma = globalForPrisma.prisma || new PrismaClient()
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -16,29 +17,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'User ID required' })
     }
 
-    console.log('Fetching user:', userId)
+    const query = `
+      SELECT id, email, "fullName", "discordId", "avatarUrl", "onboardingComplete", "onboardingStep", "createdAt"
+      FROM "User"
+      WHERE id = $1
+    `
+    
+    const result = await pool.query(query, [userId])
 
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        email: true,
-        fullName: true,
-        discordId: true,
-        avatarUrl: true,
-        onboardingComplete: true,
-        onboardingStep: true,
-        createdAt: true
-      }
-    })
-
-    console.log('User found:', user)
-
-    if (!user) {
+    if (result.rows.length === 0) {
       return res.status(404).json({ error: 'User not found' })
     }
 
-    return res.json(user)
+    return res.json(result.rows[0])
   } catch (error) {
     console.error('Error fetching user:', error)
     return res.status(500).json({ error: 'Failed to fetch user', details: error.message })
