@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAppDispatch } from '../store/hooks'
 import { loginSuccess } from '../store/slices/authSlice'
+import { supabase } from '../utils/supabase'
 import Layout from '../components/layout/Layout'
 import Input from '../components/ui/Input'
 import Button from '../components/ui/Button'
@@ -54,18 +55,25 @@ export default function SignIn() {
     setLoading(true)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      const user = {
-        id: 'user_' + Date.now(),
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
-        fullName: 'Demo User'
+        password: formData.password
+      })
+
+      if (error) {
+        throw error
       }
-      
-      dispatch(loginSuccess(user))
-      navigate('/dashboard')
+
+      if (data.user) {
+        dispatch(loginSuccess({
+          id: data.user.id,
+          email: data.user.email,
+          fullName: data.user.user_metadata?.full_name || 'User'
+        }))
+        navigate('/dashboard')
+      }
     } catch (error) {
-      setSubmitError('Invalid email or password')
+      setSubmitError(error.message || 'Invalid email or password')
     } finally {
       setLoading(false)
     }

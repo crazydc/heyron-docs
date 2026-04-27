@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAppDispatch } from '../store/hooks'
 import { loginSuccess } from '../store/slices/authSlice'
+import { supabase } from '../utils/supabase'
 import Layout from '../components/layout/Layout'
 import Input from '../components/ui/Input'
 import Button from '../components/ui/Button'
@@ -17,6 +18,7 @@ export default function SignUp() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    password: '',
     discordId: '',
     acceptTerms: false
   })
@@ -24,6 +26,7 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false)
   const [showDiscordHelp, setShowDiscordHelp] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -49,6 +52,12 @@ export default function SignUp() {
       newErrors.email = 'Invalid email format'
     }
     
+    if (!formData.password) {
+      newErrors.password = 'Password is required'
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters'
+    }
+    
     if (!formData.acceptTerms) {
       newErrors.acceptTerms = 'You must accept the terms'
     }
@@ -60,25 +69,48 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitError('')
+    setSuccessMessage('')
     
     if (!validate()) return
     
     setLoading(true)
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      const user = {
-        id: 'user_' + Date.now(),
-        fullName: formData.fullName,
+      const { data, error } = await supabase.auth.signUp({
         email: formData.email,
-        discordId: formData.discordId || null
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+            discord_id: formData.discordId || ''
+          }
+        }
+      })
+
+      if (error) {
+        throw error
       }
-      
-      dispatch(loginSuccess(user))
-      navigate('/onboarding')
+
+      if (data.user) {
+        // User created - check if email confirmation is required
+        const { data: { session } } = await supabase.auth.getSession()
+        
+        if (session) {
+          // Auto-confirmed - log in immediately
+          dispatch(loginSuccess({
+            id: session.user.id,
+            email: session.user.email,
+            fullName: formData.fullName,
+            discordId: formData.discordId || null
+          }))
+          navigate('/onboarding')
+        } else {
+          // Email confirmation required
+          setSuccessMessage('Check your email to confirm your account!')
+        }
+      }
     } catch (error) {
-      setSubmitError('Failed to create account. Please try again.')
+      setSubmitError(error.message || 'Failed to create account. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -96,6 +128,12 @@ export default function SignUp() {
           {submitError && (
             <Alert type="error" dismissible onDismiss={() => setSubmitError('')}>
               {submitError}
+            </Alert>
+          )}
+
+          {successMessage && (
+            <Alert type="success" dismissible onDismiss={() => setSuccessMessage('')}>
+              {successMessage}
             </Alert>
           )}
 
@@ -119,6 +157,18 @@ export default function SignUp() {
               onChange={handleChange}
               required
               error={errors.email}
+            />
+
+            <Input
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              error={errors.password}
+              hint="At least 6 characters"
             />
 
             <div className="input-group">
