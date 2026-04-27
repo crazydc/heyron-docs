@@ -22,3 +22,101 @@
   padding-top: 24px;
   border-top: 1px solid var(--border);
 }
+
+.step-content {
+  text-align: center;
+}
+
+.step-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.step-content h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.step-content h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.step-content > p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.what-to-expect {
+  text-align: left;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 32px;
+}
+
+.what-to-expect h3 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.what-to-expect ul {
+  list-style: none;
+}
+
+.what-to-expect li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.what-to-expect li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.complete-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: left;
+  margin: 24px 0;
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.summary-card dl {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px;
+}
+
+.summary-card dt {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.summary-card dd {
+  font-size: 13px;
+}
