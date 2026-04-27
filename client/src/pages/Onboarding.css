@@ -292,3 +292,43 @@
 .finish-note p {
   margin-bottom: 12px;
 }
+
+/* Summary / Preview */
+.summary {
+  margin-bottom: 20px;
+}
+
+.summary-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 20px 0 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.summary-section-title:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.summary-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.summary-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}

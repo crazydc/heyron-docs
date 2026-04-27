@@ -29,6 +29,7 @@ const RON_LINES = [
   "Almost there, this is the good part.",
   "One more thing. It's learning your voice already.",
   "Almost done!",
+  "Here's what we've got.",
 ];
 
 export default function Onboarding() {
@@ -45,8 +46,8 @@ export default function Onboarding() {
     useCases: []
   })
 
-  const [step, setStep] = useState(0) // 0=names, 1=usecases, 2=disclaimer, 3=complete
-  const totalSteps = 3
+  const [step, setStep] = useState(0) // 0=names, 1=usecases, 2=disclaimer, 3=preview, 4=complete
+  const totalSteps = 4
 
   const toggleUsecase = (id) => {
     setFormData(prev => ({
@@ -131,18 +132,20 @@ export default function Onboarding() {
     )
   }
 
+  const useCaseLabels = formData.useCases.map(id => USE_CASES.find(u => u.id === id)?.label).filter(Boolean)
+
   return (
     <Layout fullWidth>
       <div className="onboarding-page">
         <div className="onboarding-container">
           <StepIndicator 
-            steps={['Names', 'Use Cases', 'Disclaimer', 'Complete']} 
+            steps={['Names', 'Use Cases', 'Disclaimer', 'Preview', 'Complete']} 
             current={step} 
           />
           
           <div className="ron-companion">
             <HeadMascot size={22} />
-            <span>{RON_LINES[step]}</span>
+            <span>{step === 3 ? RON_LINES[6] : RON_LINES[step]}</span>
           </div>
           
           <div className="panel">
@@ -150,7 +153,8 @@ export default function Onboarding() {
               {step === 0 && <Mascot pose="greeting" size={100} />}
               {step === 1 && <Mascot pose="thinking" size={80} />}
               {step === 2 && <Mascot pose="thinking" size={90} />}
-              {step === 3 && <Mascot pose="greeting" size={120} />}
+              {step === 3 && <Mascot pose="greeting" size={100} />}
+              {step === 4 && <Mascot pose="greeting" size={120} />}
               <div className="hero-text">
                 {step === 0 && (
                   <>
@@ -171,6 +175,12 @@ export default function Onboarding() {
                   </>
                 )}
                 {step === 3 && (
+                  <>
+                    <h1 className="headline">Here's your setup.</h1>
+                    <p className="sub">Look it over. Change any of this from settings.</p>
+                  </>
+                )}
+                {step === 4 && (
                   <>
                     <h1 className="headline">You did it.</h1>
                     <p className="sub">{formData.agentName || 'Your agent'} is yours now. Set up around you, ready to learn.</p>
@@ -247,6 +257,25 @@ export default function Onboarding() {
             )}
 
             {step === 3 && (
+              <div className="summary">
+                <div className="summary-section-title">Identity</div>
+                <div className="summary-row">
+                  <span className="summary-label">Your name</span>
+                  <span className="summary-value">{formData.yourName || 'Not set'}</span>
+                </div>
+                <div className="summary-row">
+                  <span className="summary-label">Agent name</span>
+                  <span className="summary-value">{formData.agentName || 'Not set'}</span>
+                </div>
+                <div className="summary-section-title">Focus</div>
+                <div className="summary-row">
+                  <span className="summary-label">Use cases</span>
+                  <span className="summary-value">{useCaseLabels.length ? useCaseLabels.join(', ') : 'None'}</span>
+                </div>
+              </div>
+            )}
+
+            {step === 4 && (
               <div className="finish-note">
                 <p>This is day one. Every conversation, every task, every correction, {formData.agentName || 'your agent'} remembers and grows from it.</p>
                 <p>Change its name, voice, tools, or anything else anytime by coming back to Launchpad.</p>
