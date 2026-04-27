@@ -20,19 +20,17 @@ function App() {
     supabase.auth.getSession().then(async ({ data: { session }, error }) => {
       if (session && !error) {
         try {
-          const { data: profile } = await supabase
-            .from('users')
-            .select('full_name, onboarding_complete')
-            .eq('id', session.user.id)
-            .single()
+          // Get user from local database
+          const res = await fetch(`/api/user?id=${session.user.id}`)
+          const profile = res.ok ? await res.json() : null
           
-          const onboardingComplete = profile?.onboarding_complete ?? false
+          const onboardingComplete = profile?.onboardingComplete ?? false
           
           store.dispatch(loginSuccess({
             user: {
               id: session.user.id,
               email: session.user.email,
-              fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
+              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User'
             },
             onboardingComplete
           }))
@@ -49,19 +47,17 @@ function App() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
         try {
-          const { data: profile } = await supabase
-            .from('users')
-            .select('full_name, onboarding_complete')
-            .eq('id', session.user.id)
-            .single()
+          // Get user from local database
+          const res = await fetch(`/api/user?id=${session.user.id}`)
+          const profile = res.ok ? await res.json() : null
           
-          const onboardingComplete = profile?.onboarding_complete ?? false
+          const onboardingComplete = profile?.onboardingComplete ?? false
           
           store.dispatch(loginSuccess({
             user: {
               id: session.user.id,
               email: session.user.email,
-              fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
+              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User'
             },
             onboardingComplete
           }))
