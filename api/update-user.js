@@ -13,6 +13,8 @@ export default async function handler(req, res) {
     const { userId } = req.query
     const { fullName, discordId, avatarUrl } = req.body
 
+    console.log('Updating user:', userId)
+
     if (!userId) {
       return res.status(400).json({ error: 'User ID required' })
     }
@@ -36,9 +38,11 @@ export default async function handler(req, res) {
       }
     })
 
+    console.log('User updated:', user.id)
+
     return res.json(user)
   } catch (error) {
     console.error('Error updating user:', error)
-    return res.status(500).json({ error: 'Failed to update user' })
+    return res.status(500).json({ error: 'Failed to update user', details: error.message })
   }
 }

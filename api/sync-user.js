@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client'
 
-// Prevent multiple instances of Prisma Client in development
 const globalForPrisma = globalThis
 const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
@@ -13,6 +12,8 @@ export default async function handler(req, res) {
   try {
     const { userId, email, fullName } = req.body
 
+    console.log('Syncing user:', userId, email)
+
     if (!userId || !email) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
@@ -23,6 +24,7 @@ export default async function handler(req, res) {
     })
 
     if (existing) {
+      console.log('User already exists:', existing.id)
       return res.json({ success: true, message: 'User already exists' })
     }
 
@@ -32,13 +34,15 @@ export default async function handler(req, res) {
         id: userId,
         email,
         fullName: fullName || 'User',
-        passwordHash: 'supabase-managed' // Password managed by Supabase
+        passwordHash: 'supabase-managed'
       }
     })
+
+    console.log('User created:', user.id)
 
     return res.json({ success: true, user: { id: user.id, email: user.email } })
   } catch (error) {
     console.error('Error syncing user:', error)
-    return res.status(500).json({ error: 'Failed to sync user' })
+    return res.status(500).json({ error: 'Failed to sync user', details: error.message })
   }
 }

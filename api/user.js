@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client'
 
-// Prevent multiple instances of Prisma Client in development
 const globalForPrisma = globalThis
 const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
@@ -17,6 +16,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'User ID required' })
     }
 
+    console.log('Fetching user:', userId)
+
     const user = await prisma.user.findUnique({
       where: { id: userId },
       select: {
@@ -31,6 +32,8 @@ export default async function handler(req, res) {
       }
     })
 
+    console.log('User found:', user)
+
     if (!user) {
       return res.status(404).json({ error: 'User not found' })
     }
@@ -38,6 +41,6 @@ export default async function handler(req, res) {
     return res.json(user)
   } catch (error) {
     console.error('Error fetching user:', error)
-    return res.status(500).json({ error: 'Failed to fetch user' })
+    return res.status(500).json({ error: 'Failed to fetch user', details: error.message })
   }
 }
