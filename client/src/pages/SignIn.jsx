@@ -64,6 +64,21 @@ export default function SignIn() {
       }
 
       if (data.user) {
+        // Sync user to local database (create if not exists)
+        try {
+          await fetch('/api/upsert-user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: data.user.id,
+              email: data.user.email,
+              fullName: data.user.user_metadata?.full_name || 'User'
+            })
+          })
+        } catch (syncError) {
+          console.error('Failed to sync user:', syncError)
+        }
+
         dispatch(loginSuccess({
           user: {
             id: data.user.id,
