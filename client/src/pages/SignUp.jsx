@@ -92,6 +92,21 @@ export default function SignUp() {
       }
 
       if (data.user) {
+        // Sync user to local database
+        try {
+          await fetch('/api/sync-user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: data.user.id,
+              email: data.user.email,
+              fullName: formData.fullName
+            })
+          })
+        } catch (syncError) {
+          console.error('Failed to sync user:', syncError)
+        }
+
         // User created - check if email confirmation is required
         const { data: { session } } = await supabase.auth.getSession()
         
