@@ -254,3 +254,41 @@
   padding-top: 20px;
   border-top: 1px solid var(--border);
 }
+
+/* Disclaimer */
+.disclaimer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.disclaimer-item {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.disclaimer-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.disclaimer-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Finish */
+.finish-note {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.finish-note p {
+  margin-bottom: 12px;
+}

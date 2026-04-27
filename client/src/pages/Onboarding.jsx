@@ -27,6 +27,8 @@ const RON_LINES = [
   "This is the part where your agent becomes yours.",
   "Looking good. Every answer shapes how it treats you.",
   "Almost there, this is the good part.",
+  "One more thing. It's learning your voice already.",
+  "Almost done!",
 ];
 
 export default function Onboarding() {
@@ -35,7 +37,7 @@ export default function Onboarding() {
   const { currentStep, agentConfig } = useAppSelector(state => state.onboarding)
   const { user } = useAppSelector(state => state.auth)
 
-  const [buildMode, setBuildMode] = useState(null) // 'beginner', 'expert', or 'remix'
+  const [buildMode, setBuildMode] = useState(null)
 
   const [formData, setFormData] = useState({
     agentName: '',
@@ -43,8 +45,8 @@ export default function Onboarding() {
     useCases: []
   })
 
-  const [step, setStep] = useState(0) // 0=names, 1=usecases, 2=complete
-  const totalSteps = 2
+  const [step, setStep] = useState(0) // 0=names, 1=usecases, 2=disclaimer, 3=complete
+  const totalSteps = 3
 
   const toggleUsecase = (id) => {
     setFormData(prev => ({
@@ -66,7 +68,11 @@ export default function Onboarding() {
 
   const handleBack = () => {
     if (step === 0) {
-      setBuildMode(null)
+      if (buildMode) {
+        setBuildMode(null)
+      } else {
+        navigate('/signin')
+      }
     } else {
       setStep(step - 1)
     }
@@ -130,7 +136,7 @@ export default function Onboarding() {
       <div className="onboarding-page">
         <div className="onboarding-container">
           <StepIndicator 
-            steps={['Names', 'Use Cases', 'Complete']} 
+            steps={['Names', 'Use Cases', 'Disclaimer', 'Complete']} 
             current={step} 
           />
           
@@ -143,6 +149,8 @@ export default function Onboarding() {
             <div className="hero">
               {step === 0 && <Mascot pose="greeting" size={100} />}
               {step === 1 && <Mascot pose="thinking" size={80} />}
+              {step === 2 && <Mascot pose="thinking" size={90} />}
+              {step === 3 && <Mascot pose="greeting" size={120} />}
               <div className="hero-text">
                 {step === 0 && (
                   <>
@@ -158,8 +166,14 @@ export default function Onboarding() {
                 )}
                 {step === 2 && (
                   <>
-                    <h1 className="headline">You're all set!</h1>
-                    <p className="sub">Your agent is being provisioned.</p>
+                    <h1 className="headline">One real talk before your agent goes live.</h1>
+                    <p className="sub">A few honest things. Your agent is powerful, and we want you to use it well.</p>
+                  </>
+                )}
+                {step === 3 && (
+                  <>
+                    <h1 className="headline">You did it.</h1>
+                    <p className="sub">{formData.agentName || 'Your agent'} is yours now. Set up around you, ready to learn.</p>
                   </>
                 )}
               </div>
@@ -212,22 +226,37 @@ export default function Onboarding() {
             )}
 
             {step === 2 && (
-              <div className="summary">
-                <dl>
-                  <dt>You</dt>
-                  <dd>{formData.yourName || 'Not set'}</dd>
-                  <dt>Agent</dt>
-                  <dd>{formData.agentName || 'Not set'}</dd>
-                  <dt>For</dt>
-                  <dd>{formData.useCases.map(u => USE_CASES.find(x => x.id === u)?.label).join(', ') || 'Not set'}</dd>
-                </dl>
+              <div className="disclaimer-list">
+                <div className="disclaimer-item">
+                  <p className="disclaimer-title">AI makes mistakes.</p>
+                  <p className="disclaimer-body">Large language models get things wrong. Check the work, verify anything important, and never spend money just because an AI told you to.</p>
+                </div>
+                <div className="disclaimer-item">
+                  <p className="disclaimer-title">Protect your API keys and sensitive data.</p>
+                  <p className="disclaimer-body">Any key you paste lives in your container. Don't share screenshots of your setup screens. Rotate keys if anything feels off.</p>
+                </div>
+                <div className="disclaimer-item">
+                  <p className="disclaimer-title">Be careful with what you give it access to.</p>
+                  <p className="disclaimer-body">The more tools your agent can use, the more it can do. Start with a narrow scope. Add tools as you build trust.</p>
+                </div>
+                <div className="disclaimer-item">
+                  <p className="disclaimer-title">You proceed at your own risk.</p>
+                  <p className="disclaimer-body">Heyron gives you a powerful agent, not a perfect one. You're the human in the loop. Act accordingly.</p>
+                </div>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="finish-note">
+                <p>This is day one. Every conversation, every task, every correction, {formData.agentName || 'your agent'} remembers and grows from it.</p>
+                <p>Change its name, voice, tools, or anything else anytime by coming back to Launchpad.</p>
               </div>
             )}
 
             <div className="actions">
               <Button variant="ghost" onClick={handleBack}>← Back</Button>
               <Button onClick={handleNext} disabled={!canProceed()}>
-                {step === totalSteps ? 'Go to Dashboard' : 'Continue'}
+                {step === totalSteps ? 'Open Dashboard →' : 'Continue'}
               </Button>
             </div>
           </div>
