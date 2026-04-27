@@ -1,0 +1,32 @@
+.social-proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #4a6278, #2d3a4a);
+  border: 2px solid var(--bg-primary);
+  border-radius: 50%;
+  color: #c8d4e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: -6px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}

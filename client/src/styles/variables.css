@@ -1,0 +1,36 @@
+:root {
+  /* Colors */
+  --bg-primary: #0c1018;
+  --bg-secondary: #111822;
+  --bg-card: #182230;
+  --text-primary: #e8edf2;
+  --text-secondary: #8a9bb0;
+  --text-muted: #5a6a7a;
+  --border: #243040;
+  --accent: #5ec4d4;
+  --accent-hover: #4ab0c0;
+  --success: #4ade80;
+  --warning: #eab308;
+  --error: #f87171;
+  --discord: #5865F2;
+  
+  /* Typography */
+  --font-family: 'DM Sans', sans-serif;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 100px;
+  
+  /* Container */
+  --container-max: 660px;
+  --header-height: 60px;
+}

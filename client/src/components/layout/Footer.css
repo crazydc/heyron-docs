@@ -1,0 +1,42 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  background: var(--bg-secondary);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.footer-copyright {
+  color: var(--text-muted);
+  font-size: 12px;
+}

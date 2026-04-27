@@ -1,0 +1,31 @@
+.beta-notice {
+  padding: 0 0 8px;
+}
+
+.beta-card {
+  display: flex;
+  gap: 14px;
+  background: rgba(234, 179, 8, 0.08);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.beta-icon {
+  font-size: 24px;
+}
+
+.beta-content h3 {
+  color: var(--warning);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.beta-content p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.55;
+}
