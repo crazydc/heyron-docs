@@ -6,6 +6,7 @@ export default function Header() {
     <header className="header">
       <div className="container header-content">
         <Link to="/" className="logo">
+          <img src="/logo.png" alt="Heyron" className="logo-img" />
           <span className="logo-text">heyron.ai</span>
         </Link>
         

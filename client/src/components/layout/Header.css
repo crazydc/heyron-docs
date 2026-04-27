@@ -15,7 +15,16 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
+}
+
+.logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .logo-text {
