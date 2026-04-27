@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useAppSelector } from '../../store/hooks'
+import { useAppDispatch } from '../../store/hooks'
+import { logout } from '../../store/slices/authSlice'
 import './Header.css'
 
 export default function Header() {
+  const { isAuthenticated, user } = useAppSelector(state => state.auth)
+  const dispatch = useAppDispatch()
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
   return (
     <header className="header">
       <div className="container header-content">
@@ -11,7 +21,15 @@ export default function Header() {
         </Link>
         
         <nav className="header-nav">
-          <Link to="/signup" className="header-cta">Sign Up</Link>
+          {isAuthenticated ? (
+            <>
+              <Link to="/dashboard" className="header-link">Dashboard</Link>
+              <Link to="/account" className="header-link">Account</Link>
+              <button onClick={handleLogout} className="header-btn-logout">Sign Out</button>
+            </>
+          ) : (
+            <Link to="/signup" className="header-cta">Sign Up</Link>
+          )}
         </nav>
       </div>
     </header>
