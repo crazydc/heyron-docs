@@ -2,5 +2,8 @@
   "buildCommand": "cd client && npm install --include=dev && npm run build",
   "outputDirectory": "client/dist",
   "framework": null,
-  "installCommand": "cd client && npm install --include=dev"
+  "installCommand": "cd client && npm install --include=dev",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
