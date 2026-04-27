@@ -22,9 +22,10 @@
 }
 
 .logo-img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
 }
 
 .logo-text {
