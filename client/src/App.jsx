@@ -16,11 +16,13 @@ function App() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    // Check for existing session on load
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    // Fallback timeout - ensure we eventually render
+    const timeout = setTimeout(() => setReady(true), 3000)
+
+    supabase.auth.getSession().then(async ({ data: { session }, error }) => {
+      clearTimeout(timeout)
       try {
-        if (session) {
-          // Fetch user profile to get onboarding status
+        if (session && !error) {
           const { data: profile } = await supabase
             .from('users')
             .select('full_name, onboarding_complete')
@@ -44,29 +46,33 @@ function App() {
       }
       setReady(true)
     }).catch(() => {
+      clearTimeout(timeout)
       setReady(true)
     })
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        const { data: profile } = await supabase
-          .from('users')
-          .select('full_name, onboarding_complete')
-          .eq('id', session.user.id)
-          .single()
-        
-        const onboardingComplete = profile?.onboarding_complete ?? false
-        
-        store.dispatch(loginSuccess({
-          user: {
-            id: session.user.id,
-            email: session.user.email,
-            fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
-          },
-          onboardingComplete
-        }))
-        store.dispatch(setOnboardingComplete(onboardingComplete))
+        try {
+          const { data: profile } = await supabase
+            .from('users')
+            .select('full_name, onboarding_complete')
+            .eq('id', session.user.id)
+            .single()
+          
+          const onboardingComplete = profile?.onboarding_complete ?? false
+          
+          store.dispatch(loginSuccess({
+            user: {
+              id: session.user.id,
+              email: session.user.email,
+              fullName: profile?.full_name || session.user.user_metadata?.full_name || 'User'
+            },
+            onboardingComplete
+          }))
+          store.dispatch(setOnboardingComplete(onboardingComplete))
+        } catch (err) {
+          console.error('Auth change error:', err)
+        }
       } else {
         store.dispatch(logout())
       }
@@ -88,7 +94,7 @@ function App() {
             <Route path="/account" element={<Account />} />
           </Routes>
         ) : (
-          <div style={{ padding: 20, color: '#fff' }}>Loading...</div>
+          <div style={{ padding: 20, color: '#fff', background: '#0d1117', minHeight: '100vh' }}>Loading...</div>
         )}
       </BrowserRouter>
     </Provider>
