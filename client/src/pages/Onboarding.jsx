@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { nextStep, prevStep, setAgentConfig, completeOnboarding } from '../store/slices/onboardingSlice'
+import { setOnboardingComplete } from '../store/slices/authSlice'
+import { completeOnboarding as apiCompleteOnboarding } from '../utils/api'
 import Layout from '../components/layout/Layout'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
@@ -58,9 +60,12 @@ export default function Onboarding() {
     }))
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (step === totalSteps) {
+      // Mark onboarding complete in database
+      await apiCompleteOnboarding()
       dispatch(completeOnboarding())
+      dispatch(setOnboardingComplete(true))
       navigate('/dashboard')
     } else {
       setStep(step + 1)
