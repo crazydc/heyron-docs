@@ -8,27 +8,27 @@ Page background stays subtly dark, only the content boxes are light. */
   background: var(--bg-secondary) !important;
   border: 2px solid #1E3A5F !important;
   box-shadow: 0 0 0 3px rgba(143,211,244,0.25), 0 18px 48px rgba(30,58,95,0.35) !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 /* All headings/body text inside panels goes dark */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel p, .panel span, .panel label, .panel li, .panel .summary-label, .panel .summary-value, .panel .field-hint, .panel .foot, .panel .skip-hint, .panel .about-note {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel h1.headline {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   background: none !important;
-  -webkit-text-fill-color: initial !important;
+  -webkit-text-fill-color: inherit !important;
 }
 
 .panel .sub {
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
 }
 
 /* Brand wordmark dark */
 .panel .brand-name {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .brand-dot {
@@ -54,17 +54,17 @@ Page background stays subtly dark, only the content boxes are light. */
 .panel .card {
   background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   box-shadow: 0 2px 8px rgba(30,58,95,0.10) !important;
 }
 
 .panel .card-title {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   font-weight: 600 !important;
 }
 
 .panel .card-desc {
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   opacity: 1 !important;
 }
 
@@ -83,7 +83,7 @@ Page background stays subtly dark, only the content boxes are light. */
 /* Ghost buttons inside panels: light fill, dark frame */
 .panel .btn-ghost {
   background: transparent !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -92,12 +92,12 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .btn-text {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .btn-link {
-  color: #1E3A5F !important;
-  border-color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--text-secondary) !important;
 }
 
 /* Recommended pill */
@@ -119,16 +119,16 @@ Page background stays subtly dark, only the content boxes are light. */
   background: var(--bg-secondary) !important;
   border: 2px solid #1E3A5F !important;
   box-shadow: 0 0 0 3px rgba(143,211,244,0.45), 0 14px 40px rgba(30,58,95,0.25) !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .remix-card .card-title {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   font-weight: 600 !important;
 }
 
 .remix-card .card-desc {
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   opacity: 1 !important;
 }
 
@@ -149,7 +149,7 @@ Page background stays subtly dark, only the content boxes are light. */
 .panel .integration {
   background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .integration:hover {
@@ -159,30 +159,30 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .integration.connected {
   background: var(--bg-secondary) !important;
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
   box-shadow: 0 0 0 2px rgba(30,58,95,0.35) !important;
 }
 
 .panel .integration-name {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .integration-desc {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .integration-why {
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .integration-need {
   background: var(--bg-primary) !important;
   border-left: 2px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .integration-need strong {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .integration-icon {
@@ -202,30 +202,30 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .integration.connected .usecase-check, .panel .usecase.selected .usecase-check {
   background: #1E3A5F !important;
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
 }
 
 /* Usecase buttons, option buttons, voice buttons */
 .panel .usecase, .panel .option, .panel .voice, .panel .day, .panel .chip {
   background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .usecase.selected, .panel .option.selected, .panel .voice.selected, .panel .day.selected, .panel .chip.selected {
   background: var(--bg-secondary) !important;
-  color: #1E3A5F !important;
-  border-color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--text-secondary) !important;
   box-shadow: inset 0 0 0 1px #1E3A5F !important;
 }
 
 .panel .option-mark {
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
   background: var(--bg-secondary) !important;
 }
 
 .panel .option.selected .option-mark {
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
 }
 
 .panel .option.selected .option-mark::after {
@@ -233,7 +233,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .option-title, .panel .option-desc {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .option-tag {
@@ -242,23 +242,23 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .usecase-label {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .persona-name, .panel .persona-tag, .panel .persona-sample, .panel .persona-best {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .persona-sample, .panel .comm-sample {
   background: var(--bg-primary) !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   border-left: 2px solid #1E3A5F !important;
 }
 
 /* Inputs */
 .panel .input, .panel textarea.input, .panel select.input, .panel input[type="time"], .panel input[type="number"] {
   background: var(--bg-secondary) !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -283,7 +283,7 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .setup-num {
   background: var(--bg-primary) !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   border: 1px solid #1E3A5F !important;
 }
 
@@ -293,12 +293,12 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .setup-step-title, .panel .setup-step-desc {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .setup-cta {
   background: var(--bg-secondary) !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
 }
 
@@ -308,13 +308,13 @@ Page background stays subtly dark, only the content boxes are light. */
 
 .panel .setup-status {
   background: var(--bg-secondary) !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   border: 1px solid #1E3A5F !important;
 }
 
 .panel code {
   background: var(--bg-primary) !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 /* Toggles */
@@ -336,7 +336,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .toggle-title, .panel .toggle-desc {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .permissions .toggle-row {
@@ -348,41 +348,41 @@ Page background stays subtly dark, only the content boxes are light. */
   background: var(--bg-primary) !important;
   border: 1px solid #1E3A5F !important;
   border-left: 3px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .soul-note strong, .panel .about-prompt strong {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .disclaimer-item {
   background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
   border-left: 4px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .disclaimer-title {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .disclaimer-body {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   opacity: 1 !important;
 }
 
 .panel .checkbox {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 .panel .checkbox-mark {
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
   background: var(--bg-secondary) !important;
 }
 
 .panel .checkbox.checked .checkbox-mark {
   background: #1E3A5F !important;
-  border-color: #1E3A5F !important;
+  border-color: var(--text-secondary) !important;
 }
 
 /* Summary block */
@@ -396,7 +396,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .summary-section-title {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 /* Danger / safety callouts stay red but adjusted for light background */
@@ -429,17 +429,17 @@ Page background stays subtly dark, only the content boxes are light. */
 .panel .ron-companion {
   background: var(--bg-secondary) !important;
   border: 1.5px solid #1E3A5F !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .ron-companion span {
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 /* Hello screen body paragraph, roomy, friendly, dark on light */
 .panel .hello-body {
   font-size: 14px;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   line-height: 1.65;
   margin: 14px 0 22px;
   max-width: 560px;
@@ -449,7 +449,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .hello-body strong {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   font-weight: 600;
 }
 
@@ -457,19 +457,19 @@ Page background stays subtly dark, only the content boxes are light. */
 .panel .finish-hero h1 {
   background: none !important;
   -webkit-background-clip: initial !important;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 .panel .finish-note {
   background: var(--bg-primary) !important;
   border: 1.5px solid #1E3A5F !important;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
 }
 
 /* Personality intro paragraph */
 .panel .persona-intro {
   font-size: 13px;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   line-height: 1.65;
   margin: 0 0 18px;
   padding: 12px 14px;
@@ -479,7 +479,7 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .persona-intro strong {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   font-weight: 600;
 }
 
@@ -489,13 +489,13 @@ Page background stays subtly dark, only the content boxes are light. */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   margin: 4px 0 10px;
 }
 
 .panel .persona-section-sub {
   font-size: 12px;
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   margin: -4px 0 12px;
   line-height: 1.55;
 }
@@ -518,20 +518,20 @@ Page background stays subtly dark, only the content boxes are light. */
 .panel .persona-example .persona-name {
   font-size: 14px;
   font-weight: 600;
-  color: #0A1220 !important;
+  color: var(--text-primary) !important;
   margin: 0 0 4px;
 }
 
 .panel .persona-example .persona-tag {
   font-size: 12px;
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   margin: 0 0 8px;
   line-height: 1.5;
 }
 
 .panel .persona-example .persona-sample {
   font-size: 12px;
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
   font-style: italic;
   line-height: 1.5;
   margin: 0;
@@ -552,20 +552,20 @@ Page background stays subtly dark, only the content boxes are light. */
 }
 
 .panel .about-note strong {
-  color: #1E3A5F !important;
+  color: var(--text-secondary) !important;
 }
 
 /* Skip hint */
 .panel .skip-hint {
   font-size: 12px;
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   text-align: center;
   margin-top: 14px;
 }
 
 /* Foot */
 .panel .foot {
-  color: #2C4A6E !important;
+  color: var(--text-secondary) !important;
   text-align: center;
   margin-top: 18px;
 }
