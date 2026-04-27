@@ -13,16 +13,12 @@ import Onboarding from './pages/Onboarding'
 import Account from './pages/Account'
 
 function App() {
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState(true)
 
   useEffect(() => {
-    // Fallback timeout - ensure we eventually render
-    const timeout = setTimeout(() => setReady(true), 3000)
-
     supabase.auth.getSession().then(async ({ data: { session }, error }) => {
-      clearTimeout(timeout)
-      try {
-        if (session && !error) {
+      if (session && !error) {
+        try {
           const { data: profile } = await supabase
             .from('users')
             .select('full_name, onboarding_complete')
@@ -40,15 +36,11 @@ function App() {
             onboardingComplete
           }))
           store.dispatch(setOnboardingComplete(onboardingComplete))
+        } catch (err) {
+          console.error('Auth error:', err)
         }
-      } catch (err) {
-        console.error('Auth error:', err)
       }
-      setReady(true)
-    }).catch(() => {
-      clearTimeout(timeout)
-      setReady(true)
-    })
+    }).catch(() => {})
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
@@ -84,18 +76,14 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        {ready ? (
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/account" element={<Account />} />
-          </Routes>
-        ) : (
-          <div style={{ padding: 20, color: '#fff', background: '#0d1117', minHeight: '100vh' }}>Loading...</div>
-        )}
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/account" element={<Account />} />
+        </Routes>
       </BrowserRouter>
     </Provider>
   )
