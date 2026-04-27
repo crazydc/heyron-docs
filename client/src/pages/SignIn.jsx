@@ -66,9 +66,12 @@ export default function SignIn() {
 
       if (data.user) {
         dispatch(loginSuccess({
-          id: data.user.id,
-          email: data.user.email,
-          fullName: data.user.user_metadata?.full_name || 'User'
+          user: {
+            id: data.user.id,
+            email: data.user.email,
+            fullName: data.user.user_metadata?.full_name || 'User'
+          },
+          onboardingComplete: true
         }))
         navigate('/dashboard')
       }

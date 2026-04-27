@@ -98,10 +98,12 @@ export default function SignUp() {
         if (session) {
           // Auto-confirmed - log in immediately
           dispatch(loginSuccess({
-            id: session.user.id,
-            email: session.user.email,
-            fullName: formData.fullName,
-            discordId: formData.discordId || null
+            user: {
+              id: session.user.id,
+              email: session.user.email,
+              fullName: formData.fullName
+            },
+            onboardingComplete: false
           }))
           navigate('/onboarding')
         } else {
