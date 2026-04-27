@@ -30,7 +30,9 @@ function App() {
             user: {
               id: session.user.id,
               email: session.user.email,
-              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User'
+              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User',
+              discordId: profile?.discordId,
+              createdAt: profile?.createdAt
             },
             onboardingComplete
           }))
@@ -57,7 +59,9 @@ function App() {
             user: {
               id: session.user.id,
               email: session.user.email,
-              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User'
+              fullName: profile?.fullName || session.user.user_metadata?.full_name || 'User',
+              discordId: profile?.discordId,
+              createdAt: profile?.createdAt
             },
             onboardingComplete
           }))
