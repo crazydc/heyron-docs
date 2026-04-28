@@ -1,6 +1,24 @@
 # Heyron - Production Setup Guide
 
-*Full Vercel + Supabase deployment*
+*Supports both Vercel + Supabase AND Local/Docker deployment*
+
+---
+
+## Deployment Options
+
+### Option 1: Vercel (Cloud)
+- See original guide below
+- Frontend: Vercel-hosted
+- Backend: Vercel serverless functions
+
+### Option 2: Local/Docker (Mini PC)
+- **URL**: https://thesumblers.duckdns.org:9843/
+- **SSH**: `jeff@86.4.252.119 -p 46664`
+- Run: `sudo docker compose up -d`
+
+---
+
+## Local Deployment (Mini PC)
 
 ---
 
