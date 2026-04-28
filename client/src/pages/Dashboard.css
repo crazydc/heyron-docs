@@ -1,5 +1,7 @@
 .dashboard {
   padding: 32px 16px 120px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .dash-header {
