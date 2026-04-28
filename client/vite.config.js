@@ -3,14 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  // For local/docker deployment under subpath, use:
-  // base: '/heyron-docs/'
-  // For Vercel (root), set VITE_BASE_PATH to empty string ""
-  base: process.env.VITE_BASE_PATH || '/heyron-docs/',
+  // Default: root path (empty) for Vercel
+  // For docker/local subpath, set VITE_BASE_PATH to "/heyron-docs"
+  base: process.env.VITE_BASE_PATH === undefined ? '' : process.env.VITE_BASE_PATH,
   define: {
-    // For root (empty string): BASE_URL + "logo.png" = "logo.png"
-    // For subpath: BASE_URL + "logo.png" = "/heyron-docs/logo.png"
-    'import.meta.env.BASE_URL': JSON.stringify(process.env.VITE_BASE_PATH || '/heyron-docs/')
+    'import.meta.env.BASE_URL': JSON.stringify(process.env.VITE_BASE_PATH === undefined ? '' : process.env.VITE_BASE_PATH)
   },
   server: {
     port: 5173,
