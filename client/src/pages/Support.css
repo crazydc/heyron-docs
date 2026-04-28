@@ -97,10 +97,13 @@
 
 .tools-row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .tools-row button {
   margin: 5px;
+  flex: 1;
+  min-width: 100px;
 }
 
 .tools-grid {
