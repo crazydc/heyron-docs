@@ -97,12 +97,13 @@
 
 .tools-grid {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
 .tools-grid .tool-btn {
-  flex: 1;
+  padding: 16px 12px;
 }
 
 .tool-btn {
