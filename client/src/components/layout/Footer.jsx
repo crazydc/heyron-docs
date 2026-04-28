@@ -10,10 +10,6 @@ export default function Footer() {
           <Link to="/privacy">Privacy</Link>
           <Link to="/support">Support</Link>
         </div>
-        <div className="footer-social">
-          <a href="#" aria-label="Discord">DC</a>
-          <a href="#" aria-label="Twitter">TW</a>
-        </div>
         <p className="footer-copyright">© 2026 Heyron. All rights reserved.</p>
       </div>
     </footer>
