@@ -36,7 +36,7 @@ export default function Support() {
         <div className="support-container">
           <h1>Support</h1>
           
-          {isAuthenticated && expanded && (
+          {isAuthenticated && (
             <div className="support-tools">
               <button 
                 className="tools-toggle"
@@ -47,7 +47,7 @@ export default function Support() {
                 <span className="tools-arrow">{expanded ? '▲' : '▼'}</span>
               </button>
               
-              <div className="tools-content">
+              {expanded && <div className="tools-content">
                 <div className="status-card">
                   <div className="status-row">
                     <span className="status-label">Status</span>
@@ -84,7 +84,7 @@ export default function Support() {
                     Ask in Discord
                   </a>
                 </p>
-              </div>
+              </div>}
             </div>
           )}
           
