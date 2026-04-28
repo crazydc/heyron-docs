@@ -13,6 +13,7 @@ export default function Account() {
     fullName: '',
     discordId: ''
   })
+  const [subscription, setSubscription] = useState(null)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
@@ -21,8 +22,14 @@ export default function Account() {
     if (user) {
       setFormData({
         fullName: user.fullName || '',
-        discordId: ''
+        discordId: user.discordId || ''
       })
+      
+      // Fetch subscription
+      fetch(`/api/subscription?id=${user.id}`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => setSubscription(data))
+        .catch(() => {})
     }
   }, [user])
 
@@ -60,17 +67,42 @@ export default function Account() {
     }
   }
 
+  const plan = subscription?.plan || 'free'
+  const status = subscription?.status || 'active'
+  const expiresAt = subscription?.expiresAt
+
   return (
     <Layout>
       <div className="account-page">
         <div className="account-container">
           <div className="account-header">
             <h1>Account Settings</h1>
-            <p>Manage your profile and preferences</p>
+            <p>Manage your profile and subscription</p>
           </div>
 
           {success && <Alert type="success" dismissible onDismiss={() => setSuccess('')}>{success}</Alert>}
           {error && <Alert type="error" dismissible onDismiss={() => setError('')}>{error}</Alert>}
+
+          {/* Subscription Section */}
+          <div className="subscription-section">
+            <h2>Subscription</h2>
+            <div className="subscription-card">
+              <div className="subscription-plan">
+                <span className="plan-label">Plan</span>
+                <span className="plan-value">{plan.charAt(0).toUpperCase() + plan.slice(1)}</span>
+              </div>
+              <div className="subscription-status">
+                <span className="status-label">Status</span>
+                <span className={`status-badge ${status}`}>{status}</span>
+              </div>
+              {expiresAt && (
+                <div className="subscription-renewal">
+                  <span className="renewal-label">Renews</span>
+                  <span className="renewal-value">{new Date(expiresAt).toLocaleDateString()}</span>
+                </div>
+              )}
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit} className="account-form">
             <div className="field">
