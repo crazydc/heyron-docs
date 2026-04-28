@@ -1,28 +1,27 @@
-import { supabase } from './supabase'
-
 // Mark onboarding as complete
 export async function completeOnboarding() {
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'Not authenticated' }
+  const user = JSON.parse(localStorage.getItem('heyron_user') || '{}')
+  if (!user?.id) return { error: 'Not authenticated' }
   
-  const { error } = await supabase
-    .from('users')
-    .update({ onboarding_complete: true })
-    .eq('id', user.id)
+  const res = await fetch(`/api/update-user?id=${user.id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ onboardingComplete: true, onboardingStep: 99 })
+  })
   
-  return { error }
+  if (!res.ok) {
+    const data = await res.json()
+    return { error: data.error }
+  }
+  return { error: null }
 }
 
 // Fetch user profile
 export async function fetchUserProfile() {
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { data: null, error: 'Not authenticated' }
+  const user = JSON.parse(localStorage.getItem('heyron_user') || '{}')
+  if (!user?.id) return { data: null, error: 'Not authenticated' }
   
-  const { data, error } = await supabase
-    .from('users')
-    .select('*')
-    .eq('id', user.id)
-    .single()
-  
-  return { data, error }
+  const res = await fetch(`/api/user?id=${user.id}`)
+  const data = res.ok ? await res.json() : null
+  return { data, error: res.ok ? null : 'Failed to fetch' }
 }

@@ -65,6 +65,7 @@ export default function SignIn() {
 
       if (data.user) {
         // Sync user to local database (create if not exists)
+        let onboardingComplete = true
         try {
           await fetch('/api/upsert-user', {
             method: 'POST',
@@ -75,6 +76,13 @@ export default function SignIn() {
               fullName: data.user.user_metadata?.full_name || 'User'
             })
           })
+          
+          // Check onboarding status
+          const userRes = await fetch(`/api/user?id=${data.user.id}`)
+          if (userRes.ok) {
+            const userData = await userRes.json()
+            onboardingComplete = userData.onboardingComplete ?? false
+          }
         } catch (syncError) {
           console.error('Failed to sync user:', syncError)
         }
@@ -85,9 +93,10 @@ export default function SignIn() {
             email: data.user.email,
             fullName: data.user.user_metadata?.full_name || 'User'
           },
-          onboardingComplete: true
+          onboardingComplete
         }))
-        navigate('/dashboard')
+        
+        navigate(onboardingComplete ? '/dashboard' : '/onboarding')
       } else {
         setSubmitError('Something went wrong')
         setLoading(false)

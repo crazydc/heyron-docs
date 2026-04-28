@@ -1,10 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// Load persisted user from localStorage
+const loadPersistedUser = () => {
+  try {
+    const stored = localStorage.getItem('heyron_user')
+    return stored ? JSON.parse(stored) : null
+  } catch {
+    return null
+  }
+}
+
 const initialState = {
   isAuthenticated: false,
-  user: null,
-  onboardingComplete: true, // default true, set to false for new users
-  loading: true, // start true, wait for auth check
+  user: loadPersistedUser(),
+  onboardingComplete: loadPersistedUser()?.onboardingComplete ?? true,
+  loading: true,
   error: null,
 }
 
@@ -21,6 +31,8 @@ const authSlice = createSlice({
       state.isAuthenticated = true
       state.user = action.payload.user
       state.onboardingComplete = action.payload.onboardingComplete ?? true
+      // Persist to localStorage
+      localStorage.setItem('heyron_user', JSON.stringify(action.payload.user))
     },
     loginFailure: (state, action) => {
       state.loading = false
@@ -30,6 +42,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false
       state.user = null
       state.onboardingComplete = true
+      localStorage.removeItem('heyron_user')
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload }
