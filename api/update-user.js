@@ -8,7 +8,7 @@ const pool = new Pool({
 export default async function handler(req, res) {
   try {
     const userId = req.query.id
-    const { fullName, discordId, avatarUrl, onboardingComplete, onboardingStep } = req.body
+    const { fullName, discordId, avatarUrl, onboardingComplete, onboardingStep, agentName, useCases } = req.body
 
     if (!userId) {
       return res.status(400).json({ error: 'User ID required' })
@@ -23,6 +23,8 @@ export default async function handler(req, res) {
     if (avatarUrl !== undefined) { updates.push(`"avatarUrl" = $${i++}`); values.push(avatarUrl) }
     if (onboardingComplete !== undefined) { updates.push(`"onboardingComplete" = $${i++}`); values.push(onboardingComplete) }
     if (onboardingStep !== undefined) { updates.push(`"onboardingStep" = $${i++}`); values.push(onboardingStep) }
+    if (agentName !== undefined) { updates.push(`"agentName" = $${i++}`); values.push(agentName) }
+    if (useCases !== undefined) { updates.push(`"useCases" = $${i++}`); values.push(useCases) }
 
     if (updates.length === 0) {
       return res.status(400).json({ error: 'No fields to update' })
@@ -32,7 +34,7 @@ export default async function handler(req, res) {
 
     const result = await pool.query(`
       UPDATE "User" SET ${updates.join(', ')} WHERE id = $${i}
-      RETURNING id, email, "fullName", "discordId", "avatarUrl", "onboardingComplete", "onboardingStep", "createdAt"
+      RETURNING id, email, "fullName", "discordId", "avatarUrl", "onboardingComplete", "onboardingStep", "agentName", "useCases", "createdAt"
     `, values)
 
     if (result.rows.length === 0) {

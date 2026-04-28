@@ -62,8 +62,12 @@ export default function Onboarding() {
 
   const handleNext = async () => {
     if (step === totalSteps) {
-      // Mark onboarding complete in database
-      await apiCompleteOnboarding()
+      // Save onboarding config to database
+      await apiCompleteOnboarding({
+        fullName: formData.yourName,
+        agentName: formData.agentName,
+        useCases: formData.useCases.join(',')
+      })
       dispatch(completeOnboarding())
       dispatch(setOnboardingComplete(true))
       navigate('/dashboard')

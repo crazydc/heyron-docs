@@ -1,22 +1,23 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import Layout from '../components/layout/Layout'
 import { Mascot, HeadMascot } from '../components/ui/Mascot'
 import './Dashboard.css'
 
-const ACTIVITY = [
-  { text: 'Replied to 3 messages', time: '2m ago', color: 'success' },
-  { text: 'Updated calendar for Friday', time: '12m ago', color: 'secondary' },
-  { text: 'Drafted weekly summary', time: '1h ago', color: 'tertiary' },
-]
-
 export default function Dashboard() {
-  const { user } = useAppSelector(state => state.auth)
+  const { user, onboardingComplete } = useAppSelector(state => state.auth)
   const [showIntro, setShowIntro] = useState(true)
+  const navigate = useNavigate()
 
   const yourName = user?.fullName || 'friend'
   const agentName = 'Ron' // Could come from onboarding data
+
+  const handleFinishLaunchpad = () => {
+    if (!onboardingComplete) {
+      navigate('/onboarding')
+    }
+  }
 
   return (
     <Layout fullWidth>
@@ -28,7 +29,9 @@ export default function Dashboard() {
               <p>{agentName} is online and ready.</p>
             </div>
             <div className="dash-actions">
-              <button className="btn-text">Finish Launchpad</button>
+              <button className="btn-text" onClick={handleFinishLaunchpad}>
+                {onboardingComplete ? 'Launchpad' : 'Finish Launchpad'}
+              </button>
               <button className="btn-text">Help</button>
               <HeadMascot size={36} />
             </div>

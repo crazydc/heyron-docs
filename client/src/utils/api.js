@@ -1,18 +1,26 @@
-// Mark onboarding as complete
-export async function completeOnboarding() {
+// Mark onboarding as complete with config
+export async function completeOnboarding(config = {}) {
   const user = JSON.parse(localStorage.getItem('heyron_user') || '{}')
   if (!user?.id) return { error: 'Not authenticated' }
   
   const res = await fetch(`/api/update-user?id=${user.id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ onboardingComplete: true, onboardingStep: 99 })
+    body: JSON.stringify({ 
+      onboardingComplete: true, 
+      onboardingStep: 99,
+      ...config
+    })
   })
   
   if (!res.ok) {
     const data = await res.json()
     return { error: data.error }
   }
+  
+  // Update localStorage with new user data
+  localStorage.setItem('heyron_user', JSON.stringify({ ...user, ...config, onboardingComplete: true }))
+  
   return { error: null }
 }
 
