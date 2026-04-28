@@ -12,112 +12,191 @@ export default function Dashboard() {
   const navigate = useNavigate()
 
   const yourName = user?.fullName || 'friend'
-  const agentName = 'Ron' // Could come from onboarding data
+  const agentName = 'Ron'
 
   const handleFinishLaunchpad = () => {
     navigate('/onboarding')
   }
 
+  // Demo data (would come from API)
+  const containerStats = {
+    id: 'heyron-' + (user?.email?.split('@')[0]?.slice(0,8) || 'newuser'),
+    region: 'us-east-1',
+    memory: '2.1 / 4.0 GB',
+    uptime: '3d 14h',
+    integrations: 8,
+    lastDeploy: '2 hours ago'
+  }
+
+  const progress = {
+    workspaceConnected: true,
+    launchpadStarted: true,
+    personalityComplete: false,
+    inviteTeam: false,
+    percent: 50
+  }
+
+  const recentActivity = [
+    { time: '2m ago', text: 'Summarized 5 emails from inbox' },
+    { time: '15m ago', text: 'Created calendar event for tomorrow' },
+    { time: '1h ago', text: 'Drafted response to client inquiry' },
+    { time: '2h ago', text: 'Researched topic: AI automation trends' }
+  ]
+
+  const quickActions = [
+    { label: 'Settings', icon: '⚙️', path: '/account' },
+    { label: 'Integrations', icon: '🔗', path: '/resources' },
+    { label: 'Academy', icon: '📚', path: '/academy' },
+    { label: 'Support', icon: '💬', path: '/support' }
+  ]
+
   return (
     <Layout fullWidth>
-      <div className="dashboard">
-        <div className="panel">
-          <div className="dash-header">
-            <div className="dash-greeting">
-              <h2>Hey, {yourName}.</h2>
-              <p>{agentName} is online and ready.</p>
+      <div className="dashboard-new">
+        {/* Header */}
+        <div className="dash-header-new">
+          <div className="dash-welcome">
+            <h1>Welcome back, {yourName}.</h1>
+            <p className="dash-status">
+              <span className="status-dot online"></span>
+              {agentName} is ready to work
+            </p>
+          </div>
+          <div className="dash-user">
+            <div className="dash-user-info">
+              <span className="dash-user-name">{yourName}</span>
+              <span className="dash-user-email">{user?.email || 'Loading...'}</span>
             </div>
-            <div className="dash-actions">
-              {!onboardingComplete && (
-                <Button variant="ghost" size="sm" onClick={handleFinishLaunchpad}>
-                  Finish Launchpad
-                </Button>
-              )}
-              <Button variant="ghost" size="sm" onClick={() => navigate('/support')}>
-                Help
-              </Button>
-              <HeadMascot size={36} />
+            <div className="dash-avatar">
+              {yourName.charAt(0).toUpperCase()}
+            </div>
+          </div>
+        </div>
+
+        {/* Next Step Banner */}
+        {!onboardingComplete && (
+          <div className="dash-next-step">
+            <div className="next-step-content">
+              <span className="next-step-label">Next recommended step</span>
+              <h3>Finish Launchpad: Personality</h3>
+            </div>
+            <Button onClick={handleFinishLaunchpad}>Continue</Button>
+          </div>
+        )}
+
+        {/* Stats Cards Grid */}
+        <div className="dash-grid-new">
+          {/* Agent Card */}
+          <div className="dash-card">
+            <div className="dash-card-header">
+              <h2>Your Agent</h2>
+              <span className="dash-card-badge online">Running</span>
+            </div>
+            <div className="dash-card-content">
+              <div className="agent-stats">
+                <div className="stat-item">
+                  <span className="stat-label">Container ID</span>
+                  <span className="stat-value">{containerStats.id}</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">Region</span>
+                  <span className="stat-value">{containerStats.region}</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">Memory</span>
+                  <span className="stat-value">{containerStats.memory}</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">Uptime</span>
+                  <span className="stat-value">{containerStats.uptime}</span>
+                </div>
+              </div>
+            </div>
+            <div className="dash-card-footer">
+              <Link to="/account" className="dash-card-link">View details →</Link>
             </div>
           </div>
 
-          <div className="dash-grid">
-            <div className="metric">
-              <p className="metric-label">Tasks today</p>
-              <p className="metric-value">12</p>
-              <p className="metric-trend">+3 from yesterday</p>
+          {/* Progress Card */}
+          <div className="dash-card">
+            <div className="dash-card-header">
+              <h2>Your Progress</h2>
             </div>
-            <div className="metric">
-              <p className="metric-label">Avg response</p>
-              <p className="metric-value">2.4s</p>
-              <p className="metric-trend">Great speed</p>
-            </div>
-            <div className="metric">
-              <p className="metric-label">Connected tools</p>
-              <p className="metric-value">8</p>
-              <p className="metric-trend">Active</p>
+            <div className="dash-card-content">
+              <div className="progress-bar-container">
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: progress.percent + '%' }}></div>
+                </div>
+                <span className="progress-percent">{progress.percent}%</span>
+              </div>
+              <div className="milestones">
+                <div className={`milestone ${progress.workspaceConnected ? 'complete' : ''}`}>
+                  <span className="milestone-check">{progress.workspaceConnected ? '✓' : '○'}</span>
+                  <span>Workspace connected</span>
+                </div>
+                <div className={`milestone ${progress.launchpadStarted ? 'complete' : ''}`}>
+                  <span className="milestone-check">{progress.launchpadStarted ? '✓' : '○'}</span>
+                  <span>Launchpad started</span>
+                </div>
+                <div className={`milestone ${progress.personalityComplete ? 'complete' : 'in-progress'}`}>
+                  <span className="milestone-check">{progress.personalityComplete ? '✓' : '◐'}</span>
+                  <span>Next: Personality</span>
+                </div>
+                <div className={`milestone ${progress.inviteTeam ? 'complete' : 'optional'}`}>
+                  <span className="milestone-check">{progress.inviteTeam ? '✓' : '○'}</span>
+                  <span>Invite your team (optional)</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="container-card">
-            <div className="container-head">
-              <span className="container-title">
-                <HeadMascot size={20} /> Your container
-              </span>
-              <span className="container-status status-online">Running</span>
+          {/* Quick Actions Card */}
+          <div className="dash-card">
+            <div className="dash-card-header">
+              <h2>Quick Actions</h2>
             </div>
-            <div className="container-meta">
-              <span className="container-meta-label">ID</span>
-              <span className="container-meta-value">heyron-{user?.email?.split('@')[0]?.slice(0,8) || 'newuser'}</span>
-              <span className="container-meta-label">Region</span>
-              <span className="container-meta-value">us-east-1</span>
-              <span className="container-meta-label">Memory</span>
-              <span className="container-meta-value">2.1 / 4.0 GB</span>
-              <span className="container-meta-label">Uptime</span>
-              <span className="container-meta-value">3d 14h</span>
-              <span className="container-meta-label">Integrations</span>
-              <span className="container-meta-value">8</span>
-              <span className="container-meta-label">Last deploy</span>
-              <span className="container-meta-value">2 hours ago</span>
-            </div>
-          </div>
-
-          <div className="dash-section">
-            <h3>Recent activity</h3>
-            <div className="activity">
-              <div className="activity-item">
-                <span className="activity-time">2m ago</span>
-                <span className="activity-text">Summarized 5 emails from inbox</span>
-              </div>
-              <div className="activity-item">
-                <span className="activity-time">15m ago</span>
-                <span className="activity-text">Created calendar event for tomorrow</span>
-              </div>
-              <div className="activity-item">
-                <span className="activity-time">1h ago</span>
-                <span className="activity-text">Drafted response to client inquiry</span>
-              </div>
-              <div className="activity-item">
-                <span className="activity-time">2h ago</span>
-                <span className="activity-text">Researched topic: AI automation trends</span>
+            <div className="dash-card-content">
+              <div className="quick-actions-grid">
+                {quickActions.map((action, i) => (
+                  <Link key={i} to={action.path} className="quick-action-btn">
+                    <span className="quick-action-icon">{action.icon}</span>
+                    <span className="quick-action-label">{action.label}</span>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {showIntro && (
-          <div className="ron-intro" role="dialog">
-            <button className="ron-intro-dismiss" onClick={() => setShowIntro(false)} aria-label="Dismiss">×</button>
-            <div className="ron-intro-row">
-              <HeadMascot size={36} />
-              <div className="ron-intro-text">
-                <p className="ron-intro-title">Hey, I'm Ron.</p>
-                <p className="ron-intro-body">I watch over {agentName}'s container. Click me anytime, I pull logs, restart things, open tickets, or just answer questions.</p>
-                <div className="ron-intro-cta-row">
-                  <button className="btn btn-ghost" onClick={() => setShowIntro(false)}>Got it</button>
-                  <button className="btn btn-primary">Say hi</button>
+        {/* Recent Activity */}
+        <div className="dash-card dash-card-full">
+          <div className="dash-card-header">
+            <h2>Recent Activity</h2>
+          </div>
+          <div className="dash-card-content">
+            <div className="activity-list">
+              {recentActivity.map((item, i) => (
+                <div key={i} className="activity-item-new">
+                  <span className="activity-time">{item.time}</span>
+                  <span className="activity-text">{item.text}</span>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
+        </div>
+
+        {/* Ron Companion (dismissible) */}
+        {showIntro && (
+          <div className="dash-companion">
+            <button className="companion-dismiss" onClick={() => setShowIntro(false)}>×</button>
+            <div className="companion-avatar">
+              <HeadMascot size={32} />
+            </div>
+            <div className="companion-content">
+              <h4>Hey, I'm Ron.</h4>
+              <p>I watch over your agent. Click me anytime for logs, restarts, or help.</p>
+            </div>
+            <Button variant="ghost" size="sm" onClick={() => setShowIntro(false)}>Got it</Button>
           </div>
         )}
       </div>

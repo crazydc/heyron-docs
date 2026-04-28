@@ -123,3 +123,42 @@
   color: var(--text-secondary);
   line-height: 1.5;
 }
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.cta-buttons .btn-primary {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.cta-buttons .btn-primary:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+}
+
+.cta-buttons .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.cta-buttons .btn-secondary:hover {
+  background: var(--border);
+  text-decoration: none;
+}
