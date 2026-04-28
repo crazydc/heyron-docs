@@ -96,14 +96,15 @@
 }
 
 .tools-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 12px;
 }
 
 .tools-grid .tool-btn {
   padding: 16px 12px;
+  width: 100%;
 }
 
 .tool-btn {
