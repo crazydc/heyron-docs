@@ -15,9 +15,7 @@ export default function Dashboard() {
   const agentName = 'Ron' // Could come from onboarding data
 
   const handleFinishLaunchpad = () => {
-    if (!onboardingComplete) {
-      navigate('/onboarding')
-    }
+    navigate('/onboarding')
   }
 
   return (
@@ -30,9 +28,11 @@ export default function Dashboard() {
               <p>{agentName} is online and ready.</p>
             </div>
             <div className="dash-actions">
-              <Button variant="ghost" size="sm" onClick={handleFinishLaunchpad}>
-                {onboardingComplete ? 'Launchpad' : 'Finish Launchpad'}
-              </Button>
+              {!onboardingComplete && (
+                <Button variant="ghost" size="sm" onClick={handleFinishLaunchpad}>
+                  Finish Launchpad
+                </Button>
+              )}
               <Button variant="ghost" size="sm">
                 Help
               </Button>
