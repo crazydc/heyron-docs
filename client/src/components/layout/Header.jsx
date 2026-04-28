@@ -1,15 +1,22 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../store/hooks'
 import { useAppDispatch } from '../../store/hooks'
 import { logout } from '../../store/slices/authSlice'
+import { supabase } from '../../utils/supabase'
 import './Header.css'
 
 export default function Header() {
   const { isAuthenticated, user } = useAppSelector(state => state.auth)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    // Sign out from Supabase
+    await supabase.auth.signOut()
+    // Clear Redux state and localStorage
     dispatch(logout())
+    // Redirect to home
+    navigate('/')
   }
 
   return (
