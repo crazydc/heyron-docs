@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard'
 import Onboarding from './pages/Onboarding'
 import Account from './pages/Account'
 import Support from './pages/Support'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
 import ProtectedRoute, { GuestRoute } from './components/ProtectedRoute'
 
 function App() {
@@ -89,6 +91,8 @@ function App() {
           <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
           <Route path="/support" element={<Support />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </BrowserRouter>
     </Provider>
