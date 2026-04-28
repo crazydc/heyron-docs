@@ -1,6 +1,6 @@
 export default function handler(req, res) {
   res.json({ 
     dbUrl: process.env.DATABASE_URL ? 'set' : 'not set',
-    url: process.env.DATABASE_URL?.substring(0, 50)
+    url: process.env.DATABASE_URL
   })
 }

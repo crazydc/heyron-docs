@@ -11,16 +11,71 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Drop existing tables for clean rebuild
+    await pool.query(`DROP TABLE IF EXISTS "Payment" CASCADE`)
+    await pool.query(`DROP TABLE IF EXISTS "Server" CASCADE`)
+    await pool.query(`DROP TABLE IF EXISTS "Subscription" CASCADE`)
+    await pool.query(`DROP TABLE IF EXISTS "User" CASCADE`)
+
+    // Create all tables
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS test_table (
-        id SERIAL PRIMARY KEY,
-        name TEXT,
-        created_at TIMESTAMP DEFAULT NOW()
+      CREATE TABLE "User" (
+        id TEXT PRIMARY KEY,
+        email TEXT UNIQUE NOT NULL,
+        "passwordHash" TEXT NOT NULL,
+        "fullName" TEXT NOT NULL,
+        "discordId" TEXT,
+        "avatarUrl" TEXT,
+        "onboardingStep" INTEGER DEFAULT 0,
+        "onboardingComplete" BOOLEAN DEFAULT false,
+        "createdAt" TIMESTAMP DEFAULT NOW(),
+        "updatedAt" TIMESTAMP DEFAULT NOW()
       )
     `)
-    return res.json({ success: true, message: 'Table created' })
+
+    await pool.query(`
+      CREATE TABLE "Subscription" (
+        id TEXT PRIMARY KEY,
+        "userId" TEXT UNIQUE NOT NULL REFERENCES "User"(id) ON DELETE CASCADE,
+        plan TEXT DEFAULT 'free',
+        status TEXT DEFAULT 'active',
+        "stripeCustomerId" TEXT,
+        "activatedAt" TIMESTAMP,
+        "expiresAt" TIMESTAMP,
+        "createdAt" TIMESTAMP DEFAULT NOW(),
+        "updatedAt" TIMESTAMP DEFAULT NOW()
+      )
+    `)
+
+    await pool.query(`
+      CREATE TABLE "Server" (
+        id TEXT PRIMARY KEY,
+        "userId" TEXT NOT NULL REFERENCES "User"(id) ON DELETE CASCADE,
+        name TEXT NOT NULL,
+        "displayName" TEXT,
+        status TEXT DEFAULT 'offline',
+        region TEXT,
+        "createdAt" TIMESTAMP DEFAULT NOW(),
+        "updatedAt" TIMESTAMP DEFAULT NOW()
+      )
+    `)
+
+    await pool.query(`
+      CREATE TABLE "Payment" (
+        id TEXT PRIMARY KEY,
+        "userId" TEXT NOT NULL REFERENCES "User"(id) ON DELETE CASCADE,
+        "subscriptionId" TEXT,
+        amount INTEGER NOT NULL,
+        currency TEXT DEFAULT 'gbp',
+        status TEXT DEFAULT 'pending',
+        "paymentDate" TIMESTAMP DEFAULT NOW(),
+        "createdAt" TIMESTAMP DEFAULT NOW()
+      )
+    `)
+
+    return res.json({ success: true, message: 'All tables created' })
   } catch (error) {
     console.error('Error:', error)
-    return res.status(500).json({ error: error.message, code: error.code })
+    return res.status(500).json({ error: error.message })
   }
 }
