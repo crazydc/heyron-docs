@@ -1,11 +1,6 @@
 {
   "buildCommand": "npm install && cd client && npm install && npm run build",
   "outputDirectory": "client/dist",
-  "framework": null,
-  "installCommand": "npm install && cd client && npm install",
-  "functions": {
-    "api/*.js": {
-      "maxDuration": 10
-    }
-  }
+  "framework": "vite",
+  "installCommand": "npm install && cd client && npm install"
 }
