@@ -48,18 +48,7 @@ export default function Support() {
               </button>
               
               {expanded && <div className="tools-content">
-                <div className="status-card">
-                  <div className="status-row">
-                    <span className="status-label">Status</span>
-                    <span className="status-value online">● Online</span>
-                  </div>
-                  <div className="status-row">
-                    <span className="status-label">Uptime</span>
-                    <span className="status-value">10h 44m</span>
-                  </div>
-                </div>
-                
-                <div className="tools-grid">
+                <div className="tools-row">
                   <button className="tool-btn">
                     <span className="tool-icon">🔄</span>
                     <span className="tool-label">Restart Agent</span>

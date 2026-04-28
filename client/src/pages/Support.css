@@ -96,10 +96,13 @@
 }
 
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 8px;
   margin-bottom: 12px;
+}
+
+.tools-grid .tool-btn {
+  flex: 1;
 }
 
 .tool-btn {
