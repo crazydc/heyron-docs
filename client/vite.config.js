@@ -3,11 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  // Default: root path (empty) for Vercel
-  // For docker/local subpath, set VITE_BASE_PATH to "/heyron-docs"
-  base: process.env.VITE_BASE_PATH === undefined ? '' : process.env.VITE_BASE_PATH,
+  base: '/heyron-docs/',
   define: {
-    'import.meta.env.BASE_URL': JSON.stringify(process.env.VITE_BASE_PATH === undefined ? '' : process.env.VITE_BASE_PATH)
+    'import.meta.env.BASE_URL': JSON.stringify('/heyron-docs/')
   },
   server: {
     port: 5173,
