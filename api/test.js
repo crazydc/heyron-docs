@@ -1,3 +1,3 @@
 export default function handler(req, res) {
-  res.json({ success: true, message: 'API is working' })
+  res.json({ ok: true, path: req.url })
 }
