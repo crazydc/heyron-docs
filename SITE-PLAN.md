@@ -3,77 +3,59 @@
 ## Completed Pages
 
 ### Public Pages
-- **Landing** (`/`) - Main landing page with hero, features, CTA
-- **Sign Up** (`/signup`) - User registration with Supabase Auth
-- **Sign In** (`/signin`) - User login
-- **Terms** (`/terms`) - Terms of service
-- **Privacy** (`/privacy`) - Privacy policy
-- **Support** (`/support`) - Self-service tools + ticket form + tickets list
+- **Landing** (`/`) - Main landing page with hero, features, CTA ✅
+- **Sign Up** (`/signup`) - User registration ✅
+- **Sign In** (`/signin`) - User login ✅
+- **Terms** (`/terms`) - Terms of service ✅
+- **Privacy** (`/privacy`) - Privacy policy ✅
+- **Support** (`/support`) - Self-service tools + ticket form + tickets list ✅
+- **FAQ** (`/faq`) - Frequently asked questions ✅
+- **Academy** (`/academy`) - Learning center with courses ✅
+- **Partner** (`/partner`) - Partnership information and form ✅
+- **About** (`/about`) - Company information, team ✅
 
 ### Protected Pages (behind login)
-- **Dashboard** (`/dashboard`) - Main user dashboard with stats, container info, activity
-- **Account** (`/account`) - Profile settings, subscription, payment history
-- **Onboarding/Launchpad** (`/onboarding`) - New user setup flow (agent config)
+- **Dashboard** (`/dashboard`) - Main user dashboard with stats, container info, activity ✅ (REDESIGNED)
+- **Account** (`/account`) - Profile settings, subscription, payment history ✅
+- **Onboarding/Launchpad** (`/onboarding`) - New user setup flow (agent config) ✅
+- **Resources** (`/resources`) - User resources, guides, docs (protected) ✅
 
 ---
 
-## Missing Pages to Create
+## Navigation
 
-### 1. Resources Page (`/resources`)
-**Purpose:** Help users get the most out of Heyron
+### Header (authenticated)
+- Dashboard → Resources → Account → Sign Out
 
-**Content ideas:**
-- Getting started guide
-- API documentation links
-- Video tutorials
-- Best practices
-- FAQ
-- Troubleshooting guides
-
-### 2. Academy Page (`/academy`)
-**Purpose:** Learning center for users
-
-**Content ideas:**
-- Courses/tutorials
-- Advanced tips & tricks
-- Use case examples
-- Masterclasses
-- Certification (future)
-
-### 3. Partner with Us Page (`/partner`)
-**Purpose:** Attract business partners/resellers
-
-**Content ideas:**
-- Partnership benefits
-- How it works
-- Partner types (reseller, referral, technical)
-- Apply form
-- Contact info
-
-### 4. About Us Page (`/about`)
-**Purpose:** Company information
-
-**Content ideas:**
-- Our mission
-- Team/ founders story
-- Contact info
-- Social links
-- Press kit (future)
+### Footer
+- About · Partner · FAQ · Terms · Privacy · Support
 
 ---
 
-## Navigation Update
+## Deployment
 
-Need to add links to header or footer:
-- Resources (public or protected?)
-- Academy (protected)
-- Partner with Us (public)
-- About Us (public)
+### Vercel (Original)
+- Frontend: Vercel-hosted
+- Backend: Vercel serverless functions
+
+### Local/Docker (Mini PC)
+- **URL**: https://thesumblers.duckdns.org:9843/
+- **SSH**: jeff@86.4.252.119 -p 46664
+- **Stack**: Docker + nginx
+
+### Subpath Configuration
+For local deployment under `/heyron-docs/` subpath:
+- `vite.config.js`: `base: '/heyron-docs/'`
+- `App.jsx`: `BrowserRouter basename`
+- For Vercel: set `VITE_BASE_PATH=/` in environment variables
 
 ---
 
-## Future Enhancements
-- Partner portal (protected)
-- Billing portal (Stripe integration)
-- More self-service tools on Support page
-- Interactive tutorials on Academy
+## GitHub Repos
+- `heyron-docs` - Main application code
+- `jeff-command` - Landing page / dashboard
+
+---
+
+## Last Updated
+2026-04-28
