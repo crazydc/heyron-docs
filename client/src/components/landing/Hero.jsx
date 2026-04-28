@@ -11,7 +11,7 @@ export default function Hero() {
         </div>
         
         <img 
-          src="/logo.png" 
+          src={import.meta.env.BASE_URL + "/logo.png"} 
           alt="Heyron Mascot" 
           className="lp-hero-mascot" 
         />

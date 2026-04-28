@@ -23,7 +23,7 @@ export default function Header() {
     <header className="header">
       <div className="container header-content">
         <Link to="/" className="logo">
-          <img src="/logo.png" alt="Heyron" className="logo-img" />
+          <img src={import.meta.env.BASE_URL + "/logo.png"} alt="Heyron" className="logo-img" />
           <span className="logo-text">heyron.ai</span>
         </Link>
         
@@ -31,6 +31,7 @@ export default function Header() {
           {isAuthenticated ? (
             <>
               <Link to="/dashboard" className="header-link">Dashboard</Link>
+              <Link to="/resources" className="header-link">Resources</Link>
               <Link to="/account" className="header-link">Account</Link>
               <button onClick={handleLogout} className="header-btn-logout">Sign Out</button>
             </>

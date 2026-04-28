@@ -41,11 +41,7 @@ export default function About() {
                 <h3>Robby</h3>
                 <p>Founder & CEO</p>
               </div>
-              <div className="team-member">
-                <div className="team-avatar">👩‍💼</div>
-                <h3>Dale</h3>
-                <p>Co-founder</p>
-              </div>
+              
             </div>
           </section>
 

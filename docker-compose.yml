@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  heyron-client:
+    build: 
+      context: .
+      dockerfile: client/Dockerfile
+    ports:
+      - "3002:80"
+    networks:
+      - heyron-net
+    restart: unless-stopped
+
+  heyron-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "3003:3000"
+    networks:
+      - heyron-net
+    restart: unless-stopped
+
+networks:
+  heyron-net:
+    driver: bridge

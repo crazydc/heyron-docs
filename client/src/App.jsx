@@ -18,6 +18,7 @@ import Resources from './pages/Resources'
 import Academy from './pages/Academy'
 import Partner from './pages/Partner'
 import About from './pages/About'
+import FAQ from './pages/FAQ'
 import ProtectedRoute, { GuestRoute } from './components/ProtectedRoute'
 
 function App() {
@@ -86,7 +87,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.VITE_BASE_PATH || '/heyron-docs'}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<GuestRoute><SignUp /></GuestRoute>} />
@@ -97,7 +98,8 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/resources" element={<Resources />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/resources" element={<ProtectedRoute><Resources /></ProtectedRoute>} />
           <Route path="/academy" element={<Academy />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/about" element={<About />} />
