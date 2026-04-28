@@ -14,6 +14,8 @@ export default function Account() {
     discordId: ''
   })
   const [subscription, setSubscription] = useState(null)
+  const [payments, setPayments] = useState([])
+  const [showHistory, setShowHistory] = useState(false)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
@@ -25,10 +27,14 @@ export default function Account() {
         discordId: user.discordId || ''
       })
       
-      // Fetch subscription
       fetch(`/api/subscription?id=${user.id}`)
         .then(res => res.ok ? res.json() : null)
         .then(data => setSubscription(data))
+        .catch(() => {})
+      
+      fetch(`/api/payments?id=${user.id}`)
+        .then(res => res.ok ? res.json() : [])
+        .then(data => setPayments(data))
         .catch(() => {})
     }
   }, [user])
@@ -101,7 +107,33 @@ export default function Account() {
                   <span className="renewal-value">{new Date(expiresAt).toLocaleDateString()}</span>
                 </div>
               )}
+              <button className="history-btn" onClick={() => setShowHistory(!showHistory)}>
+                {showHistory ? 'Hide History' : 'View History'}
+              </button>
             </div>
+
+            {showHistory && (
+              <div className="payment-list">
+                <h3>Payment History</h3>
+                {payments.length === 0 ? (
+                  <p className="no-payments">No payment history</p>
+                ) : (
+                  payments.map(payment => (
+                    <div key={payment.id} className="payment-item">
+                      <span className="payment-date">
+                        {new Date(payment.paymentDate).toLocaleDateString()}
+                      </span>
+                      <span className="payment-amount">
+                        ${(payment.amount / 100).toFixed(2)} {payment.currency.toUpperCase()}
+                      </span>
+                      <span className={`payment-status ${payment.status}`}>
+                        {payment.status}
+                      </span>
+                    </div>
+                  ))
+                )}
+              </div>
+            )}
           </div>
 
           <form onSubmit={handleSubmit} className="account-form">
