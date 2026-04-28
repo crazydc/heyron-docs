@@ -35,7 +35,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
   gap: 16px;
 }
@@ -45,8 +45,9 @@
 }
 
 .section-row .input {
-  width: 200px;
+  width: 280px;
   text-align: right;
+  padding: 10px 12px;
 }
 
 .section-label {
