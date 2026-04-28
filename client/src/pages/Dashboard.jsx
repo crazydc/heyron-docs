@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import Layout from '../components/layout/Layout'
 import { Mascot, HeadMascot } from '../components/ui/Mascot'
+import Button from '../components/ui/Button'
 import './Dashboard.css'
 
 export default function Dashboard() {
@@ -29,10 +30,12 @@ export default function Dashboard() {
               <p>{agentName} is online and ready.</p>
             </div>
             <div className="dash-actions">
-              <button className="btn-text" onClick={handleFinishLaunchpad}>
+              <Button variant="ghost" size="sm" onClick={handleFinishLaunchpad}>
                 {onboardingComplete ? 'Launchpad' : 'Finish Launchpad'}
-              </button>
-              <button className="btn-text">Help</button>
+              </Button>
+              <Button variant="ghost" size="sm">
+                Help
+              </Button>
               <HeadMascot size={36} />
             </div>
           </div>
