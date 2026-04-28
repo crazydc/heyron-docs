@@ -11,6 +11,7 @@ export default function Account() {
   
   const [formData, setFormData] = useState({
     fullName: '',
+    email: '',
     discordId: ''
   })
   const [subscription, setSubscription] = useState(null)
@@ -22,6 +23,7 @@ export default function Account() {
     if (user) {
       setFormData({
         fullName: user.fullName || '',
+        email: user.email || '',
         discordId: user.discordId || ''
       })
       
@@ -94,7 +96,13 @@ export default function Account() {
               </div>
               <div className="section-row">
                 <span className="section-label">Email</span>
-                <span className="section-value-sm">{user?.email || ''}</span>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="your@email.com"
+                />
               </div>
               <div className="section-row">
                 <span className="section-label">Discord ID</span>
