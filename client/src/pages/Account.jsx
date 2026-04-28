@@ -73,81 +73,85 @@ export default function Account() {
     }
   }
 
-  const plan = subscription?.plan || 'free'
+  const plan = subscription?.plan || 'AI Agents Club'
+  const price = '$29/month'
   const status = subscription?.status || 'active'
   const expiresAt = subscription?.expiresAt
+  const memberSince = user?.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'Unknown'
 
   return (
     <Layout>
       <div className="account-page">
         <div className="account-container">
-          <div className="account-header">
-            <h1>Account Settings</h1>
-            <p>Manage your profile and subscription</p>
-          </div>
-
           {success && <Alert type="success" dismissible onDismiss={() => setSuccess('')}>{success}</Alert>}
           {error && <Alert type="error" dismissible onDismiss={() => setError('')}>{error}</Alert>}
 
-          {/* Subscription Section */}
-          <div className="subscription-section">
-            <h2>Subscription</h2>
-            <div className="subscription-card">
-              <div className="subscription-plan">
-                <span className="plan-label">Plan</span>
-                <span className="plan-value">{plan.charAt(0).toUpperCase() + plan.slice(1)}</span>
+          {/* Profile Section */}
+          <div className="account-section">
+            <h2 className="section-title">Profile</h2>
+            <div className="section-card">
+              <div className="section-row">
+                <span className="section-label">Name</span>
+                <span>{formData.fullName || 'Not set'}</span>
               </div>
-              <div className="subscription-status">
-                <span className="status-label">Status</span>
+              <div className="section-row">
+                <span className="section-label">Email</span>
+                <span className="section-value-sm">{user?.email || ''}</span>
+              </div>
+              <div className="section-row">
+                <span className="section-label">Member since</span>
+                <span>{memberSince}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Subscription Section */}
+          <div className="account-section">
+            <h2 className="section-title">Subscription</h2>
+            <div className="section-card">
+              <div className="section-row">
+                <span className="section-label">Plan</span>
+                <span>{plan}</span>
+              </div>
+              <div className="section-row">
+                <span className="section-label">Price</span>
+                <span>{price}</span>
+              </div>
+              <div className="section-row">
+                <span className="section-label">Status</span>
                 <span className={`status-badge ${status}`}>{status}</span>
               </div>
-              {expiresAt && (
-                <div className="subscription-renewal">
-                  <span className="renewal-label">Renews</span>
-                  <span className="renewal-value">{new Date(expiresAt).toLocaleDateString()}</span>
-                </div>
-              )}
-              <button className="history-btn" onClick={() => setShowHistory(!showHistory)}>
-                {showHistory ? 'Hide History' : 'View History'}
-              </button>
+              
+              <div className="manage-subscription">
+                <Button fullWidth>
+                  Manage or cancel subscription
+                </Button>
+                <p className="manage-hint">Opens the Stripe billing portal. You can update your card, view invoices, or cancel — if you cancel, you keep access until the end of your paid period.</p>
+              </div>
             </div>
 
-            {showHistory && (
+            {showHistory && payments.length > 0 && (
               <div className="payment-list">
                 <h3>Payment History</h3>
-                {payments.length === 0 ? (
-                  <p className="no-payments">No payment history</p>
-                ) : (
-                  payments.map(payment => (
-                    <div key={payment.id} className="payment-item">
-                      <span className="payment-date">
-                        {new Date(payment.paymentDate).toLocaleDateString()}
-                      </span>
-                      <span className="payment-amount">
-                        ${(payment.amount / 100).toFixed(2)} {payment.currency.toUpperCase()}
-                      </span>
-                      <span className={`payment-status ${payment.status}`}>
-                        {payment.status}
-                      </span>
-                    </div>
-                  ))
-                )}
+                {payments.map(payment => (
+                  <div key={payment.id} className="payment-item">
+                    <span className="payment-date">
+                      {new Date(payment.paymentDate).toLocaleDateString()}
+                    </span>
+                    <span className="payment-amount">
+                      ${(payment.amount / 100).toFixed(2)} {payment.currency.toUpperCase()}
+                    </span>
+                    <span className={`payment-status ${payment.status}`}>
+                      {payment.status}
+                    </span>
+                  </div>
+                ))}
               </div>
             )}
           </div>
 
+          {/* Edit Profile */}
           <form onSubmit={handleSubmit} className="account-form">
-            <div className="field">
-              <label>Email</label>
-              <Input
-                type="email"
-                value={user?.email || ''}
-                disabled
-                placeholder="your@email.com"
-              />
-              <span className="input-hint">Email cannot be changed</span>
-            </div>
-
             <div className="field">
               <label>Full Name</label>
               <Input
@@ -168,17 +172,12 @@ export default function Account() {
                 onChange={handleChange}
                 placeholder="123456789012345678"
               />
-              <span className="input-hint">Find your Discord ID in User Settings → Advanced</span>
             </div>
 
             <Button type="submit" fullWidth loading={loading}>
               Save Changes
             </Button>
           </form>
-
-          <div className="account-footer">
-            <p className="muted">Member since {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown'}</p>
-          </div>
         </div>
       </div>
     </Layout>
