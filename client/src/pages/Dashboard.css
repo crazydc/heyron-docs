@@ -156,6 +156,28 @@
   padding: 20px;
 }
 
+.activity-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-time {
+  font-size: 12px;
+  color: var(--text-muted);
+  min-width: 70px;
+}
+
+.activity-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
 /* Ron Intro */
 .ron-intro {
   position: fixed;
