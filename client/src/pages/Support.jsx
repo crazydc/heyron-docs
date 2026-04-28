@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import Layout from '../components/layout/Layout'
@@ -11,6 +11,7 @@ export default function Support() {
   const { isAuthenticated, user } = useAppSelector(state => state.auth)
   const [expanded, setExpanded] = useState(true)
   const [ticketSubmitted, setTicketSubmitted] = useState(false)
+  const [tickets, setTickets] = useState([])
   
   const [formData, setFormData] = useState({
     email: user?.email || '',
@@ -18,6 +19,15 @@ export default function Support() {
     agentName: '',
     description: ''
   })
+
+  useEffect(() => {
+    if (isAuthenticated && user?.id) {
+      fetch(`/api/tickets?id=${user.id}`)
+        .then(res => res.ok ? res.json() : [])
+        .then(data => setTickets(data))
+        .catch(() => {})
+    }
+  }, [isAuthenticated, user?.id])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -74,6 +84,27 @@ export default function Support() {
                   </a>
                 </p>
               </div>}
+            </div>
+          )}
+          
+          {/* My Tickets Section */}
+          {isAuthenticated && tickets.length > 0 && (
+            <div className="tickets-section">
+              <h2>My Tickets</h2>
+              <div className="tickets-list">
+                {tickets.map(ticket => (
+                  <div key={ticket.id} className={`ticket-item ${ticket.status}`}>
+                    <div className="ticket-info">
+                      <span className="ticket-id">{ticket.id}</span>
+                      <span className="ticket-subject">{ticket.subject}</span>
+                      <span className="ticket-category">{ticket.category}</span>
+                    </div>
+                    <span className={`ticket-status ${ticket.status}`}>
+                      {ticket.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           
