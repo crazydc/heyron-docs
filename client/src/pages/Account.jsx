@@ -14,8 +14,6 @@ export default function Account() {
     discordId: ''
   })
   const [subscription, setSubscription] = useState(null)
-  const [payments, setPayments] = useState([])
-  const [showHistory, setShowHistory] = useState(false)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
@@ -30,11 +28,6 @@ export default function Account() {
       fetch(`/api/subscription?id=${user.id}`)
         .then(res => res.ok ? res.json() : null)
         .then(data => setSubscription(data))
-        .catch(() => {})
-      
-      fetch(`/api/payments?id=${user.id}`)
-        .then(res => res.ok ? res.json() : [])
-        .then(data => setPayments(data))
         .catch(() => {})
     }
   }, [user])
@@ -76,8 +69,7 @@ export default function Account() {
   const plan = subscription?.plan || 'AI Agents Club'
   const price = '$29/month'
   const status = subscription?.status || 'active'
-  const expiresAt = subscription?.expiresAt
-  const memberSince = user?.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'Unknown'
+  const memberSince = 'January 2026'
 
   return (
     <Layout>
@@ -89,20 +81,40 @@ export default function Account() {
           {/* Profile Section */}
           <div className="account-section">
             <h2 className="section-title">Profile</h2>
-            <div className="section-card">
+            <form onSubmit={handleSubmit} className="section-card">
               <div className="section-row">
                 <span className="section-label">Name</span>
-                <span>{formData.fullName || 'Not set'}</span>
+                <Input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                />
               </div>
               <div className="section-row">
                 <span className="section-label">Email</span>
                 <span className="section-value-sm">{user?.email || ''}</span>
               </div>
               <div className="section-row">
+                <span className="section-label">Discord ID</span>
+                <Input
+                  type="text"
+                  name="discordId"
+                  value={formData.discordId}
+                  onChange={handleChange}
+                  placeholder="123456789012345678"
+                />
+              </div>
+              <div className="section-row">
                 <span className="section-label">Member since</span>
                 <span>{memberSince}</span>
               </div>
-            </div>
+              
+              <Button type="submit" fullWidth loading={loading} className="save-btn">
+                Save Changes
+              </Button>
+            </form>
           </div>
 
           {/* Subscription Section */}
@@ -129,55 +141,7 @@ export default function Account() {
                 <p className="manage-hint">Opens the Stripe billing portal. You can update your card, view invoices, or cancel — if you cancel, you keep access until the end of your paid period.</p>
               </div>
             </div>
-
-            {showHistory && payments.length > 0 && (
-              <div className="payment-list">
-                <h3>Payment History</h3>
-                {payments.map(payment => (
-                  <div key={payment.id} className="payment-item">
-                    <span className="payment-date">
-                      {new Date(payment.paymentDate).toLocaleDateString()}
-                    </span>
-                    <span className="payment-amount">
-                      ${(payment.amount / 100).toFixed(2)} {payment.currency.toUpperCase()}
-                    </span>
-                    <span className={`payment-status ${payment.status}`}>
-                      {payment.status}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
-
-          {/* Edit Profile */}
-          <form onSubmit={handleSubmit} className="account-form">
-            <div className="field">
-              <label>Full Name</label>
-              <Input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Your name"
-              />
-            </div>
-
-            <div className="field">
-              <label>Discord ID</label>
-              <Input
-                type="text"
-                name="discordId"
-                value={formData.discordId}
-                onChange={handleChange}
-                placeholder="123456789012345678"
-              />
-            </div>
-
-            <Button type="submit" fullWidth loading={loading}>
-              Save Changes
-            </Button>
-          </form>
         </div>
       </div>
     </Layout>

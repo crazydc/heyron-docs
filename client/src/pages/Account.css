@@ -37,10 +37,16 @@
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid var(--border);
+  gap: 16px;
 }
 
-.section-row:last-child {
+.section-row:last-of-type {
   border-bottom: none;
+}
+
+.section-row .input {
+  width: 200px;
+  text-align: right;
 }
 
 .section-label {
@@ -92,6 +98,11 @@
   text-align: center;
   margin-top: 12px;
   line-height: 1.5;
+}
+
+/* Save Button */
+.save-btn {
+  margin-top: 16px;
 }
 
 /* Payment List */
