@@ -14,6 +14,10 @@ import Account from './pages/Account'
 import Support from './pages/Support'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
+import Resources from './pages/Resources'
+import Academy from './pages/Academy'
+import Partner from './pages/Partner'
+import About from './pages/About'
 import ProtectedRoute, { GuestRoute } from './components/ProtectedRoute'
 
 function App() {
@@ -93,6 +97,10 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/academy" element={<Academy />} />
+          <Route path="/partner" element={<Partner />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </Provider>

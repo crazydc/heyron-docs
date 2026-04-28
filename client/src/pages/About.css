@@ -1,0 +1,95 @@
+.about-page {
+  min-height: calc(100vh - var(--header-height) - 200px);
+  padding: var(--space-xl) 0;
+}
+
+.about-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.about-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.about-intro {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.about-section p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}
+
+.team-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.team-member {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.team-avatar {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.team-member h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.team-member p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-item:hover {
+  color: var(--accent);
+}

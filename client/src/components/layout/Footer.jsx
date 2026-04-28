@@ -6,6 +6,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-content">
         <div className="footer-links">
+          <Link to="/about">About</Link>
+          <Link to="/partner">Partner</Link>
+          <Link to="/resources">Resources</Link>
           <Link to="/terms">Terms</Link>
           <Link to="/privacy">Privacy</Link>
           <Link to="/support">Support</Link>
