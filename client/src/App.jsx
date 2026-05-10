@@ -13,6 +13,7 @@ import Launchpad from './pages/Launchpad'
 import LaunchpadConfig from './pages/LaunchpadConfig'
 import MissionControl from './pages/MissionControl'
 import SupportNew from './pages/SupportNew'
+import Storybook from './pages/Storybook'
 import Onboarding from './pages/Onboarding'
 import Account from './pages/Account'
 import Support from './pages/Support'
@@ -101,6 +102,7 @@ function App() {
           <Route path="/launchpad-config" element={<ProtectedRoute><LaunchpadConfig /></ProtectedRoute>} />
           <Route path="/mission-control" element={<ProtectedRoute><MissionControl /></ProtectedRoute>} />
           <Route path="/support-new" element={<ProtectedRoute><SupportNew /></ProtectedRoute>} />
+          <Route path="/storybook" element={<ProtectedRoute><Storybook /></ProtectedRoute>} />
           <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
           <Route path="/support" element={<Support />} />

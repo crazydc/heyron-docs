@@ -1,0 +1,195 @@
+.container {
+  min-height: 100vh;
+  padding: 24px;
+  background: #07090C;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  border-bottom: 1px solid #1C222B;
+  padding-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #8b949e;
+  margin: 8px 0 0;
+}
+
+.controls {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  background: #0F141C;
+  border: 1px solid #1C222B;
+  border-radius: 14px;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.controlLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e6edf3;
+  cursor: pointer;
+}
+
+.controlLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #22D3EE;
+}
+
+.componentList {
+  padding: 16px;
+  background: #0F141C;
+  border: 1px solid #1C222B;
+  border-radius: 14px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e6edf3;
+  margin: 0 0 16px;
+}
+
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #161B23;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.checkboxItem:hover {
+  background: #1C222B;
+}
+
+.checkboxItem input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #22D3EE;
+  flex-shrink: 0;
+}
+
+.checkboxLabel {
+  font-size: 13px;
+  color: #e6edf3;
+  flex: 1;
+}
+
+.checkboxCategory {
+  font-size: 11px;
+  color: #8b949e;
+  padding: 2px 6px;
+  background: #0F141C;
+  border-radius: 4px;
+}
+
+.showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 48px;
+}
+
+.componentSection {
+  padding: 24px;
+  background: #0F141C;
+  border: 1px solid #1C222B;
+  border-radius: 14px;
+}
+
+.componentTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e6edf3;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1C222B;
+}
+
+.componentVariants {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.variantGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.variantLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.variantRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.variantColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .variantRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
