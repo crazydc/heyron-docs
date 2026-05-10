@@ -21,10 +21,10 @@ export default function MissionControl() {
   ]
 
   const quickActions = [
-    { icon: '📧', title: 'Check Emails', description: 'Review inbox for important messages', href: '/support' },
-    { icon: '📅', title: 'Calendar', description: 'View upcoming events', href: '/support' },
-    { icon: '⚙️', title: 'Settings', description: 'Configure your agent', href: '/account' },
-    { icon: '📊', title: 'Reports', description: 'View activity reports', href: '/resources' }
+    { icon: <img src="/assets/rocket.svg" alt="" />, title: 'Check Emails', description: 'Review inbox for important messages', href: '/support' },
+    { icon: <img src="/assets/compass.svg" alt="" />, title: 'Calendar', description: 'View upcoming events', href: '/support' },
+    { icon: <img src="/assets/headset.svg" alt="" />, title: 'Settings', description: 'Configure your agent', href: '/account' },
+    { icon: <img src="/assets/monitor.svg" alt="" />, title: 'Reports', description: 'View activity reports', href: '/resources' }
   ]
 
   const recentActivity = [
@@ -91,10 +91,10 @@ export default function MissionControl() {
       </div>
 
       <FooterNav items={[
-        { icon: '🏠', label: 'Home', href: '/mission-control' },
-        { icon: '📊', label: 'Stats', href: '/mission-control' },
-        { icon: '⚙️', label: 'Settings', href: '/account' },
-        { icon: '💬', label: 'Help', href: '/support' }
+        { icon: <img src="/assets/people.svg" alt="" />, label: 'Home', href: '/mission-control' },
+        { icon: <img src="/assets/monitor.svg" alt="" />, label: 'Stats', href: '/mission-control' },
+        { icon: <img src="/assets/headset.svg" alt="" />, label: 'Settings', href: '/account' },
+        { icon: <img src="/assets/ticket.svg" alt="" />, label: 'Help', href: '/support' }
       ]} />
     </div>
   )

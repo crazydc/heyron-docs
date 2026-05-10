@@ -17,6 +17,16 @@
     radial-gradient(ellipse at 80% 20%, rgba(84, 110, 143, 0.1) 0%, transparent 50%);
 }
 
+.space-scene__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+}
+
 .space-scene__stars {
   position: absolute;
   inset: 0;
@@ -38,6 +48,12 @@
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.space-scene__ship-img {
+  width: 160px;
+  height: auto;
+  display: block;
 }
 
 .space-scene__ship--floating {
@@ -64,6 +80,12 @@
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+.space-scene__raccoon-img {
+  width: 120px;
+  height: auto;
+  display: block;
 }
 
 .space-scene__raccoon--floating {
