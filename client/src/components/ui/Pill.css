@@ -1,35 +1,36 @@
 .pill {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-1) var(--space-3);
+  padding: 4px 12px;
   font-size: 12px;
   font-weight: 500;
-  border-radius: var(--r-xl);
-  background: var(--bg-panel-2);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-muted);
+  border-radius: 20px;
+  background: #161B23;
+  color: #8B9CB5;
+  border: 1px solid #1C222B;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .pill--accent {
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-color: var(--accent-edge);
+  background: rgba(34, 211, 238, 0.12);
+  color: #22D3EE;
+  border-color: rgba(34, 211, 238, 0.50);
 }
 
 .pill--success {
   background: rgba(52, 211, 153, 0.15);
-  color: var(--success);
+  color: #34D399;
   border-color: rgba(52, 211, 153, 0.3);
 }
 
 .pill--warning {
   background: rgba(245, 158, 11, 0.15);
-  color: var(--warning);
+  color: #F59E0B;
   border-color: rgba(245, 158, 11, 0.3);
 }
 
 .pill--error {
   background: rgba(220, 38, 38, 0.15);
-  color: var(--error);
+  color: #DC2626;
   border-color: rgba(220, 38, 38, 0.3);
 }

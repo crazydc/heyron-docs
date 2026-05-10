@@ -3,33 +3,35 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-6);
-  background: var(--bg-panel);
-  border: 1px solid var(--border-muted);
-  border-radius: var(--r-lg);
-  transition: all var(--transition-fast);
+  padding: 24px;
+  background: #0F141C;
+  border: 1px solid #1C222B;
+  border-radius: 14px;
+  transition: all 150ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .icon-card:hover {
-  border-color: var(--accent-edge);
+  border-color: rgba(34, 211, 238, 0.50);
 }
 
 .icon-card__icon {
   font-size: 40px;
-  margin-bottom: var(--space-4);
+  margin-bottom: 16px;
 }
 
 .icon-card__title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 var(--space-2);
+  color: #e6edf3;
+  margin: 0 0 8px;
 }
 
 .icon-card__description {
   font-size: 14px;
-  color: var(--text-muted);
-  margin: 0 0 var(--space-4);
+  color: #8b949e;
+  margin: 0 0 16px;
   line-height: 1.5;
 }
 

@@ -2,14 +2,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  font-family: inherit;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
   border: none;
-  border-radius: var(--r-md);
+  border-radius: 10px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 150ms ease;
   white-space: nowrap;
+  background: #0F141C;
+  color: #e6edf3;
 }
 
 .btn:disabled {
@@ -19,7 +21,7 @@
 
 /* Variants */
 .btn--primary {
-  background: var(--accent);
+  background: #22D3EE;
   color: #0F141C;
 }
 
@@ -30,51 +32,51 @@
 
 .btn--ghost {
   background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-strong);
+  color: #e6edf3;
+  border: 1px solid #2D333B;
 }
 
 .btn--ghost:hover:not(:disabled) {
-  background: var(--accent-soft);
-  border-color: var(--accent);
+  background: rgba(34, 211, 238, 0.12);
+  border-color: #22D3EE;
 }
 
 .btn--link {
   background: transparent;
-  color: var(--accent);
+  color: #22D3EE;
   border: none;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--r-xl);
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
 .btn--link:hover:not(:disabled) {
-  background: var(--accent-soft);
+  background: rgba(34, 211, 238, 0.12);
 }
 
 .btn--icon {
-  background: var(--bg-panel-2);
-  color: var(--text-primary);
-  border: 1px solid var(--border-muted);
-  padding: var(--space-2);
+  background: #161B23;
+  color: #e6edf3;
+  border: 1px solid #1C222B;
+  padding: 8px;
 }
 
 .btn--icon:hover:not(:disabled) {
-  background: var(--bg-panel);
-  border-color: var(--accent);
+  background: #0F141C;
+  border-color: #22D3EE;
 }
 
 /* Sizes */
 .btn--sm {
   font-size: 13px;
-  padding: var(--space-2) var(--space-3);
+  padding: 8px 12px;
 }
 
 .btn--md {
   font-size: 14px;
-  padding: var(--space-3) var(--space-5);
+  padding: 12px 20px;
 }
 
 .btn--lg {
   font-size: 16px;
-  padding: var(--space-4) var(--space-6);
+  padding: 16px 24px;
 }

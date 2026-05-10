@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: 16px;
   cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .toggle--disabled {
@@ -20,34 +21,34 @@
 .toggle__label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-primary);
+  color: #e6edf3;
 }
 
 .toggle__description {
   font-size: 12px;
-  color: var(--text-muted);
+  color: #8b949e;
 }
 
 .toggle__switch {
   position: relative;
   width: 48px;
   height: 26px;
-  background: var(--bg-panel-2);
-  border: 1px solid var(--border-muted);
+  background: #161B23;
+  border: 1px solid #1C222B;
   border-radius: 13px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 150ms ease;
   padding: 0;
 }
 
 .toggle__switch:focus {
   outline: none;
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
 }
 
 .toggle__switch--on {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #22D3EE;
+  border-color: #22D3EE;
 }
 
 .toggle__knob {
@@ -58,7 +59,7 @@
   height: 20px;
   background: white;
   border-radius: 50%;
-  transition: transform var(--transition-fast);
+  transition: transform 150ms ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 

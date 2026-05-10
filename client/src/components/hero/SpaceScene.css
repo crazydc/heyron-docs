@@ -5,6 +5,8 @@
   min-height: 400px;
   overflow: hidden;
   background: linear-gradient(180deg, #07090C 0%, #0F141C 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .space-scene__bg {

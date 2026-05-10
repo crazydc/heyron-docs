@@ -5,7 +5,7 @@ import RonPanel from '../components/ui/RonPanel'
 import DumpsterModal from '../components/ui/DumpsterModal'
 import Button from '../components/ui/Button'
 import Panel from '../components/ui/Panel'
-import './SupportNew.css'
+import styles from './SupportNew.module.css'
 
 const WORKFLOW_STEPS = [
   { icon: '📝', label: 'Submit Request' },
@@ -18,7 +18,7 @@ const SUPPORT_OPTIONS = [
   {
     icon: '🐛',
     title: 'Report a Bug',
-    description: 'Found something broken? Let us know and we\'ll fix it.',
+    description: "Found something broken? Let us know and we'll fix it.",
     buttonText: 'Report Bug',
     buttonHref: '/support'
   },
@@ -61,46 +61,42 @@ export default function SupportNew() {
   }
 
   return (
-    <div className="support-new">
-      <div className="support-new__container">
-        {/* Header */}
-        <header className="support-new__header">
-          <h1 className="support-new__title">Support Center</h1>
-          <p className="support-new__subtitle">How can we help you today?</p>
+    <div className={styles.container}>
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Support Center</h1>
+          <p className={styles.subtitle}>How can we help you today?</p>
         </header>
 
-        {/* Workflow Bar */}
-        <section className="support-new__workflow">
+        <section className={styles.workflow}>
           <WorkflowBar steps={WORKFLOW_STEPS} />
         </section>
 
-        {/* Support Options */}
-        <section className="support-new__options">
-          <h2 className="section-title">Common Tasks</h2>
-          <div className="support-options-grid">
+        <section className={styles.options}>
+          <h2 className={styles.sectionTitle}>Common Tasks</h2>
+          <div className={styles.optionsGrid}>
             {SUPPORT_OPTIONS.map((option, i) => (
               <IconCard key={i} {...option} />
             ))}
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="support-new__faq">
-          <h2 className="section-title">Frequently Asked Questions</h2>
+        <section className={styles.faq}>
+          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
           <Panel>
-            <div className="faq-list">
+            <div className={styles.faqList}>
               {FAQ_ITEMS.map((item, i) => (
-                <div key={i} className="faq-item">
+                <div key={i} className={styles.faqItem}>
                   <button 
-                    className="faq-item__question"
+                    className={styles.faqQuestion}
                     onClick={() => toggleFaq(i)}
                     aria-expanded={expandedFaq === i}
                   >
                     <span>{item.question}</span>
-                    <span className="faq-item__icon">{expandedFaq === i ? '−' : '+'}</span>
+                    <span className={styles.faqIcon}>{expandedFaq === i ? '−' : '+'}</span>
                   </button>
                   {expandedFaq === i && (
-                    <p className="faq-item__answer">{item.answer}</p>
+                    <p className={styles.faqAnswer}>{item.answer}</p>
                   )}
                 </div>
               ))}
@@ -108,8 +104,7 @@ export default function SupportNew() {
           </Panel>
         </section>
 
-        {/* Ron Panel */}
-        <section className="support-new__ron">
+        <section className={styles.ron}>
           <RonPanel 
             message="Need personalized help? I can guide you through common issues."
             showDumpster={true}
@@ -117,24 +112,22 @@ export default function SupportNew() {
           />
         </section>
 
-        {/* Contact Form */}
-        <section className="support-new__contact">
+        <section className={styles.contact}>
           <Panel variant="elevated">
-            <h2 className="section-title">Still need help?</h2>
-            <p className="contact-description">Submit a ticket and we'll get back to you within 24 hours.</p>
-            <div className="contact-form">
-              <div className="form-row">
-                <input type="email" placeholder="Your email" className="form-input" />
-                <input type="text" placeholder="Subject" className="form-input" />
+            <h2 className={styles.sectionTitle}>Still need help?</h2>
+            <p className={styles.contactDesc}>Submit a ticket and we'll get back to you within 24 hours.</p>
+            <div className={styles.contactForm}>
+              <div className={styles.formRow}>
+                <input type="email" placeholder="Your email" className={styles.formInput} />
+                <input type="text" placeholder="Subject" className={styles.formInput} />
               </div>
-              <textarea placeholder="Describe your issue..." className="form-textarea" rows={4} />
+              <textarea placeholder="Describe your issue..." className={styles.formTextarea} rows={4} />
               <Button variant="primary">Submit Ticket</Button>
             </div>
           </Panel>
         </section>
       </div>
 
-      {/* Dumpster Modal */}
       <DumpsterModal 
         isOpen={showDumpsterModal}
         onClose={() => setShowDumpsterModal(false)}

@@ -4,68 +4,70 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
+  padding: 24px;
+  background: #07090C;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.launchpad__content {
+.content {
   position: relative;
   z-index: 1;
   max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: 24px;
 }
 
-.launchpad__header {
+.header {
   text-align: center;
 }
 
-.launchpad__title {
+.title {
   font-size: 36px;
   font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 var(--space-2);
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  color: #e6edf3;
+  margin: 0 0 8px;
+  background: linear-gradient(135deg, #e6edf3 0%, #22D3EE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.launchpad__subtitle {
+.subtitle {
   font-size: 18px;
-  color: var(--text-muted);
+  color: #8b949e;
   margin: 0;
 }
 
-.launchpad__panel {
-  background: rgba(15, 20, 28, 0.9);
+.panel {
+  background: rgba(15, 20, 28, 0.9) !important;
   backdrop-filter: blur(10px);
 }
 
-.launchpad__options {
+.options {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.launchpad__actions {
+.actions {
   display: flex;
   justify-content: center;
 }
 
-.launchpad__footer {
+.footer {
   display: flex;
   justify-content: center;
 }
 
 @media (max-width: 640px) {
-  .launchpad__title {
+  .title {
     font-size: 28px;
   }
 
-  .launchpad__subtitle {
+  .subtitle {
     font-size: 16px;
   }
 }

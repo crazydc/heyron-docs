@@ -8,7 +8,7 @@ import RonPanel from '../components/ui/RonPanel'
 import FooterNav from '../components/layout/FooterNav'
 import Panel from '../components/ui/Panel'
 import Button from '../components/ui/Button'
-import './MissionControl.css'
+import styles from './MissionControl.module.css'
 
 export default function MissionControl() {
   const [showDumpsterModal, setShowDumpsterModal] = useState(false)
@@ -35,58 +35,52 @@ export default function MissionControl() {
   ]
 
   return (
-    <div className="mission-control">
+    <div className={styles.container}>
       <NeuronField dotCount={50} animationSpeed={1.2} />
       <SpaceScene shipPosition={{ x: 85, y: 25 }} raccoonPosition={{ x: 15, y: 65 }} />
 
-      <div className="mission-control__content">
-        {/* Header */}
-        <header className="mission-control__header">
+      <div className={styles.content}>
+        <header className={styles.header}>
           <div>
-            <h1 className="mission-control__title">Mission Control</h1>
-            <p className="mission-control__subtitle">Your agent is running smoothly</p>
+            <h1 className={styles.title}>Mission Control</h1>
+            <p className={styles.subtitle}>Your agent is running smoothly</p>
           </div>
-          <div className="mission-control__status">
-            <span className="status-indicator status-indicator--online" />
+          <div className={styles.status}>
+            <span className={styles.statusDot} />
             <span>All systems operational</span>
           </div>
         </header>
 
-        {/* Stats */}
-        <section className="mission-control__stats">
+        <section className={styles.stats}>
           {stats.map((stat, i) => (
             <StatCard key={i} {...stat} />
           ))}
         </section>
 
-        {/* Quick Actions */}
-        <section className="mission-control__actions">
-          <h2 className="section-title">Quick Actions</h2>
-          <div className="quick-actions-grid">
+        <section className={styles.actions}>
+          <h2 className={styles.sectionTitle}>Quick Actions</h2>
+          <div className={styles.quickGrid}>
             {quickActions.map((action, i) => (
               <QuickCard key={i} {...action} />
             ))}
           </div>
         </section>
 
-        {/* Activity & Ron Panel */}
-        <div className="mission-control__bottom">
-          {/* Recent Activity */}
-          <Panel className="activity-panel">
-            <h3 className="activity-panel__title">Recent Activity</h3>
-            <div className="activity-list">
+        <div className={styles.bottom}>
+          <Panel className={styles.activityPanel}>
+            <h3 className={styles.activityTitle}>Recent Activity</h3>
+            <div className={styles.activityList}>
               {recentActivity.map((item, i) => (
-                <div key={i} className="activity-item">
-                  <span className="activity-item__time">{item.time}</span>
-                  <span className="activity-item__action">{item.action}</span>
-                  <span className="activity-item__detail">{item.detail}</span>
+                <div key={i} className={styles.activityItem}>
+                  <span className={styles.activityTime}>{item.time}</span>
+                  <span className={styles.activityAction}>{item.action}</span>
+                  <span className={styles.activityDetail}>{item.detail}</span>
                 </div>
               ))}
             </div>
           </Panel>
 
-          {/* Ron Panel */}
-          <div className="ron-section">
+          <div className={styles.ronSection}>
             <RonPanel 
               message="Everything looks good! Your agent has processed 47 tasks today."
               showDumpster={true}
@@ -96,7 +90,6 @@ export default function MissionControl() {
         </div>
       </div>
 
-      {/* Footer Nav for Mobile */}
       <FooterNav items={[
         { icon: '🏠', label: 'Home', href: '/mission-control' },
         { icon: '📊', label: 'Stats', href: '/mission-control' },

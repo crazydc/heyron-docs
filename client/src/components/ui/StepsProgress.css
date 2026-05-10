@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   gap: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .steps-progress__step {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 8px;
   position: relative;
 }
 
@@ -21,24 +23,24 @@
   font-size: 12px;
   font-weight: 600;
   flex-shrink: 0;
-  transition: all var(--transition-fast);
+  transition: all 150ms ease;
 }
 
 .steps-progress__step--done .steps-progress__indicator {
-  background: var(--success);
+  background: #34D399;
   color: #0F141C;
 }
 
 .steps-progress__step--current .steps-progress__indicator {
-  background: var(--accent);
+  background: #22D3EE;
   color: #0F141C;
-  box-shadow: 0 0 0 4px var(--accent-soft);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.12);
 }
 
 .steps-progress__step--pending .steps-progress__indicator {
-  background: var(--bg-panel-2);
-  color: var(--text-muted);
-  border: 1px solid var(--border-muted);
+  background: #161B23;
+  color: #8b949e;
+  border: 1px solid #1C222B;
 }
 
 .steps-progress__check {
@@ -46,37 +48,37 @@
 }
 
 .steps-progress__number {
-  font-family: var(--font-mono);
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
 }
 
 .steps-progress__label {
   font-size: 13px;
-  color: var(--text-muted);
+  color: #8b949e;
   white-space: nowrap;
 }
 
 .steps-progress__step--done .steps-progress__label,
 .steps-progress__step--current .steps-progress__label {
-  color: var(--text-primary);
+  color: #e6edf3;
 }
 
 .steps-progress__connector {
   flex: 1;
   min-width: 40px;
   height: 2px;
-  background: var(--border-muted);
-  margin: 0 var(--space-3);
+  background: #1C222B;
+  margin: 0 12px;
 }
 
 .steps-progress__connector--done {
-  background: var(--success);
+  background: #34D399;
 }
 
 @media (max-width: 768px) {
   .steps-progress {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: 12px;
   }
 
   .steps-progress__connector {

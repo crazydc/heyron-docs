@@ -1,0 +1,167 @@
+.container {
+  min-height: 100vh;
+  padding: 24px;
+  background: #07090C;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #8b949e;
+  margin: 8px 0 0;
+}
+
+.workflow {
+  display: flex;
+  justify-content: center;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e6edf3;
+  margin: 0 0 16px;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.faq {
+  margin-top: 16px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid #1C222B;
+}
+
+.faqItem:last-child {
+  border-bottom: none;
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e6edf3;
+  text-align: left;
+  font-family: inherit;
+}
+
+.faqQuestion:hover {
+  color: #22D3EE;
+}
+
+.faqIcon {
+  font-size: 20px;
+  color: #22D3EE;
+}
+
+.faqAnswer {
+  font-size: 14px;
+  color: #8b949e;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.ron {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.contactDesc {
+  font-size: 14px;
+  color: #8b949e;
+  margin: 0 0 20px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #161B23;
+  border: 1px solid #1C222B;
+  border-radius: 10px;
+  color: #e6edf3;
+  transition: border-color 150ms ease;
+  box-sizing: border-box;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: #8b949e;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #22D3EE;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+@media (max-width: 768px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

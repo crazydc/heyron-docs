@@ -6,7 +6,7 @@ import Input, { Textarea, Select } from '../components/ui/Input'
 import Toggle from '../components/ui/Toggle'
 import Button from '../components/ui/Button'
 import Panel from '../components/ui/Panel'
-import './LaunchpadConfig.css'
+import styles from './LaunchpadConfig.module.css'
 
 const STEPS = ['Personality', 'Capabilities', 'Integrations', 'Review']
 
@@ -44,9 +44,9 @@ export default function LaunchpadConfig() {
     switch (currentStep) {
       case 0:
         return (
-          <div className="config-step">
-            <h2 className="config-step__title">Choose your agent's personality</h2>
-            <div className="config-step__options">
+          <div className={styles.step}>
+            <h2 className={styles.stepTitle}>Choose your agent's personality</h2>
+            <div className={styles.stepOptions}>
               <OptionCard
                 title="Friendly Assistant"
                 description="Warm, approachable, and always ready to help"
@@ -71,25 +71,25 @@ export default function LaunchpadConfig() {
       
       case 1:
         return (
-          <div className="config-step">
-            <h2 className="config-step__title">Configure capabilities</h2>
-            <div className="config-step__toggles">
+          <div className={styles.step}>
+            <h2 className={styles.stepTitle}>Configure capabilities</h2>
+            <div className={styles.stepToggles}>
               <Toggle
                 label="Email Integration"
                 description="Connect to your email inbox"
-                checked={config.capabilities?.email}
+                checked={config.capabilities?.email || false}
                 onChange={(v) => setConfig({ ...config, capabilities: { ...config.capabilities, email: v } })}
               />
               <Toggle
                 label="Calendar Sync"
                 description="Manage your calendar events"
-                checked={config.capabilities?.calendar}
+                checked={config.capabilities?.calendar || false}
                 onChange={(v) => setConfig({ ...config, capabilities: { ...config.capabilities, calendar: v } })}
               />
               <Toggle
                 label="Slack Integration"
                 description="Connect to Slack workspace"
-                checked={config.capabilities?.slack}
+                checked={config.capabilities?.slack || false}
                 onChange={(v) => setConfig({ ...config, capabilities: { ...config.capabilities, slack: v } })}
               />
             </div>
@@ -98,9 +98,9 @@ export default function LaunchpadConfig() {
       
       case 2:
         return (
-          <div className="config-step">
-            <h2 className="config-step__title">Add integrations</h2>
-            <div className="config-step__input">
+          <div className={styles.step}>
+            <h2 className={styles.stepTitle}>Add integrations</h2>
+            <div className={styles.stepInput}>
               <Input
                 label="API Key (optional)"
                 placeholder="Enter your API key"
@@ -114,16 +114,16 @@ export default function LaunchpadConfig() {
       
       case 3:
         return (
-          <div className="config-step">
-            <h2 className="config-step__title">Review your setup</h2>
-            <div className="config-step__summary">
-              <div className="summary-item">
-                <span className="summary-item__label">Personality</span>
-                <span className="summary-item__value">{config.personality}</span>
+          <div className={styles.step}>
+            <h2 className={styles.stepTitle}>Review your setup</h2>
+            <div className={styles.summary}>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryLabel}>Personality</span>
+                <span className={styles.summaryValue}>{config.personality}</span>
               </div>
-              <div className="summary-item">
-                <span className="summary-item__label">Notifications</span>
-                <span className="summary-item__value">{config.notifications ? 'Enabled' : 'Disabled'}</span>
+              <div className={styles.summaryItem}>
+                <span className={styles.summaryLabel}>Notifications</span>
+                <span className={styles.summaryValue}>{config.notifications ? 'Enabled' : 'Disabled'}</span>
               </div>
             </div>
           </div>
@@ -135,19 +135,19 @@ export default function LaunchpadConfig() {
   }
 
   return (
-    <div className="launchpad-config">
-      <div className="launchpad-config__container">
+    <div className={styles.container}>
+      <div className={styles.inner}>
         <StepsProgress 
           steps={STEPS} 
           currentStep={currentStep}
           doneSteps={doneSteps}
         />
 
-        <Panel className="launchpad-config__panel">
+        <Panel className={styles.panel}>
           {renderStep()}
         </Panel>
 
-        <div className="launchpad-config__actions">
+        <div className={styles.actions}>
           <Button variant="ghost" onClick={handleBack}>
             Back
           </Button>

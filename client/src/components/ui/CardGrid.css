@@ -1,14 +1,15 @@
 .card-grid {
   display: grid;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
 .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
 .card-grid--4 { grid-template-columns: repeat(4, 1fr); }
 
-.card-grid--gap-sm { gap: var(--space-4); }
-.card-grid--gap-md { gap: var(--space-6); }
-.card-grid--gap-lg { gap: var(--space-8); }
+.card-grid--gap-sm { gap: 16px; }
+.card-grid--gap-md { gap: 24px; }
+.card-grid--gap-lg { gap: 32px; }
 
 @media (max-width: 1024px) {
   .card-grid--4 { grid-template-columns: repeat(2, 1fr); }

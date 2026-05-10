@@ -3,10 +3,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--bg-panel);
-  border-top: 1px solid var(--border-muted);
-  padding: var(--space-2) var(--space-4);
+  background: #0F141C;
+  border-top: 1px solid #1C222B;
+  padding: 8px 16px;
   z-index: 100;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .footer-nav__items {
@@ -22,17 +24,17 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: var(--space-2) var(--space-3);
+  padding: 8px 12px;
   text-decoration: none;
-  color: var(--text-muted);
-  transition: color var(--transition-fast);
-  border-radius: var(--r-md);
+  color: #8b949e;
+  transition: color 150ms ease;
+  border-radius: 10px;
   min-width: 60px;
 }
 
 .footer-nav__item:hover,
 .footer-nav__item.active {
-  color: var(--accent);
+  color: #22D3EE;
 }
 
 .footer-nav__icon {

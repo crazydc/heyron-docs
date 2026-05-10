@@ -6,14 +6,16 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: var(--space-4);
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .dumpster-modal {
-  background: var(--bg-panel);
-  border: 1px solid var(--border-muted);
-  border-radius: var(--r-xl);
-  padding: var(--space-6);
+  background: #0F141C;
+  border: 1px solid #1C222B;
+  border-radius: 20px;
+  padding: 24px;
   max-width: 400px;
   width: 100%;
 }
@@ -21,8 +23,8 @@
 .dumpster-modal__header {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .dumpster-modal__icon {
@@ -32,19 +34,19 @@
 .dumpster-modal__title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #e6edf3;
   margin: 0;
 }
 
 .dumpster-modal__description {
   font-size: 14px;
-  color: var(--text-muted);
-  margin: 0 0 var(--space-5);
+  color: #8b949e;
+  margin: 0 0 20px;
 }
 
 .dumpster-modal__actions {
   display: flex;
   justify-content: flex-end;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
+  gap: 12px;
+  margin-top: 20px;
 }

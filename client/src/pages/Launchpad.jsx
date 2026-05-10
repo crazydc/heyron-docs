@@ -5,7 +5,7 @@ import Panel from '../components/ui/Panel'
 import OptionCard from '../components/ui/OptionCard'
 import Pill from '../components/ui/Pill'
 import Button from '../components/ui/Button'
-import './Launchpad.css'
+import styles from './Launchpad.module.css'
 
 export default function Launchpad() {
   const navigate = useNavigate()
@@ -20,17 +20,17 @@ export default function Launchpad() {
   }
 
   return (
-    <div className="launchpad">
+    <div className={styles.launchpad}>
       <SpaceScene />
       
-      <div className="launchpad__content">
-        <div className="launchpad__header">
-          <h1 className="launchpad__title">Welcome to Heyron</h1>
-          <p className="launchpad__subtitle">Choose your journey</p>
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Welcome to Heyron</h1>
+          <p className={styles.subtitle}>Choose your journey</p>
         </div>
 
-        <Panel variant="elevated" className="launchpad__panel">
-          <div className="launchpad__options">
+        <Panel variant="elevated" className={styles.panel}>
+          <div className={styles.options}>
             <OptionCard
               title="Beginner Path"
               description="Step-by-step setup with guided instructions. Perfect for getting started with your AI agent."
@@ -47,7 +47,7 @@ export default function Launchpad() {
             />
           </div>
 
-          <div className="launchpad__actions">
+          <div className={styles.actions}>
             <Button 
               variant="primary" 
               size="lg"
@@ -59,7 +59,7 @@ export default function Launchpad() {
           </div>
         </Panel>
 
-        <div className="launchpad__footer">
+        <div className={styles.footer}>
           <Pill label="🚀 Powered by AI" variant="accent" />
         </div>
       </div>

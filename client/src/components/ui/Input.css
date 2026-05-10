@@ -1,13 +1,14 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .input-group__label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #8B9CB5;
 }
 
 .input-group__wrapper {
@@ -18,24 +19,25 @@
 
 .input-group__input {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding: 12px 16px;
   font-size: 14px;
   font-family: inherit;
-  background: var(--bg-panel-2);
-  border: 1px solid var(--border-muted);
-  border-radius: var(--r-md);
-  color: var(--text-primary);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: #161B23;
+  border: 1px solid #1C222B;
+  border-radius: 10px;
+  color: #e6edf3;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  box-sizing: border-box;
 }
 
 .input-group__input::placeholder {
-  color: var(--text-muted);
+  color: #8b949e;
 }
 
 .input-group__input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  border-color: #22D3EE;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
 }
 
 .input-group__input:disabled {
@@ -44,7 +46,7 @@
 }
 
 .input-group--error .input-group__input {
-  border-color: var(--error);
+  border-color: #DC2626;
 }
 
 .input-group--error .input-group__input:focus {
@@ -53,25 +55,26 @@
 
 .input-group__toggle {
   position: absolute;
-  right: var(--space-3);
+  right: 12px;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-muted);
-  padding: var(--space-1);
+  color: #8b949e;
+  padding: 4px;
+  font-size: 16px;
 }
 
 .input-group__toggle:hover {
-  color: var(--text-primary);
+  color: #e6edf3;
 }
 
 .input-group__hint {
   font-size: 12px;
-  color: var(--text-muted);
+  color: #8b949e;
 }
 
 .input-group__hint--error {
-  color: var(--error);
+  color: #DC2626;
 }
 
 .input-group__textarea {
@@ -84,6 +87,6 @@
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238B9CB5' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right var(--space-3) center;
-  padding-right: var(--space-8);
+  background-position: right 12px center;
+  padding-right: 40px;
 }
