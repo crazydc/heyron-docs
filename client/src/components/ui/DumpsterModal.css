@@ -1,0 +1,50 @@
+.dumpster-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+}
+
+.dumpster-modal {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--r-xl);
+  padding: var(--space-6);
+  max-width: 400px;
+  width: 100%;
+}
+
+.dumpster-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.dumpster-modal__icon {
+  font-size: 24px;
+}
+
+.dumpster-modal__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.dumpster-modal__description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-5);
+}
+
+.dumpster-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}

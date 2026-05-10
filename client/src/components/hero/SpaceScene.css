@@ -1,0 +1,93 @@
+.space-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #07090C 0%, #0F141C 100%);
+}
+
+.space-scene__bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(84, 110, 143, 0.1) 0%, transparent 50%);
+}
+
+.space-scene__stars {
+  position: absolute;
+  inset: 0;
+}
+
+.space-scene__star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.space-scene__ship {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.space-scene__ship--floating {
+  animation: float-ship 6s ease-in-out infinite;
+}
+
+@keyframes float-ship {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-15px); }
+}
+
+.space-scene__ship-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.3) 0%, transparent 70%);
+  filter: blur(10px);
+}
+
+.space-scene__raccoon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.space-scene__raccoon--floating {
+  animation: float-raccoon 8s ease-in-out infinite;
+}
+
+@keyframes float-raccoon {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(-5deg); }
+  50% { transform: translate(-50%, -50%) translateY(-10px) rotate(5deg); }
+}
+
+.space-scene__raccoon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(ellipse, rgba(84, 110, 143, 0.2) 0%, transparent 70%);
+  filter: blur(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-scene__star,
+  .space-scene__ship--floating,
+  .space-scene__raccoon--floating {
+    animation: none;
+  }
+}

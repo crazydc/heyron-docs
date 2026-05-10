@@ -4,20 +4,21 @@ export default function Button({
   children,
   variant = 'primary',
   size = 'md',
-  loading = false,
   disabled = false,
-  fullWidth = false,
-  type = 'button',
   onClick,
+  type = 'button',
+  className = '',
+  ...props
 }) {
   return (
     <button
-      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''}`}
-      disabled={disabled || loading}
       type={type}
+      className={`btn btn--${variant} btn--${size} ${className}`}
+      disabled={disabled}
       onClick={onClick}
+      {...props}
     >
-      {loading ? <span className="btn-spinner" /> : children}
+      {children}
     </button>
   )
 }

@@ -1,0 +1,38 @@
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--r-lg);
+  transition: all var(--transition-fast);
+}
+
+.icon-card:hover {
+  border-color: var(--accent-edge);
+}
+
+.icon-card__icon {
+  font-size: 40px;
+  margin-bottom: var(--space-4);
+}
+
+.icon-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.icon-card__description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-4);
+  line-height: 1.5;
+}
+
+.icon-card__button {
+  text-decoration: none;
+}

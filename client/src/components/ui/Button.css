@@ -2,62 +2,79 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
+  gap: var(--space-2);
+  font-family: inherit;
+  font-weight: 500;
   border: none;
-  transition: all 0.2s;
-  min-height: 44px;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--bg-primary);
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: var(--accent-hover);
-}
-
-.btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: var(--border);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
-}
-
-.btn-ghost:hover:not(:disabled) {
-  background: var(--bg-card);
-  color: var(--text-primary);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.btn-full {
-  width: 100%;
+/* Variants */
+.btn--primary {
+  background: var(--accent);
+  color: #0F141C;
 }
 
-.btn-spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+.btn--primary:hover:not(:disabled) {
+  background: #3dd8f0;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.btn--link {
+  background: transparent;
+  color: var(--accent);
+  border: none;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--r-xl);
+}
+
+.btn--link:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.btn--icon {
+  background: var(--bg-panel-2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-muted);
+  padding: var(--space-2);
+}
+
+.btn--icon:hover:not(:disabled) {
+  background: var(--bg-panel);
+  border-color: var(--accent);
+}
+
+/* Sizes */
+.btn--sm {
+  font-size: 13px;
+  padding: var(--space-2) var(--space-3);
+}
+
+.btn--md {
+  font-size: 14px;
+  padding: var(--space-3) var(--space-5);
+}
+
+.btn--lg {
+  font-size: 16px;
+  padding: var(--space-4) var(--space-6);
 }

@@ -9,6 +9,10 @@ import Landing from './pages/Landing'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Dashboard from './pages/Dashboard'
+import Launchpad from './pages/Launchpad'
+import LaunchpadConfig from './pages/LaunchpadConfig'
+import MissionControl from './pages/MissionControl'
+import SupportNew from './pages/SupportNew'
 import Onboarding from './pages/Onboarding'
 import Account from './pages/Account'
 import Support from './pages/Support'
@@ -93,6 +97,10 @@ function App() {
           <Route path="/signup" element={<GuestRoute><SignUp /></GuestRoute>} />
           <Route path="/signin" element={<GuestRoute><SignIn /></GuestRoute>} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/launchpad" element={<ProtectedRoute><Launchpad /></ProtectedRoute>} />
+          <Route path="/launchpad-config" element={<ProtectedRoute><LaunchpadConfig /></ProtectedRoute>} />
+          <Route path="/mission-control" element={<ProtectedRoute><MissionControl /></ProtectedRoute>} />
+          <Route path="/support-new" element={<ProtectedRoute><SupportNew /></ProtectedRoute>} />
           <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
           <Route path="/support" element={<Support />} />

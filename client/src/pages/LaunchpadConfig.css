@@ -1,0 +1,78 @@
+.launchpad-config {
+  min-height: 100vh;
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.launchpad-config__container {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.launchpad-config__panel {
+  background: rgba(15, 20, 28, 0.95);
+}
+
+.config-step__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-5);
+  text-align: center;
+}
+
+.config-step__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.config-step__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.config-step__input {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.config-step__summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-panel-2);
+  border-radius: var(--r-md);
+}
+
+.summary-item__label {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.summary-item__value {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.launchpad-config__actions {
+  display: flex;
+  justify-content: space-between;
+}
