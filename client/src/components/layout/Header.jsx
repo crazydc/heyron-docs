@@ -31,6 +31,8 @@ export default function Header() {
           {isAuthenticated ? (
             <>
               <Link to="/dashboard" className="header-link">Dashboard</Link>
+              <Link to="/launchpad" className="header-link">Launchpad</Link>
+              <Link to="/storybook" className="header-link">Components</Link>
               <Link to="/resources" className="header-link">Resources</Link>
               <Link to="/account" className="header-link">Account</Link>
               <button onClick={handleLogout} className="header-btn-logout">Sign Out</button>
