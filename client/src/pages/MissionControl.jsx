@@ -12,6 +12,7 @@ import styles from './MissionControl.module.css'
 
 export default function MissionControl() {
   const [showDumpsterModal, setShowDumpsterModal] = useState(false)
+  const baseUrl = import.meta.env.BASE_URL
 
   const stats = [
     { title: 'Uptime', value: '99.9%', trend: 0.1 },
@@ -21,10 +22,10 @@ export default function MissionControl() {
   ]
 
   const quickActions = [
-    { icon: <img src="/assets/rocket.svg" alt="" />, title: 'Check Emails', description: 'Review inbox for important messages', href: '/support' },
-    { icon: <img src="/assets/compass.svg" alt="" />, title: 'Calendar', description: 'View upcoming events', href: '/support' },
-    { icon: <img src="/assets/headset.svg" alt="" />, title: 'Settings', description: 'Configure your agent', href: '/account' },
-    { icon: <img src="/assets/monitor.svg" alt="" />, title: 'Reports', description: 'View activity reports', href: '/resources' }
+    { icon: <img src={baseUrl + "/assets/rocket.svg"} alt="" />, title: 'Check Emails', description: 'Review inbox for important messages', href: '/support' },
+    { icon: <img src={baseUrl + "/assets/compass.svg"} alt="" />, title: 'Calendar', description: 'View upcoming events', href: '/support' },
+    { icon: <img src={baseUrl + "/assets/headset.svg"} alt="" />, title: 'Settings', description: 'Configure your agent', href: '/account' },
+    { icon: <img src={baseUrl + "/assets/monitor.svg"} alt="" />, title: 'Reports', description: 'View activity reports', href: '/resources' }
   ]
 
   const recentActivity = [
@@ -91,10 +92,10 @@ export default function MissionControl() {
       </div>
 
       <FooterNav items={[
-        { icon: <img src="/assets/people.svg" alt="" />, label: 'Home', href: '/mission-control' },
-        { icon: <img src="/assets/monitor.svg" alt="" />, label: 'Stats', href: '/mission-control' },
-        { icon: <img src="/assets/headset.svg" alt="" />, label: 'Settings', href: '/account' },
-        { icon: <img src="/assets/ticket.svg" alt="" />, label: 'Help', href: '/support' }
+        { icon: <img src={baseUrl + "/assets/people.svg"} alt="" />, label: 'Home', href: '/mission-control' },
+        { icon: <img src={baseUrl + "/assets/monitor.svg"} alt="" />, label: 'Stats', href: '/mission-control' },
+        { icon: <img src={baseUrl + "/assets/headset.svg"} alt="" />, label: 'Settings', href: '/account' },
+        { icon: <img src={baseUrl + "/assets/ticket.svg"} alt="" />, label: 'Help', href: '/support' }
       ]} />
     </div>
   )

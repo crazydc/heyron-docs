@@ -17,9 +17,11 @@ export default function SpaceScene({
     return () => mediaQuery.removeEventListener('change', handler)
   }, [])
 
+  const baseUrl = import.meta.env.BASE_URL
+
   return (
     <div className="space-scene">
-      <img src="/assets/bg-space.png" alt="" className="space-scene__bg-img" />
+      <img src={baseUrl + "/assets/bg-space.png"} alt="" className="space-scene__bg-img" />
       
       {/* Stars layer */}
       <div className="space-scene__stars">
@@ -35,7 +37,7 @@ export default function SpaceScene({
               height: `${Math.random() * 2 + 1}px`
             }}
           />
-        ))}
+        )}
       </div>
 
       {/* Ship */}
@@ -47,7 +49,7 @@ export default function SpaceScene({
         }}
       >
         <div className="space-scene__ship-glow" />
-        <img src="/assets/ship.png" alt="Spaceship" className="space-scene__ship-img" />
+        <img src={baseUrl + "/assets/ship.png"} alt="Spaceship" className="space-scene__ship-img" />
       </div>
 
       {/* Raccoon */}
@@ -59,7 +61,7 @@ export default function SpaceScene({
         }}
       >
         <div className="space-scene__raccoon-glow" />
-        <img src="/assets/raccoon.png" alt="Ron" className="space-scene__raccoon-img" />
+        <img src={baseUrl + "/assets/raccoon.png"} alt="Ron" className="space-scene__raccoon-img" />
       </div>
     </div>
   )
